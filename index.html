@@ -1,1 +1,807 @@
+<!--
+  GITHUB PAGES SETUP CHECKLIST:
+  1. Go to https://github.com/Kirans0615/J-A-Freight-Logistics-Mock/settings/pages
+  2. Under "Build and deployment", set Source to "Deploy from a branch"
+  3. Set Branch to "main" and folder to "/ (root)"
+  4. Click Save
+  The site will be live at https://kirans0615.github.io/J-A-Freight-Logistics-Mock
+  within 2 minutes of the next push.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>J&amp;A Freight Systems, Inc. | Chicago 3PL Logistics Provider Since 1986</title>
+  <meta name="description" content="J&amp;A Freight Systems is a Chicago-based non-asset 3PL providing FTL, LTL, intermodal, hazmat, and warehousing services across North America since 1986." />
 
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- AOS CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+  <!-- Tailwind CDN + config -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: false,
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              DEFAULT: '#0B1F3A',
+              light: '#1a3560'
+            },
+            gold: {
+              DEFAULT: '#C9922A',
+              light: '#E8B84B'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; font-family: 'Inter', sans-serif; }
+
+    /* Custom gold scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0B1F3A; }
+    ::-webkit-scrollbar-thumb { background: #C9922A; border-radius: 3px; }
+
+    /* Navbar scrolled state */
+    #navbar { transition: background-color 0.3s ease, box-shadow 0.3s ease; }
+    #navbar.nav-scrolled { background-color: #0B1F3A !important; box-shadow: 0 4px 32px rgba(0,0,0,0.4); }
+
+    /* Hero chevron bounce animation */
+    @keyframes bounce-slow {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+    .animate-bounce-slow { animation: bounce-slow 2s ease-in-out infinite; }
+
+    /* Select arrow */
+    .select-arrow {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23ffffff' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 18px;
+    }
+
+    /* Smooth hover for service cards */
+    .service-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .service-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(11,31,58,0.12); }
+  </style>
+</head>
+
+<body class="bg-white text-gray-900" x-data="{ backToTop: false }" @scroll.window="backToTop = window.scrollY > 400">
+
+  <!-- ============================================================
+       NAVBAR
+       ============================================================ -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-transparent" x-data="{ open: false }">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+
+        <!-- Logo -->
+        <a href="#" class="flex-shrink-0">
+          <img src="./mainlogo.png" alt="J&amp;A Freight Systems" style="max-height:56px; width:auto; object-fit:contain;" />
+        </a>
+
+        <!-- Desktop nav -->
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#services"     class="text-white/80 hover:text-white text-sm font-medium transition-colors duration-200">Services</a>
+          <a href="#about"        class="text-white/80 hover:text-white text-sm font-medium transition-colors duration-200">About</a>
+          <a href="#how-it-works" class="text-white/80 hover:text-white text-sm font-medium transition-colors duration-200">How It Works</a>
+          <a href="#contact"      class="text-white/80 hover:text-white text-sm font-medium transition-colors duration-200">Contact</a>
+          <a href="#contact"
+             class="ml-2 px-6 py-2.5 bg-gold hover:bg-gold-light text-white font-semibold text-sm rounded-full transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+             style="box-shadow:0 4px 16px rgba(201,146,42,0.3);">
+            Get a Quote
+          </a>
+        </div>
+
+        <!-- Hamburger -->
+        <button @click="open = !open" class="md:hidden text-white p-2 rounded-lg focus:outline-none" aria-label="Toggle menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path x-show="!open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            <path x-show="open"  stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile menu -->
+      <div x-show="open" x-transition class="md:hidden rounded-b-2xl pb-6 px-4 pt-2 space-y-3" style="background:#0B1F3A;">
+        <a @click="open=false" href="#services"     class="block text-white/80 hover:text-white py-2 text-base font-medium">Services</a>
+        <a @click="open=false" href="#about"        class="block text-white/80 hover:text-white py-2 text-base font-medium">About</a>
+        <a @click="open=false" href="#how-it-works" class="block text-white/80 hover:text-white py-2 text-base font-medium">How It Works</a>
+        <a @click="open=false" href="#contact"      class="block text-white/80 hover:text-white py-2 text-base font-medium">Contact</a>
+        <a @click="open=false" href="#contact"
+           class="block mt-2 px-6 py-3 bg-gold text-white font-semibold text-sm rounded-full text-center transition-all duration-200">
+          Get a Quote
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       HERO
+       ============================================================ -->
+  <section class="relative flex items-center justify-center text-center min-h-screen overflow-hidden"
+           style="background-image:url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1600&q=80'); background-size:cover; background-position:center; background-attachment:fixed;">
+    <!-- Dark overlay -->
+    <div class="absolute inset-0" style="background:rgba(11,31,58,0.88);"></div>
+
+    <!-- Content -->
+    <div class="relative z-10 px-4 max-w-4xl mx-auto">
+      <!-- 40-year badge -->
+      <img src="./JA-40-Year-Logo-Final-02-1.png"
+           alt="J&amp;A Freight Systems — 40 Years"
+           style="max-height:100px; width:auto; object-fit:contain;"
+           class="mx-auto block mb-8" />
+
+      <h1 class="text-5xl md:text-7xl font-black text-white leading-tight tracking-tight">
+        J&amp;A Freight Systems, Inc.
+      </h1>
+      <p class="mt-4 text-xl md:text-2xl font-semibold" style="color:#C9922A;">
+        40 Years of Moving America Forward &mdash; Since 1986
+      </p>
+      <p class="mt-6 text-lg max-w-2xl mx-auto leading-relaxed" style="color:rgba(255,255,255,0.78);">
+        Chicago's trusted non-asset-based 3PL partner for mid-market shippers across North America.
+      </p>
+
+      <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#contact"
+           class="px-8 py-4 font-bold text-base rounded-full transition-all duration-200"
+           style="background:#C9922A; color:#fff; box-shadow:0 8px 24px rgba(201,146,42,0.35);"
+           onmouseover="this.style.background='#E8B84B'; this.style.transform='translateY(-4px)'"
+           onmouseout="this.style.background='#C9922A'; this.style.transform='translateY(0)'">
+          Request a Quote
+        </a>
+        <a href="#services"
+           class="px-8 py-4 font-bold text-base rounded-full transition-all duration-200"
+           style="background:transparent; border:2px solid #fff; color:#fff;"
+           onmouseover="this.style.background='rgba(255,255,255,0.1)'"
+           onmouseout="this.style.background='transparent'">
+          Our Services
+        </a>
+      </div>
+    </div>
+
+    <!-- Animated scroll indicator -->
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce-slow" style="opacity:0.7;">
+      <svg class="w-8 h-8" style="color:#C9922A;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       STATS BAR
+       ============================================================ -->
+  <section style="background:#0B1F3A;" class="py-12">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="text-center" data-aos="fade-up" data-aos-delay="0">
+          <p class="text-4xl font-black" style="color:#C9922A;">40+</p>
+          <p class="mt-2 text-sm font-medium uppercase tracking-widest" style="color:rgba(255,255,255,0.6);">Years in Business</p>
+        </div>
+        <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+          <p class="text-4xl font-black" style="color:#C9922A;">10,000+</p>
+          <p class="mt-2 text-sm font-medium uppercase tracking-widest" style="color:rgba(255,255,255,0.6);">Shipments Monthly</p>
+        </div>
+        <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+          <p class="text-4xl font-black" style="color:#C9922A;">48</p>
+          <p class="mt-2 text-sm font-medium uppercase tracking-widest" style="color:rgba(255,255,255,0.6);">States Covered</p>
+        </div>
+        <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+          <p class="text-4xl font-black" style="color:#C9922A;">500+</p>
+          <p class="mt-2 text-sm font-medium uppercase tracking-widest" style="color:rgba(255,255,255,0.6);">Vetted Carriers</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ABOUT
+       ============================================================ -->
+  <section id="about" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+
+        <!-- Image -->
+        <div class="rounded-2xl overflow-hidden shadow-2xl" style="min-height:384px;" data-aos="fade-right">
+          <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80"
+               alt="Warehouse and logistics operations"
+               class="w-full h-full object-cover"
+               style="min-height:384px;" />
+        </div>
+
+        <!-- Text -->
+        <div data-aos="fade-left">
+          <p class="text-xs font-bold uppercase tracking-widest mb-3" style="color:#C9922A; letter-spacing:0.2em;">Who We Are</p>
+          <h2 class="text-3xl md:text-4xl font-bold leading-snug" style="color:#0B1F3A;">
+            A Family-Built 3PL<br class="hidden sm:block" /> with Enterprise Power
+          </h2>
+          <div class="mt-6 space-y-4 text-gray-600 leading-relaxed">
+            <p>
+              Founded in 1986 in Chicago, Illinois, J&amp;A Freight Systems, Inc. is a non-asset-based third-party logistics provider built on the values of integrity, accountability, and relentless service. For nearly four decades, we have been the logistics backbone for mid-market manufacturers, distributors, and retailers shipping across North America.
+            </p>
+            <p>
+              Every member of our team undergoes ongoing logistics education workshops paired with seasoned transportation experts. We believe that knowledge-driven logistics is the difference between a broker and a true strategic partner — and our client relationships, many lasting over a decade, are proof.
+            </p>
+            <p>
+              Our strict carrier vetting policy ensures that only FMCSA-compliant, fully insured motor carriers enter the J&amp;A network. Before any carrier touches your freight, they pass our rigorous multi-point safety, authority, and insurance verification process.
+            </p>
+          </div>
+
+          <!-- Compliance badges -->
+          <div class="mt-8 flex flex-wrap gap-3">
+            <span class="px-4 py-2 rounded-full text-sm font-semibold" style="border:2px solid #C9922A; color:#C9922A;">FMCSA Registered</span>
+            <span class="px-4 py-2 rounded-full text-sm font-semibold" style="border:2px solid #C9922A; color:#C9922A;">Surety Bonded</span>
+            <span class="px-4 py-2 rounded-full text-sm font-semibold" style="border:2px solid #C9922A; color:#C9922A;">MercuryGate TMS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SERVICES
+       ============================================================ -->
+  <section id="services" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center" data-aos="fade-up">
+        <p class="text-xs font-bold uppercase mb-3" style="color:#C9922A; letter-spacing:0.2em;">What We Do</p>
+        <h2 class="text-3xl md:text-4xl font-bold" style="color:#0B1F3A;">Comprehensive Logistics Solutions</h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+
+        <!-- FTL -->
+        <div class="service-card bg-white rounded-2xl shadow-md p-8 border border-gray-100" data-aos="fade-up" data-aos-delay="0">
+          <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6" style="background:rgba(201,146,42,0.1);">
+            <svg class="w-7 h-7" style="color:#C9922A;" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <rect x="1" y="3" width="15" height="13" rx="1" stroke="currentColor" />
+              <path d="M16 8h4l3 3v5h-7V8z" stroke="currentColor" stroke-linejoin="round" />
+              <circle cx="5.5" cy="18.5" r="2.5" stroke="currentColor" />
+              <circle cx="18.5" cy="18.5" r="2.5" stroke="currentColor" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-3" style="color:#0B1F3A;">Full Truckload (FTL)</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Dedicated full truckload capacity for time-sensitive shipments. Direct origin-to-destination service with no stops or transfers.</p>
+        </div>
+
+        <!-- LTL -->
+        <div class="service-card bg-white rounded-2xl shadow-md p-8 border border-gray-100" data-aos="fade-up" data-aos-delay="100">
+          <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6" style="background:rgba(201,146,42,0.1);">
+            <svg class="w-7 h-7" style="color:#C9922A;" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="currentColor" />
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96" stroke="currentColor" />
+              <line x1="12" y1="22.08" x2="12" y2="12" stroke="currentColor" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-3" style="color:#0B1F3A;">Less-Than-Truckload (LTL)</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Cost-effective freight consolidation for smaller shipments. Share trailer space without sacrificing speed or reliability.</p>
+        </div>
+
+        <!-- Intermodal -->
+        <div class="service-card bg-white rounded-2xl shadow-md p-8 border border-gray-100" data-aos="fade-up" data-aos-delay="200">
+          <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6" style="background:rgba(201,146,42,0.1);">
+            <svg class="w-7 h-7" style="color:#C9922A;" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <rect x="2" y="7" width="20" height="10" rx="1" stroke="currentColor" />
+              <line x1="2" y1="17" x2="2" y2="20" stroke="currentColor" stroke-linecap="round" />
+              <line x1="22" y1="17" x2="22" y2="20" stroke="currentColor" stroke-linecap="round" />
+              <line x1="1" y1="20" x2="23" y2="20" stroke="currentColor" stroke-linecap="round" />
+              <line x1="7" y1="7" x2="7" y2="17" stroke="currentColor" />
+              <line x1="12" y1="7" x2="12" y2="17" stroke="currentColor" />
+              <line x1="17" y1="7" x2="17" y2="17" stroke="currentColor" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-3" style="color:#0B1F3A;">Intermodal Rail Services</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Reduce costs on heavy long-haul corridors through rail partnerships. Seamless transitions between truck and rail modes.</p>
+        </div>
+
+        <!-- Hazmat -->
+        <div class="service-card bg-white rounded-2xl shadow-md p-8 border border-gray-100" data-aos="fade-up" data-aos-delay="300">
+          <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6" style="background:rgba(201,146,42,0.1);">
+            <svg class="w-7 h-7" style="color:#C9922A;" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="currentColor" />
+              <line x1="12" y1="9" x2="12" y2="13" stroke="currentColor" stroke-linecap="round" />
+              <line x1="12" y1="17" x2="12.01" y2="17" stroke="currentColor" stroke-linecap="round" stroke-width="2.5" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-3" style="color:#0B1F3A;">Hazmat &amp; Specialized Cargo</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Certified hazardous materials handling and climate-controlled food-grade freight. Oversized flatbed and heavy-haul machinery coordination.</p>
+        </div>
+
+        <!-- Warehousing -->
+        <div class="service-card bg-white rounded-2xl shadow-md p-8 border border-gray-100" data-aos="fade-up" data-aos-delay="400">
+          <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6" style="background:rgba(201,146,42,0.1);">
+            <svg class="w-7 h-7" style="color:#C9922A;" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" />
+              <polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-3" style="color:#0B1F3A;">Warehousing &amp; Distribution</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Decentralized US warehouse and distribution center network. Facility management, overflow inventory, and yard logistics.</p>
+        </div>
+
+        <!-- Visibility -->
+        <div class="service-card bg-white rounded-2xl shadow-md p-8 border border-gray-100" data-aos="fade-up" data-aos-delay="500">
+          <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6" style="background:rgba(201,146,42,0.1);">
+            <svg class="w-7 h-7" style="color:#C9922A;" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" />
+              <line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" stroke-linecap="round" />
+              <line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" stroke-linecap="round" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-3" style="color:#0B1F3A;">Supply Chain Visibility</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">24/7 live shipment tracking via MercuryGate TMS integration. Automated network modeling and real-time alerts.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WHY J&A
+       ============================================================ -->
+  <section id="why" class="py-20" style="background:#0B1F3A;">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14" data-aos="fade-up">
+        <p class="text-xs font-bold uppercase mb-3" style="color:#C9922A; letter-spacing:0.2em;">Our Advantage</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-white">Why Shippers Choose J&amp;A</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+        <!-- Pillar 1 -->
+        <div class="text-center" data-aos="fade-up" data-aos-delay="0">
+          <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
+               style="border:2px solid #C9922A;">
+            <svg class="w-8 h-8" style="color:#C9922A;" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" />
+              <polyline points="9 12 11 14 15 10" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">Rigorous Carrier Vetting</h3>
+          <p class="text-gray-300 leading-relaxed text-sm">Every carrier is screened, fully insured, and FMCSA-compliant before handling a single load — protecting your cargo and your business from day one.</p>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="text-center" data-aos="fade-up" data-aos-delay="150">
+          <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
+               style="border:2px solid #C9922A;">
+            <svg class="w-8 h-8" style="color:#C9922A;" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" />
+              <path d="M8 21h8M12 17v4" stroke="currentColor" stroke-linecap="round" />
+              <circle cx="12" cy="10" r="2" stroke="currentColor" />
+              <path d="M6 10a6 6 0 0 1 12 0" stroke="currentColor" stroke-linecap="round" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">MercuryGate TMS Technology</h3>
+          <p class="text-gray-300 leading-relaxed text-sm">Real-time shipment tracking, automated network modeling, and 24/7 visibility for every client — technology that transforms logistics data into competitive advantage.</p>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+          <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
+               style="border:2px solid #C9922A;">
+            <svg class="w-8 h-8" style="color:#C9922A;" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" />
+              <circle cx="9" cy="7" r="4" stroke="currentColor" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="currentColor" stroke-linecap="round" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-linecap="round" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">Employee-Owner Culture</h3>
+          <p class="text-gray-300 leading-relaxed text-sm">Flat hierarchy, collaborative innovation, and four decades of client loyalty from a team that treats your freight like their own. We don't just move loads — we build relationships.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       HOW IT WORKS
+       ============================================================ -->
+  <section id="how-it-works" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <p class="text-xs font-bold uppercase mb-3" style="color:#C9922A; letter-spacing:0.2em;">The Process</p>
+        <h2 class="text-3xl md:text-4xl font-bold" style="color:#0B1F3A;">How It Works</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4 relative">
+
+        <!-- Connecting line (desktop only) -->
+        <div class="hidden md:block absolute top-6 h-0.5 z-0"
+             style="left:12.5%; right:12.5%; background:linear-gradient(to right,#C9922A,#E8B84B);"></div>
+
+        <!-- Step 1 -->
+        <div class="relative z-10 flex flex-col items-center text-center" data-aos="fade-right" data-aos-delay="0">
+          <div class="w-12 h-12 rounded-full flex items-center justify-center text-white font-black text-lg mb-5"
+               style="background:#C9922A; box-shadow:0 4px 16px rgba(201,146,42,0.35);">1</div>
+          <h3 class="font-bold text-base mb-2" style="color:#0B1F3A;">Submit Your Freight Details</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Tell us your origin, destination, cargo type, and timeline. Our team gets to work immediately.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="relative z-10 flex flex-col items-center text-center" data-aos="fade-right" data-aos-delay="100">
+          <div class="w-12 h-12 rounded-full flex items-center justify-center text-white font-black text-lg mb-5"
+               style="background:#C9922A; box-shadow:0 4px 16px rgba(201,146,42,0.35);">2</div>
+          <h3 class="font-bold text-base mb-2" style="color:#0B1F3A;">We Source &amp; Vet the Right Carrier</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Your load is matched to a vetted, insured carrier from our network — one that meets your specific requirements.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="relative z-10 flex flex-col items-center text-center" data-aos="fade-right" data-aos-delay="200">
+          <div class="w-12 h-12 rounded-full flex items-center justify-center text-white font-black text-lg mb-5"
+               style="background:#C9922A; box-shadow:0 4px 16px rgba(201,146,42,0.35);">3</div>
+          <h3 class="font-bold text-base mb-2" style="color:#0B1F3A;">Real-Time Tracking Begins</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Live shipment visibility via our MercuryGate TMS portal keeps you informed at every mile of transit.</p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="relative z-10 flex flex-col items-center text-center" data-aos="fade-right" data-aos-delay="300">
+          <div class="w-12 h-12 rounded-full flex items-center justify-center text-white font-black text-lg mb-5"
+               style="background:#C9922A; box-shadow:0 4px 16px rgba(201,146,42,0.35);">4</div>
+          <h3 class="font-bold text-base mb-2" style="color:#0B1F3A;">Delivery &amp; Confirmation</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">On-time delivery with full documentation, POD, and a dedicated follow-up to ensure your satisfaction.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SPECIALIZED CAPABILITIES BANNER
+       ============================================================ -->
+  <section class="relative flex items-center justify-center text-center py-28 overflow-hidden" data-aos="zoom-in"
+           style="background-image:url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1600&q=80'); background-size:cover; background-position:center;">
+    <div class="absolute inset-0" style="background:rgba(11,31,58,0.82);"></div>
+    <div class="relative z-10 px-4 max-w-4xl mx-auto">
+      <h2 class="text-3xl md:text-5xl font-black text-white leading-tight">
+        Hazmat Certified. Food-Grade Compliant. Flatbed Ready.
+      </h2>
+      <p class="mt-4 text-lg max-w-2xl mx-auto" style="color:rgba(255,255,255,0.78);">
+        No load is too complex for our specialized logistics team.
+      </p>
+      <a href="#contact"
+         class="inline-block mt-8 px-8 py-4 font-bold text-base rounded-full transition-all duration-200"
+         style="background:#C9922A; color:#fff; box-shadow:0 8px 24px rgba(201,146,42,0.35);"
+         onmouseover="this.style.background='#E8B84B'; this.style.transform='translateY(-4px)'"
+         onmouseout="this.style.background='#C9922A'; this.style.transform='translateY(0)'">
+        Talk to a Specialist
+      </a>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TESTIMONIALS
+       ============================================================ -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14" data-aos="fade-up">
+        <p class="text-xs font-bold uppercase mb-3" style="color:#C9922A; letter-spacing:0.2em;">Client Stories</p>
+        <h2 class="text-3xl md:text-4xl font-bold" style="color:#0B1F3A;">What Our Clients Say</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <!-- Star helper: reused as inline SVG per card -->
+        <!-- Card 1 -->
+        <div class="rounded-2xl border border-gray-100 shadow-sm p-8 bg-gray-50 flex flex-col" data-aos="fade-up" data-aos-delay="0">
+          <div class="flex gap-1 mb-4">
+            <svg class="w-4 h-4" style="color:#C9922A; fill:#C9922A;" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-4 h-4" style="color:#C9922A; fill:#C9922A;" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-4 h-4" style="color:#C9922A; fill:#C9922A;" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-4 h-4" style="color:#C9922A; fill:#C9922A;" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-4 h-4" style="color:#C9922A; fill:#C9922A;" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+          <blockquote class="flex-1 text-gray-700 text-sm leading-relaxed italic mb-6">
+            &ldquo;J&amp;A has been our go-to broker for over a decade. Their carrier vetting gives us peace of mind on every load — we never worry about who&rsquo;s pulling our freight.&rdquo;
+          </blockquote>
+          <div class="border-t border-gray-200 pt-4">
+            <p class="font-bold text-sm" style="color:#0B1F3A;">Marcus T.</p>
+            <p class="text-xs text-gray-500 mt-0.5">VP of Logistics &mdash; MidWest Manufacturing Co.</p>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="rounded-2xl border border-gray-100 shadow-sm p-8 bg-gray-50 flex flex-col" data-aos="fade-up" data-aos-delay="100">
+          <div class="flex gap-1 mb-4">
+            <svg class="w-4 h-4" style="color:#C9922A; fill:#C9922A;" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-4 h-4" style="color:#C9922A; fill:#C9922A;" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-4 h-4" style="color:#C9922A; fill:#C9922A;" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-4 h-4" style="color:#C9922A; fill:#C9922A;" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-4 h-4" style="color:#C9922A; fill:#C9922A;" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+          <blockquote class="flex-1 text-gray-700 text-sm leading-relaxed italic mb-6">
+            &ldquo;The MercuryGate TMS visibility is a game-changer. We always know exactly where our freight is — no surprises, no scrambled phone calls, just clear real-time data.&rdquo;
+          </blockquote>
+          <div class="border-t border-gray-200 pt-4">
+            <p class="font-bold text-sm" style="color:#0B1F3A;">Sandra K.</p>
+            <p class="text-xs text-gray-500 mt-0.5">Supply Chain Director &mdash; Great Lakes Foods</p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="rounded-2xl border border-gray-100 shadow-sm p-8 bg-gray-50 flex flex-col" data-aos="fade-up" data-aos-delay="200">
+          <div class="flex gap-1 mb-4">
+            <svg class="w-4 h-4" style="color:#C9922A; fill:#C9922A;" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-4 h-4" style="color:#C9922A; fill:#C9922A;" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-4 h-4" style="color:#C9922A; fill:#C9922A;" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-4 h-4" style="color:#C9922A; fill:#C9922A;" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-4 h-4" style="color:#C9922A; fill:#C9922A;" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+          <blockquote class="flex-1 text-gray-700 text-sm leading-relaxed italic mb-6">
+            &ldquo;Hazmat shipments are tricky — J&amp;A handles them flawlessly every time. Certified, reliable, and responsive. They&rsquo;re the only broker I trust with our most sensitive loads.&rdquo;
+          </blockquote>
+          <div class="border-t border-gray-200 pt-4">
+            <p class="font-bold text-sm" style="color:#0B1F3A;">Derek P.</p>
+            <p class="text-xs text-gray-500 mt-0.5">Operations Manager &mdash; ChemTrans Partners</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Trust badges -->
+      <div class="flex flex-wrap justify-center gap-4 mt-12" data-aos="fade-up">
+        <span class="px-5 py-2.5 rounded-full font-semibold text-sm" style="border:2px solid #C9922A; color:#0B1F3A;">FMCSA Registered Broker</span>
+        <span class="px-5 py-2.5 rounded-full font-semibold text-sm" style="border:2px solid #C9922A; color:#0B1F3A;">Surety Bond Protected</span>
+        <span class="px-5 py-2.5 rounded-full font-semibold text-sm" style="border:2px solid #C9922A; color:#0B1F3A;">MercuryGate TMS Partner</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT / QUOTE FORM
+       ============================================================ -->
+  <section id="contact" class="py-20" style="background:#0B1F3A;" data-aos="fade-up">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+
+        <!-- Left: Contact info -->
+        <div>
+          <p class="text-xs font-bold uppercase mb-3" style="color:#C9922A; letter-spacing:0.2em;">Get In Touch</p>
+          <h2 class="text-3xl md:text-4xl font-bold text-white leading-snug">Request a Freight Quote</h2>
+          <p class="mt-4 leading-relaxed" style="color:rgba(255,255,255,0.65);">
+            Fill out the form and a J&amp;A logistics specialist will respond within one business hour — no obligation, quotes are always free.
+          </p>
+
+          <div class="mt-10 space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 mt-0.5"
+                   style="background:rgba(201,146,42,0.15); border:1px solid rgba(201,146,42,0.25);">
+                <svg class="w-5 h-5" style="color:#C9922A;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" />
+                  <circle cx="12" cy="10" r="3" stroke="currentColor" />
+                </svg>
+              </div>
+              <div>
+                <p class="text-xs uppercase tracking-wide font-medium mb-0.5" style="color:rgba(255,255,255,0.45);">Address</p>
+                <p class="text-sm" style="color:rgba(255,255,255,0.88);">4704 W Irving Park Rd, Chicago, IL 60641</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 mt-0.5"
+                   style="background:rgba(201,146,42,0.15); border:1px solid rgba(201,146,42,0.25);">
+                <svg class="w-5 h-5" style="color:#C9922A;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.62 4.37 2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" />
+                </svg>
+              </div>
+              <div>
+                <p class="text-xs uppercase tracking-wide font-medium mb-0.5" style="color:rgba(255,255,255,0.45);">Phone</p>
+                <p class="text-sm" style="color:rgba(255,255,255,0.88);">(773) 286-0600</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 mt-0.5"
+                   style="background:rgba(201,146,42,0.15); border:1px solid rgba(201,146,42,0.25);">
+                <svg class="w-5 h-5" style="color:#C9922A;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" />
+                  <polyline points="22,6 12,13 2,6" stroke="currentColor" />
+                </svg>
+              </div>
+              <div>
+                <p class="text-xs uppercase tracking-wide font-medium mb-0.5" style="color:rgba(255,255,255,0.45);">Email</p>
+                <p class="text-sm" style="color:rgba(255,255,255,0.88);">info@jandafreight.com</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Form -->
+        <div x-data="{ submitted: false }">
+          <form @submit.prevent="submitted = true" class="rounded-2xl p-8 space-y-5"
+                style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12);">
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div class="flex flex-col gap-1.5">
+                <label class="text-xs font-semibold uppercase tracking-wide" style="color:rgba(255,255,255,0.55);">Full Name <span style="color:#C9922A;">*</span></label>
+                <input type="text" required placeholder="Jane Smith"
+                  class="px-4 py-3 rounded-lg text-white text-sm focus:outline-none transition-colors"
+                  style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.18); color:#fff;" />
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <label class="text-xs font-semibold uppercase tracking-wide" style="color:rgba(255,255,255,0.55);">Company Name <span style="color:#C9922A;">*</span></label>
+                <input type="text" required placeholder="Acme Logistics Co."
+                  class="px-4 py-3 rounded-lg text-white text-sm focus:outline-none transition-colors"
+                  style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.18); color:#fff;" />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div class="flex flex-col gap-1.5">
+                <label class="text-xs font-semibold uppercase tracking-wide" style="color:rgba(255,255,255,0.55);">Email <span style="color:#C9922A;">*</span></label>
+                <input type="email" required placeholder="jane@company.com"
+                  class="px-4 py-3 rounded-lg text-sm focus:outline-none transition-colors"
+                  style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.18); color:#fff;" />
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <label class="text-xs font-semibold uppercase tracking-wide" style="color:rgba(255,255,255,0.55);">Phone</label>
+                <input type="tel" placeholder="(773) 555-0100"
+                  class="px-4 py-3 rounded-lg text-sm focus:outline-none transition-colors"
+                  style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.18); color:#fff;" />
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+              <label class="text-xs font-semibold uppercase tracking-wide" style="color:rgba(255,255,255,0.55);">Freight Type <span style="color:#C9922A;">*</span></label>
+              <select required class="px-4 py-3 rounded-lg text-sm focus:outline-none transition-colors appearance-none select-arrow"
+                      style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.18); color:#fff;">
+                <option value="" style="background:#0B1F3A;">Select freight type&hellip;</option>
+                <option value="FTL"        style="background:#0B1F3A;">Full Truckload (FTL)</option>
+                <option value="LTL"        style="background:#0B1F3A;">Less-Than-Truckload (LTL)</option>
+                <option value="Intermodal" style="background:#0B1F3A;">Intermodal Rail</option>
+                <option value="Hazmat"     style="background:#0B1F3A;">Hazmat / Specialized</option>
+                <option value="Flatbed"    style="background:#0B1F3A;">Flatbed / Oversized</option>
+                <option value="Warehouse"  style="background:#0B1F3A;">Warehousing</option>
+              </select>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div class="flex flex-col gap-1.5">
+                <label class="text-xs font-semibold uppercase tracking-wide" style="color:rgba(255,255,255,0.55);">Origin City <span style="color:#C9922A;">*</span></label>
+                <input type="text" required placeholder="Chicago, IL"
+                  class="px-4 py-3 rounded-lg text-sm focus:outline-none transition-colors"
+                  style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.18); color:#fff;" />
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <label class="text-xs font-semibold uppercase tracking-wide" style="color:rgba(255,255,255,0.55);">Destination City <span style="color:#C9922A;">*</span></label>
+                <input type="text" required placeholder="Dallas, TX"
+                  class="px-4 py-3 rounded-lg text-sm focus:outline-none transition-colors"
+                  style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.18); color:#fff;" />
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+              <label class="text-xs font-semibold uppercase tracking-wide" style="color:rgba(255,255,255,0.55);">Additional Notes</label>
+              <textarea rows="4" placeholder="Cargo details, weight, dimensions, special requirements, target pickup date&hellip;"
+                class="px-4 py-3 rounded-lg text-sm focus:outline-none transition-colors resize-none"
+                style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.18); color:#fff;"></textarea>
+            </div>
+
+            <button type="submit"
+              class="w-full py-4 px-8 font-bold text-lg rounded-full transition-all duration-200"
+              style="background:#C9922A; color:#fff; box-shadow:0 8px 24px rgba(201,146,42,0.35);"
+              onmouseover="this.style.background='#E8B84B'; this.style.transform='translateY(-2px)'"
+              onmouseout="this.style.background='#C9922A'; this.style.transform='translateY(0)'">
+              Request a Freight Quote
+            </button>
+
+            <div x-show="submitted" x-transition
+                 class="flex items-center gap-3 px-5 py-4 rounded-xl"
+                 style="background:rgba(201,146,42,0.15); border:1px solid rgba(201,146,42,0.35);">
+              <svg class="w-5 h-5 shrink-0" style="color:#C9922A;" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <p class="font-semibold text-sm" style="color:#C9922A;">Thank you! We will be in touch within one business hour.</p>
+            </div>
+
+            <p class="text-xs text-center" style="color:rgba(255,255,255,0.3);">Your information is kept confidential. Quotes are always free.</p>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="py-12" style="background:#0B1F3A; border-top:1px solid rgba(255,255,255,0.08);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+
+        <!-- Brand -->
+        <div>
+          <img src="./mainlogo.png" alt="J&amp;A Freight Systems"
+               style="max-height:48px; width:auto; object-fit:contain;" />
+          <p class="mt-3 text-sm" style="color:rgba(255,255,255,0.65);">Trusted. Compliant. Committed.</p>
+          <p class="mt-2 text-xs" style="color:rgba(255,255,255,0.45);">&copy; 2025 J&amp;A Freight Systems, Inc. All rights reserved.</p>
+          <p class="mt-1 text-xs" style="color:rgba(255,255,255,0.45);">Founded 1986 &middot; Chicago, Illinois</p>
+        </div>
+
+        <!-- Services -->
+        <div>
+          <h4 class="text-sm font-bold text-white mb-4 uppercase tracking-widest">Services</h4>
+          <ul class="space-y-2.5">
+            <li><a href="#services" class="text-sm transition-colors duration-150" style="color:rgba(255,255,255,0.55);" onmouseover="this.style.color='#C9922A'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Full Truckload</a></li>
+            <li><a href="#services" class="text-sm transition-colors duration-150" style="color:rgba(255,255,255,0.55);" onmouseover="this.style.color='#C9922A'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Less-Than-Truckload</a></li>
+            <li><a href="#services" class="text-sm transition-colors duration-150" style="color:rgba(255,255,255,0.55);" onmouseover="this.style.color='#C9922A'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Intermodal Rail</a></li>
+            <li><a href="#services" class="text-sm transition-colors duration-150" style="color:rgba(255,255,255,0.55);" onmouseover="this.style.color='#C9922A'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Hazmat &amp; Specialized</a></li>
+            <li><a href="#services" class="text-sm transition-colors duration-150" style="color:rgba(255,255,255,0.55);" onmouseover="this.style.color='#C9922A'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Warehousing</a></li>
+            <li><a href="#services" class="text-sm transition-colors duration-150" style="color:rgba(255,255,255,0.55);" onmouseover="this.style.color='#C9922A'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Supply Chain Visibility</a></li>
+          </ul>
+        </div>
+
+        <!-- Company -->
+        <div>
+          <h4 class="text-sm font-bold text-white mb-4 uppercase tracking-widest">Company</h4>
+          <ul class="space-y-2.5">
+            <li><a href="#about"        class="text-sm transition-colors duration-150" style="color:rgba(255,255,255,0.55);" onmouseover="this.style.color='#C9922A'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">About Us</a></li>
+            <li><a href="#how-it-works" class="text-sm transition-colors duration-150" style="color:rgba(255,255,255,0.55);" onmouseover="this.style.color='#C9922A'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">How It Works</a></li>
+            <li><a href="#why"          class="text-sm transition-colors duration-150" style="color:rgba(255,255,255,0.55);" onmouseover="this.style.color='#C9922A'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Carrier Vetting Policy</a></li>
+            <li><a href="#"            class="text-sm transition-colors duration-150" style="color:rgba(255,255,255,0.55);" onmouseover="this.style.color='#C9922A'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">FMCSA Registration</a></li>
+            <li><a href="#contact"      class="text-sm transition-colors duration-150" style="color:rgba(255,255,255,0.55);" onmouseover="this.style.color='#C9922A'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Contact Us</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Legal disclaimer -->
+      <div class="pt-8" style="border-top:1px solid rgba(255,255,255,0.08);">
+        <p class="text-xs max-w-3xl mx-auto text-center leading-relaxed" style="color:rgba(255,255,255,0.35);">
+          J&amp;A Freight Systems, Inc. is a licensed property broker registered with the FMCSA. MC# on file. All carriers must meet strict insurance and compliance requirements before entry into the J&amp;A network.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       BACK TO TOP BUTTON
+       ============================================================ -->
+  <button
+    x-show="backToTop"
+    x-transition
+    @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
+    class="fixed bottom-8 right-8 w-12 h-12 rounded-full flex items-center justify-center z-50 transition-all duration-200"
+    style="background:#C9922A; box-shadow:0 4px 20px rgba(201,146,42,0.4);"
+    onmouseover="this.style.background='#E8B84B'; this.style.transform='translateY(-4px)'"
+    onmouseout="this.style.background='#C9922A'; this.style.transform='translateY(0)'"
+    aria-label="Back to top">
+    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+    </svg>
+  </button>
+
+  <!-- ============================================================
+       SCRIPTS
+       ============================================================ -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 700, once: true, offset: 80 });
+  </script>
+
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <script>
+    window.addEventListener('scroll', function () {
+      document.getElementById('navbar').classList.toggle('nav-scrolled', window.scrollY > 80);
+    });
+  </script>
+
+</body>
+</html>
