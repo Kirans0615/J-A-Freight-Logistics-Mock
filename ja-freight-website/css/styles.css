@@ -50,6 +50,12 @@ h2{font-size:clamp(2rem,4vw,3rem)}
 h3{font-size:1.35rem;letter-spacing:.02em}
 .lead{font-size:1.13rem;color:var(--muted);max-width:62ch}
 .on-dark h1,.on-dark h2,.on-dark h3{color:var(--white)}
+.hero h1,.hero h2,.hero h3,
+section.dark h1,section.dark h2,section.dark h3,
+.stats h1,.stats h2,.stats h3,
+.ja-map-section h1,.ja-map-section h2,.ja-map-section h3,
+.photo-band h1,.photo-band h2,.photo-band h3,
+.join-band h1,.join-band h2,.join-band h3{color:var(--white)}
 .gold-text{color:var(--gold)}
 
 /* Eyebrow with compass waypoint */
@@ -63,7 +69,13 @@ h3{font-size:1.35rem;letter-spacing:.02em}
   content:"";width:14px;height:14px;background:var(--gold);
   clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%);
 }
-.on-dark .eyebrow{color:rgba(255,255,255,.75)}
+.on-dark .eyebrow,
+.hero .eyebrow,
+section.dark .eyebrow,
+.stats .eyebrow,
+.ja-map-section .eyebrow,
+.photo-band .eyebrow,
+.join-band .eyebrow{color:rgba(255,255,255,.75)}
 
 /* ---------- Buttons ---------- */
 .btn{
