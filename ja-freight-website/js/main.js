@@ -61,6 +61,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* Parallax photo bands */
+  const bands = document.querySelectorAll('.photo-band .pb-bg');
+  if (bands.length) {
+    const onScroll = () => {
+      bands.forEach(bg => {
+        const rect = bg.closest('.photo-band').getBoundingClientRect();
+        const pct = (rect.top / window.innerHeight);
+        bg.style.transform = `translateY(${pct * 40}px)`;
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  /* Stagger delays for grid children */
+  document.querySelectorAll('.stagger').forEach(container => {
+    container.querySelectorAll('.reveal').forEach((el, i) => {
+      el.style.transitionDelay = (i * 80) + 'ms';
+    });
+  });
+
   /* Position filters */
   const chips = document.querySelectorAll('.chip[data-filter]');
   const posts = document.querySelectorAll('.pos[data-dept]');
