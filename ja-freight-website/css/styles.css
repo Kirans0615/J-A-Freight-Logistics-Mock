@@ -491,8 +491,8 @@ section.block + section.block:not(.alt):not(.alt-gold):not(.dark){border-top:1px
 /* Real team headshots */
 .member .avatar.photo{padding:0;overflow:hidden;font-size:0;background:var(--navy)}
 .member .avatar.photo img{
-  width:100%;height:100%;object-fit:cover;object-position:top center;
-  transition:transform .5s var(--spring);
+  width:100%;aspect-ratio:1;object-fit:cover;object-position:top center;
+  display:block;transition:transform .5s var(--spring);
 }
 .member:hover .avatar.photo img{transform:scale(1.06)}
 
@@ -550,3 +550,58 @@ section.block + section.block:not(.alt):not(.alt-gold):not(.dark){border-top:1px
 .photo-strip div{overflow:hidden}
 .photo-strip div:hover img{transform:scale(1.06)}
 @media(max-width:700px){.photo-strip{grid-template-columns:1fr 1fr}.photo-strip div:last-child{display:none}}
+
+/* ============================================================
+   Chicago Reach Map
+   ============================================================ */
+.ja-map-section{background:var(--navy-deep)}
+.ja-map-wrap{position:relative}
+#ja-map{height:500px;border-radius:var(--radius);overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.map-legend{
+  display:flex;gap:24px;flex-wrap:wrap;padding:16px 0 0;
+}
+.map-legend span{
+  display:flex;align-items:center;gap:8px;
+  font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.65);
+}
+.map-legend span b{width:12px;height:12px;border-radius:50%;display:inline-block;flex-shrink:0}
+.map-legend span.leg-route b{width:22px;height:2px;border-radius:0;background:linear-gradient(90deg,rgba(255,194,13,.8),rgba(255,194,13,.2))}
+/* Hub marker */
+.ja-hub-marker{
+  width:46px;height:46px;background:var(--gold);
+  border:3px solid #fff;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;box-shadow:0 4px 18px rgba(255,194,13,.55);
+  animation:hub-pulse 2.4s ease-in-out infinite;
+}
+.ja-hub-marker span{
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;
+  font-size:.68rem;letter-spacing:.04em;color:var(--navy-deep);
+}
+@keyframes hub-pulse{
+  0%,100%{box-shadow:0 4px 18px rgba(255,194,13,.55),0 0 0 0 rgba(255,194,13,.35)}
+  50%{box-shadow:0 4px 18px rgba(255,194,13,.55),0 0 0 14px rgba(255,194,13,0)}
+}
+/* City markers */
+.ja-city-marker{width:16px;height:16px;cursor:pointer}
+.ja-city-marker span{
+  display:block;width:14px;height:14px;
+  background:rgba(255,194,13,.7);border:2px solid rgba(255,255,255,.55);
+  border-radius:50%;transition:transform .2s,background .2s;
+}
+.ja-city-marker:hover span{transform:scale(1.5);background:var(--gold)}
+/* MapLibre popup override */
+.maplibregl-popup-content{
+  border-radius:10px!important;
+  padding:12px 16px!important;
+  box-shadow:0 8px 28px rgba(0,0,0,.18)!important;
+  font-family:'Barlow',sans-serif!important;
+}
+.maplibregl-popup-close-button{display:none!important}
+.ja-popup strong{
+  font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;
+  letter-spacing:.05em;font-size:.98rem;color:var(--navy-ink);display:block;
+}
+.ja-popup small{font-size:.8rem;color:var(--muted)}
+.maplibregl-ctrl-attrib{display:none!important}

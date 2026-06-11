@@ -97,3 +97,98 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }));
 });
+
+/* ============================================================
+   Chicago Service Reach Map (MapLibre GL JS)
+   ============================================================ */
+(function () {
+  if (!document.getElementById('ja-map')) return;
+
+  const css = document.createElement('link');
+  css.rel = 'stylesheet';
+  css.href = 'https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css';
+  document.head.appendChild(css);
+
+  const js = document.createElement('script');
+  js.src = 'https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js';
+  js.onload = initJAMap;
+  document.head.appendChild(js);
+})();
+
+function initJAMap() {
+  const CHICAGO = [-87.6298, 41.8781];
+
+  const map = new maplibregl.Map({
+    container: 'ja-map',
+    style: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
+    center: [-89.8, 41.9],
+    zoom: 5.8,
+    attributionControl: false,
+    pitchWithRotate: false,
+    dragRotate: false,
+  });
+
+  const serviceCities = [
+    { name: 'Milwaukee, WI',    coords: [-87.9065, 43.0389] },
+    { name: 'Indianapolis, IN', coords: [-86.1581, 39.7684] },
+    { name: 'St. Louis, MO',    coords: [-90.1994, 38.6270] },
+    { name: 'Detroit, MI',      coords: [-83.0458, 42.3314] },
+    { name: 'Columbus, OH',     coords: [-82.9988, 39.9612] },
+    { name: 'Minneapolis, MN',  coords: [-93.2650, 44.9778] },
+    { name: 'Kansas City, MO',  coords: [-94.5786, 39.0997] },
+    { name: 'Memphis, TN',      coords: [-90.0490, 35.1495] },
+    { name: 'Nashville, TN',    coords: [-86.7816, 36.1627] },
+    { name: 'Cleveland, OH',    coords: [-81.6944, 41.4993] },
+  ];
+
+  map.on('load', function () {
+    /* Route lines */
+    serviceCities.forEach(function (city, i) {
+      map.addSource('route-' + i, {
+        type: 'geojson',
+        data: {
+          type: 'Feature', properties: {},
+          geometry: { type: 'LineString', coordinates: [CHICAGO, city.coords] }
+        }
+      });
+      map.addLayer({
+        id: 'route-' + i,
+        type: 'line',
+        source: 'route-' + i,
+        layout: { 'line-join': 'round', 'line-cap': 'round' },
+        paint: {
+          'line-color': '#FFC20D',
+          'line-width': 1.5,
+          'line-opacity': 0.32,
+          'line-dasharray': [4, 5]
+        }
+      });
+    });
+
+    /* City markers */
+    serviceCities.forEach(function (city) {
+      const el = document.createElement('div');
+      el.className = 'ja-city-marker';
+      el.innerHTML = '<span></span>';
+      new maplibregl.Marker({ element: el, anchor: 'center' })
+        .setLngLat(city.coords)
+        .setPopup(
+          new maplibregl.Popup({ offset: 14, closeButton: false, closeOnClick: true })
+            .setHTML('<div class="ja-popup"><strong>' + city.name + '</strong><small>J&A Service Hub</small></div>')
+        )
+        .addTo(map);
+    });
+
+    /* Chicago HQ marker */
+    const hub = document.createElement('div');
+    hub.className = 'ja-hub-marker';
+    hub.innerHTML = '<span>HQ</span>';
+    new maplibregl.Marker({ element: hub, anchor: 'center' })
+      .setLngLat(CHICAGO)
+      .setPopup(
+        new maplibregl.Popup({ offset: 26, closeButton: false, closeOnClick: true })
+          .setHTML('<div class="ja-popup"><strong>Chicago, IL</strong><small>J&A Freight Systems HQ — Est. 1986</small></div>')
+      )
+      .addTo(map);
+  });
+}
