@@ -102,7 +102,9 @@ header.site{
   border-bottom:1px solid rgba(255,255,255,.08);
 }
 header.site .wrap{display:flex;align-items:center;justify-content:space-between;min-height:74px;gap:20px}
-.logo img{height:42px;width:auto}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-icon{height:42px;width:auto;display:block}
+.logo-wordmark{height:28px;width:auto;display:block}
 nav.main{display:flex;align-items:center;gap:6px}
 nav.main a{
   color:rgba(255,255,255,.85);font-weight:500;font-size:.95rem;
