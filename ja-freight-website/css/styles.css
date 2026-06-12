@@ -692,6 +692,34 @@ section.block + section.block:not(.alt):not(.alt-gold):not(.dark){border-top:1px
   .hero-vid-wrap video,.hero-vid-wrap img.poster{height:320px}
 }
 
+/* --- Home page full-bleed video hero --- */
+.hero.hero-vid-home{
+  min-height:660px;display:flex;flex-direction:column;
+  background:var(--navy-deep);
+}
+.hero.hero-vid-home .wrap{
+  flex:1;display:flex;flex-direction:column;justify-content:center;
+  padding-top:96px;padding-bottom:80px;
+}
+.hero.hero-vid-home .hero-grid{
+  grid-template-columns:1fr;
+  max-width:860px;
+}
+.hero.hero-vid-home h1{font-size:clamp(3rem,6.5vw,5rem)}
+.hero.hero-vid-home .lead{
+  max-width:62ch;color:rgba(255,255,255,.9);font-size:1.18rem;
+}
+.hero.hero-vid-home .badge{
+  background:rgba(255,255,255,.1);
+  backdrop-filter:blur(10px);
+  border-color:rgba(255,255,255,.22);
+}
+.hero.hero-vid-home .hero-bg-vid::after{
+  background:
+    radial-gradient(1000px 520px at 78% -8%, rgba(255,194,13,.1), transparent 60%),
+    linear-gradient(150deg, rgba(11,33,56,.74) 0%, rgba(14,42,71,.60) 100%);
+}
+
 /* --- About hero background image/video --- */
 .hero.hero-has-vid{background:var(--navy-deep)}
 .hero-bg-vid{position:absolute;inset:0;z-index:0;overflow:hidden}
