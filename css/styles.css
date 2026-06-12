@@ -565,6 +565,32 @@ section.block + section.block:not(.alt):not(.alt-gold):not(.dark){border-top:1px
   border:2px solid rgba(255,194,13,.55);border-radius:var(--radius);z-index:-1;
 }
 
+/* Plane inside the about-photo frame */
+.about-plane-wrap{
+  height:480px;
+  background:linear-gradient(145deg,var(--navy-deep) 0%,#122d4a 100%);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;padding:28px;
+}
+.about-plane-wrap::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 75% 65% at 60% 50%,rgba(255,194,13,.13) 0%,transparent 65%);
+}
+.about-plane-wrap::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 24h48M24 0v48' stroke='rgba(255,255,255,.035)' stroke-width='1'/%3E%3C/svg%3E");
+}
+.about-plane-img{
+  width:100%;max-width:400px;
+  position:relative;z-index:1;
+  filter:drop-shadow(0 0 32px rgba(255,194,13,.22)) drop-shadow(0 12px 28px rgba(0,0,0,.5));
+  animation:plane-drift 6s ease-in-out infinite;
+}
+@keyframes plane-drift{
+  0%,100%{transform:translateY(0) rotate(-1.5deg)}
+  50%{transform:translateY(-12px) rotate(1.5deg)}
+}
+
 /* Real team headshots */
 .member .avatar.photo{padding:0;overflow:hidden;font-size:0;background:var(--navy)}
 .member .avatar.photo img{
