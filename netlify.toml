@@ -1,0 +1,28 @@
+# Netlify configuration for J&A Freight Systems
+#
+# This file tells Netlify where the site files live and how to build/deploy.
+# Because this is a pure static site (no framework, no npm build step),
+# the [build] section has no command — Netlify just serves the folder as-is.
+#
+# Forms: Netlify Forms are configured directly on each HTML <form> element
+# using the data-netlify="true" attribute. Submissions are collected in the
+# Netlify dashboard under Forms → Submissions. No backend code required.
+#
+# Redirects: The [[redirects]] block below is intentionally minimal.
+# Catch-all SPA redirects (/* → /index.html 200) are NOT used here because
+# this is a multi-page static site — each page is its own .html file.
+
+[build]
+  # Folder to publish (relative to repo root)
+  publish = "ja-freight-website"
+  # No build command needed for a static site
+  # command = ""
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Custom 404 page
+[[redirects]]
+  from   = "/*"
+  to     = "/404.html"
+  status = 404

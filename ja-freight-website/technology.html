@@ -1,3 +1,14 @@
+<!-- ============================================================
+  PAGE: Technology (technology.html)
+  PURPOSE: Showcases the J&A freight management platform.
+           Hero plays an autoplay loop video of the TMS in action.
+           Includes image accordion (5 tech features) and scroll-3D laptop preview.
+  TO EDIT: Tech feature panels are in the <div class="img-accordion"> block.
+           The hero video source is <video class="hero-photo"> — swap the .mp4 src to update.
+           "The Stack" feature grid is in <section class="block alt"> after the accordion.
+  FORMS: Newsletter signup in footer — see Netlify Forms comment near the form.
+  VIDEOS: Hero video = assets/13527183_1920_1080_25fps.mp4
+  ============================================================ -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -251,8 +262,10 @@
       <div>
         <h4>Newsletter</h4>
         <p style="font-size:.93rem;margin-bottom:12px">Subscribe to get latest updates from our own J&amp;A Freight Systems.</p>
-        <form class="news-form" data-demo>
-          <input type="email" placeholder="Your email address" required aria-label="Newsletter email">
+        <!-- Netlify Forms: newsletter signups — Netlify dashboard → Forms → newsletter-signup -->
+        <form class="news-form" name="newsletter-signup" data-netlify="true" data-demo>
+          <input type="hidden" name="form-name" value="newsletter-signup">
+          <input type="email" name="email" placeholder="Your email address" required aria-label="Newsletter email">
           <button class="btn btn-gold" type="submit" aria-label="Subscribe" style="padding:13px 16px">&rarr;</button>
         </form>
         <div class="form-success">You're subscribed!</div>

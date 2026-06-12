@@ -1,0 +1,10 @@
+# Netlify _redirects file for J&A Freight Systems
+#
+# NOTE: A catch-all SPA redirect (/* → /index.html 200) is intentionally
+# NOT included here. This is a multi-page static site — each page is its
+# own .html file and should 404 correctly when a nonexistent URL is visited.
+#
+# Custom 404 behavior is handled in netlify.toml instead.
+#
+# Add specific redirects below if you ever rename a page URL, e.g.:
+#   /old-page   /new-page   301

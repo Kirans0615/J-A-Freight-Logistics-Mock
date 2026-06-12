@@ -1,3 +1,13 @@
+<!-- ============================================================
+  PAGE: Join J&A / Careers (careers.html)
+  PURPOSE: Hiring page with open positions overview and employment application form.
+  TO EDIT: Hiring process steps are in the <ul> inside the two-column layout.
+           Application form fields are in <form name="job-application">.
+           To add or remove job roles, edit the positions.html page.
+  FORMS:
+    - Job Application form (name="job-application") — collected in Netlify → Forms → job-application
+    - Newsletter signup in footer — collected in Netlify → Forms → newsletter-signup
+  ============================================================ -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -160,22 +170,25 @@
       <div class="reveal">
         <div class="form-card">
           <h3 style="margin-bottom:22px">Application for Employment</h3>
-          <form data-demo>
+          <!-- Netlify Forms: applications land in Netlify dashboard → Forms → job-application.
+               To receive email alerts: Forms → job-application → Form notifications → Add notification → Email. -->
+          <form name="job-application" data-netlify="true" data-demo>
+            <input type="hidden" name="form-name" value="job-application">
             <div class="form-grid">
-              <div><label for="a-first">Full Name *</label><input id="a-first" placeholder="Your full name" required></div>
-              <div><label for="a-email">Email *</label><input id="a-email" type="email" placeholder="youremail@gmail.com" required></div>
-              <div><label for="a-phone">Phone *</label><input id="a-phone" type="tel" placeholder="000 345 6789" required></div>
-              <div><label for="a-location">Job Location *</label><input id="a-location" placeholder="Nearest" required></div>
+              <div><label for="a-first">Full Name *</label><input id="a-first" name="full-name" placeholder="Your full name" required></div>
+              <div><label for="a-email">Email *</label><input id="a-email" name="email" type="email" placeholder="youremail@gmail.com" required></div>
+              <div><label for="a-phone">Phone *</label><input id="a-phone" name="phone" type="tel" placeholder="000 345 6789" required></div>
+              <div><label for="a-location">Job Location *</label><input id="a-location" name="job-location" placeholder="Nearest" required></div>
               <div><label for="a-workplace">Workplace Type *</label>
-                <select id="a-workplace" required><option value="">— Select —</option><option>Onsite</option><option>Remote</option><option>Hybrid</option></select>
+                <select id="a-workplace" name="workplace-type" required><option value="">— Select —</option><option>Onsite</option><option>Remote</option><option>Hybrid</option></select>
               </div>
               <div><label for="a-emptype">Employment Type *</label>
-                <select id="a-emptype" required><option value="">— Select —</option><option>Full-time</option><option>Part-time</option><option>Contract</option></select>
+                <select id="a-emptype" name="employment-type" required><option value="">— Select —</option><option>Full-time</option><option>Part-time</option><option>Contract</option></select>
               </div>
-              <div class="full"><label for="a-msg">Cover Letter *</label><textarea id="a-msg" placeholder="Introduce yourself" required></textarea></div>
+              <div class="full"><label for="a-msg">Cover Letter *</label><textarea id="a-msg" name="cover-letter" placeholder="Introduce yourself" required></textarea></div>
             </div>
             <div style="margin-top:14px;display:flex;gap:10px;align-items:flex-start">
-              <input type="checkbox" id="a-privacy" required style="width:auto;margin-top:3px">
+              <input type="checkbox" id="a-privacy" name="privacy" required style="width:auto;margin-top:3px">
               <label for="a-privacy" style="text-transform:none;letter-spacing:0;font-weight:400;font-size:.9rem;color:var(--muted)">I accept the privacy policy.</label>
             </div>
             <div style="margin-top:18px"><button class="btn btn-gold" type="submit">Send Application <span class="arrow">&rarr;</span></button></div>
@@ -240,8 +253,10 @@
       <div>
         <h4>Newsletter</h4>
         <p style="font-size:.93rem;margin-bottom:12px">Subscribe to get latest updates from our own J&amp;A Freight Systems.</p>
-        <form class="news-form" data-demo>
-          <input type="email" placeholder="Your email address" required aria-label="Newsletter email">
+        <!-- Netlify Forms: newsletter signups — Netlify dashboard → Forms → newsletter-signup -->
+        <form class="news-form" name="newsletter-signup" data-netlify="true" data-demo>
+          <input type="hidden" name="form-name" value="newsletter-signup">
+          <input type="email" name="email" placeholder="Your email address" required aria-label="Newsletter email">
           <button class="btn btn-gold" type="submit" aria-label="Subscribe" style="padding:13px 16px">&rarr;</button>
         </form>
         <div class="form-success">You're subscribed!</div>

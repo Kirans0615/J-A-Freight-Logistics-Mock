@@ -1,3 +1,13 @@
+<!-- ============================================================
+  PAGE: Contact Us (contact.html)
+  PURPOSE: Contact information, office map SVG, and the main inquiry form.
+  TO EDIT: Phone/email in the info cards and footer bar.
+           Map SVG decorative element is inline in <section class="block alt tight">.
+           Form fields are in <form name="contact">.
+  FORMS:
+    - Contact form (name="contact") — collected in Netlify → Forms → contact
+    - Newsletter signup in footer — collected in Netlify → Forms → newsletter-signup
+  ============================================================ -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -95,24 +105,27 @@
           <span class="eyebrow" style="color:var(--navy)">Get In Touch</span>
           <h3 style="margin-bottom:6px">Let's chat, reach out to us.</h3>
           <p style="color:var(--muted);font-size:.95rem;margin-bottom:22px">Have questions or feedback? We're here to help. Send us a message, and we'll respond within 24 hours.</p>
-          <form data-demo>
+          <!-- Netlify Forms: submissions land in Netlify dashboard → Forms → contact.
+               To receive email alerts: Forms → contact → Form notifications → Add notification → Email. -->
+          <form name="contact" data-netlify="true" data-demo>
+            <input type="hidden" name="form-name" value="contact">
             <div class="form-grid">
-              <div><label for="ct-first">First Name *</label><input id="ct-first" placeholder="Dave" required></div>
-              <div><label for="ct-last">Last Name *</label><input id="ct-last" placeholder="Willson" required></div>
-              <div><label for="ct-phone">Phone *</label><input id="ct-phone" type="tel" placeholder="012 345 6789" required></div>
-              <div><label for="ct-email">Email *</label><input id="ct-email" type="email" placeholder="davewillson@gmail.com" required></div>
+              <div><label for="ct-first">First Name *</label><input id="ct-first" name="first-name" placeholder="Dave" required></div>
+              <div><label for="ct-last">Last Name *</label><input id="ct-last" name="last-name" placeholder="Willson" required></div>
+              <div><label for="ct-phone">Phone *</label><input id="ct-phone" name="phone" type="tel" placeholder="012 345 6789" required></div>
+              <div><label for="ct-email">Email *</label><input id="ct-email" name="email" type="email" placeholder="davewillson@gmail.com" required></div>
               <div><label for="ct-topic">Select Product *</label>
-                <select id="ct-topic" required><option value="">— Select —</option><option>Carriers</option><option>Shippers</option><option>Technology</option><option>Other</option></select>
+                <select id="ct-topic" name="product" required><option value="">— Select —</option><option>Carriers</option><option>Shippers</option><option>Technology</option><option>Other</option></select>
               </div>
-              <div><label for="ct-biz">Business *</label><input id="ct-biz" placeholder="Importer" required></div>
-              <div class="full"><label for="ct-msg">Message *</label><textarea id="ct-msg" placeholder="Leave us a message" required></textarea></div>
+              <div><label for="ct-biz">Business *</label><input id="ct-biz" name="business" placeholder="Importer" required></div>
+              <div class="full"><label for="ct-msg">Message *</label><textarea id="ct-msg" name="message" placeholder="Leave us a message" required></textarea></div>
             </div>
             <div style="margin-top:14px;display:flex;gap:10px;align-items:flex-start">
-              <input type="checkbox" id="ct-privacy" required style="width:auto;margin-top:3px">
+              <input type="checkbox" id="ct-privacy" name="privacy" required style="width:auto;margin-top:3px">
               <label for="ct-privacy" style="text-transform:none;letter-spacing:0;font-weight:400;font-size:.9rem;color:var(--muted)">I accept the privacy policy.</label>
             </div>
             <div style="margin-top:18px"><button class="btn btn-gold" type="submit">Send Message <span class="arrow">&rarr;</span></button></div>
-            <div class="form-success">Message sent. A J&A expert will reply within 24 hours.</div>
+            <div class="form-success">Message sent. A J&amp;A expert will reply within 24 hours.</div>
           </form>
         </div>
       </div>
@@ -201,8 +214,10 @@
       <div>
         <h4>Newsletter</h4>
         <p style="font-size:.93rem;margin-bottom:12px">Subscribe to get latest updates from our own J&amp;A Freight Systems.</p>
-        <form class="news-form" data-demo>
-          <input type="email" placeholder="Your email address" required aria-label="Newsletter email">
+        <!-- Netlify Forms: newsletter signups — Netlify dashboard → Forms → newsletter-signup -->
+        <form class="news-form" name="newsletter-signup" data-netlify="true" data-demo>
+          <input type="hidden" name="form-name" value="newsletter-signup">
+          <input type="email" name="email" placeholder="Your email address" required aria-label="Newsletter email">
           <button class="btn btn-gold" type="submit" aria-label="Subscribe" style="padding:13px 16px">&rarr;</button>
         </form>
         <div class="form-success">You're subscribed!</div>

@@ -1,7 +1,36 @@
 /* ============================================================
-   J&A FREIGHT SYSTEMS — brand system
-   Navy/gold compass identity. Display: Barlow Condensed.
-   Body: Barlow.
+   J&A FREIGHT SYSTEMS — styles.css
+   Single stylesheet for all 8 pages of the static site.
+
+   Brand colors (edit :root below):
+     Navy      #14365C  --navy
+     Navy deep #0B2138  --navy-deep
+     Gold      #FFC20D  --gold
+     Gold dark #E2A900  --gold-dark
+
+   Fonts (loaded via Google Fonts in <head>):
+     Display:  Barlow Condensed
+     Body:     Barlow
+
+   Table of contents:
+     :root tokens
+     Base reset & body
+     Type scale
+     Buttons
+     Header / nav
+     Hero
+     Content sections & cards
+     Stats band
+     Steps, FAQ, Forms, Positions, Team, Timeline
+     CTA band, Footer, Contact
+     Reveal animations
+     v2 — Section rhythm tweaks
+     v3 — Photography & Motion system (photo-band, photo-strip, parallax)
+     Chicago Reach Map (MapLibre)
+     v4 — Interactive components & video media
+         Video modal, Hero videos, Image Accordion,
+         Scroll-3D, Hover Slideshow
+     Responsive (media queries at bottom)
    ============================================================ */
 :root{
   --navy:#14365C;

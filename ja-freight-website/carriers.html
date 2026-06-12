@@ -1,3 +1,12 @@
+<!-- ============================================================
+  PAGE: For Carriers (carriers.html)
+  PURPOSE: Recruitment page for owner-operators and trucking companies.
+           Features the 40th anniversary logo, perks grid, and cinematic media card.
+  TO EDIT: Perks/benefits list is in the <section class="block alt"> section.
+           The 40-year logo is in the white card inside the hero section.
+           Cinematic video card image can be swapped in the .cinematic-vid-card block.
+  FORMS: Newsletter signup in footer — see Netlify Forms comment near the form.
+  ============================================================ -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -273,8 +282,10 @@
       <div>
         <h4>Newsletter</h4>
         <p style="font-size:.93rem;margin-bottom:12px">Subscribe to get latest updates from our own J&amp;A Freight Systems.</p>
-        <form class="news-form" data-demo>
-          <input type="email" placeholder="Your email address" required aria-label="Newsletter email">
+        <!-- Netlify Forms: newsletter signups — Netlify dashboard → Forms → newsletter-signup -->
+        <form class="news-form" name="newsletter-signup" data-netlify="true" data-demo>
+          <input type="hidden" name="form-name" value="newsletter-signup">
+          <input type="email" name="email" placeholder="Your email address" required aria-label="Newsletter email">
           <button class="btn btn-gold" type="submit" aria-label="Subscribe" style="padding:13px 16px">&rarr;</button>
         </form>
         <div class="form-success">You're subscribed!</div>

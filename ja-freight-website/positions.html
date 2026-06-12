@@ -1,3 +1,11 @@
+<!-- ============================================================
+  PAGE: Open Positions (positions.html)
+  PURPOSE: Detailed listing of current job openings with role descriptions.
+           Links back to the application form on careers.html.
+  TO EDIT: Each job card is a <div class="position-card"> or similar block.
+           Update role titles, departments, and descriptions as needed.
+  FORMS: Newsletter signup in footer — see Netlify Forms comment near the form.
+  ============================================================ -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -286,8 +294,10 @@
       <div>
         <h4>Newsletter</h4>
         <p style="font-size:.93rem;margin-bottom:12px">Subscribe to get latest updates from our own J&amp;A Freight Systems.</p>
-        <form class="news-form" data-demo>
-          <input type="email" placeholder="Your email address" required aria-label="Newsletter email">
+        <!-- Netlify Forms: newsletter signups — Netlify dashboard → Forms → newsletter-signup -->
+        <form class="news-form" name="newsletter-signup" data-netlify="true" data-demo>
+          <input type="hidden" name="form-name" value="newsletter-signup">
+          <input type="email" name="email" placeholder="Your email address" required aria-label="Newsletter email">
           <button class="btn btn-gold" type="submit" aria-label="Subscribe" style="padding:13px 16px">&rarr;</button>
         </form>
         <div class="form-success">You're subscribed!</div>

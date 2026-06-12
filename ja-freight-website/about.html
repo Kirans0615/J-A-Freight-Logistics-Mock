@@ -1,3 +1,12 @@
+<!-- ============================================================
+  PAGE: About Us (about.html)
+  PURPOSE: Company story, leadership team headshots, certifications,
+           and the J&A mission/values section.
+  TO EDIT: Leadership bios are in the <section class="team"> block.
+           Mission copy is in the <section class="block"> after the hero.
+           Certification logos are in the <section class="certs"> block.
+  FORMS: Newsletter signup in footer — see Netlify Forms comment near the form.
+  ============================================================ -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -271,8 +280,10 @@
       <div>
         <h4>Newsletter</h4>
         <p style="font-size:.93rem;margin-bottom:12px">Subscribe to get latest updates from our own J&amp;A Freight Systems.</p>
-        <form class="news-form" data-demo>
-          <input type="email" placeholder="Your email address" required aria-label="Newsletter email">
+        <!-- Netlify Forms: newsletter signups — Netlify dashboard → Forms → newsletter-signup -->
+        <form class="news-form" name="newsletter-signup" data-netlify="true" data-demo>
+          <input type="hidden" name="form-name" value="newsletter-signup">
+          <input type="email" name="email" placeholder="Your email address" required aria-label="Newsletter email">
           <button class="btn btn-gold" type="submit" aria-label="Subscribe" style="padding:13px 16px">&rarr;</button>
         </form>
         <div class="form-success">You're subscribed!</div>

@@ -1,0 +1,51 @@
+# GitHub Actions — Deploy J&A Freight Systems website to GitHub Pages
+#
+# Triggers on every push to the main branch.
+# No build step is needed — this is a pure static HTML/CSS/JS site.
+# The ja-freight-website/ folder is uploaded directly as the Pages artifact.
+#
+# To enable GitHub Pages in your repo:
+#   Settings → Pages → Source → GitHub Actions
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  # Allow manual runs from the Actions tab
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only one deployment at a time; cancel any in-progress run if a new push arrives
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      # Upload the static site folder as the Pages artifact (no build needed)
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ja-freight-website
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

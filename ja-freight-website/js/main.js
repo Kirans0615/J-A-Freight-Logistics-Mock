@@ -1,7 +1,19 @@
-/* J&A Freight Systems — shared interactions */
+/* ============================================================
+   J&A Freight Systems — main.js
+   Shared JavaScript for all 8 pages of the static site.
+   No external dependencies — pure vanilla JS.
+
+   Sections:
+     1. DOMContentLoaded  — nav, reveal, stats, FAQ, forms, parallax
+     2. Interactive Components — Image Accordion, Scroll 3D, Hover Slideshow
+     3. Chicago Service Reach Map (MapLibre GL JS, loaded on demand)
+   ============================================================ */
+
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* Mobile nav */
+  /* ── Mobile nav ────────────────────────────────────────────
+     Toggles the hamburger open/close on small screens.
+     The .nav-toggle button is in the <header> of every page. */
   const toggle = document.querySelector('.nav-toggle');
   const nav = document.querySelector('nav.main');
   if (toggle && nav) {
@@ -12,19 +24,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* Active nav link */
+  /* ── Active nav link ───────────────────────────────────────
+     Highlights the current page's link in the nav bar. */
   const page = location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('nav.main a').forEach(a => {
     if (a.getAttribute('href') === page) a.classList.add('active');
   });
 
-  /* Scroll reveal */
+  /* ── Scroll reveal ─────────────────────────────────────────
+     Any element with class="reveal" fades/slides in when it
+     enters the viewport. CSS handles the actual animation;
+     this adds the "in" class to trigger it. */
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { threshold: .12 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  /* Count-up stats */
+  /* ── Count-up stats ────────────────────────────────────────
+     Elements with data-count="40" animate from 0 to that number
+     when they scroll into view. Add data-suffix="+" for labels. */
   const cio = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (!e.isIntersecting) return;
@@ -41,7 +59,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: .5 });
   document.querySelectorAll('[data-count]').forEach(el => cio.observe(el));
 
-  /* FAQ accordion */
+  /* ── FAQ accordion ─────────────────────────────────────────
+     Clicking a .faq-q button opens its parent .faq-item
+     and closes any other open item (one-at-a-time behavior). */
   document.querySelectorAll('.faq-q').forEach(btn => {
     btn.addEventListener('click', () => {
       const item = btn.closest('.faq-item');
@@ -50,7 +70,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* Forms — client-side confirmation (wire to Formspree/backend for production) */
+  /* ── Forms — local preview confirmation ────────────────────
+     Forms with data-demo="true" show a success message on submit
+     without sending any data (for local development preview).
+     On Netlify, data-netlify="true" takes over and the real
+     submission is sent to the Netlify Forms backend. */
   document.querySelectorAll('form[data-demo]').forEach(form => {
     form.addEventListener('submit', ev => {
       ev.preventDefault();
@@ -61,7 +85,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* Parallax photo bands */
+  /* ── Parallax photo bands ──────────────────────────────────
+     .photo-band sections have a .pb-bg background image that
+     drifts at a slower rate than the page scroll for depth. */
   const bands = document.querySelectorAll('.photo-band .pb-bg');
   if (bands.length) {
     const onScroll = () => {
@@ -75,14 +101,18 @@ document.addEventListener('DOMContentLoaded', () => {
     onScroll();
   }
 
-  /* Stagger delays for grid children */
+  /* ── Stagger delays for grid children ──────────────────────
+     Containers with class="stagger" animate their .reveal
+     children in sequence (80ms apart) for a cascade effect. */
   document.querySelectorAll('.stagger').forEach(container => {
     container.querySelectorAll('.reveal').forEach((el, i) => {
       el.style.transitionDelay = (i * 80) + 'ms';
     });
   });
 
-  /* Position filters */
+  /* ── Position filters (positions.html) ─────────────────────
+     Filter chips on the Open Positions page show/hide job cards
+     by department. The count badge updates to match. */
   const chips = document.querySelectorAll('.chip[data-filter]');
   const posts = document.querySelectorAll('.pos[data-dept]');
   chips.forEach(chip => chip.addEventListener('click', () => {
@@ -99,10 +129,12 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ============================================================
-   Interactive Components — v4
+   2. Interactive Components
    ============================================================ */
 
-/* --- Video Modal --- */
+/* ── Video Modal ───────────────────────────────────────────────
+   Any element with data-vid-trigger opens a fullscreen modal
+   containing a <video>. Escape key and backdrop click close it. */
 (function () {
   const modal = document.querySelector('.vid-modal');
   if (!modal) return;
@@ -128,7 +160,10 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 })();
 
-/* --- Image Accordion --- */
+/* ── Image Accordion ───────────────────────────────────────────
+   Panels inside .img-accordion expand on hover via CSS flex
+   (flex:1 → flex:4). The "active" class is toggled here;
+   the transition lives in CSS (styles.css, .ia-panel). */
 (function () {
   document.querySelectorAll('.img-accordion').forEach(acc => {
     const panels = acc.querySelectorAll('.ia-panel');
@@ -138,6 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
         panel.classList.add('active');
       });
     });
+    /* Reset to first panel when the mouse leaves the accordion */
     acc.addEventListener('mouseleave', () => {
       panels.forEach(p => p.classList.remove('active'));
       if (panels[0]) panels[0].classList.add('active');
@@ -146,7 +182,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 })();
 
-/* --- Scroll 3D Tilt --- */
+/* ── Scroll 3D Tilt ────────────────────────────────────────────
+   .scroll-3d-card starts tilted (rotateX 22deg, scale 0.94)
+   and flattens to 0deg / scale 1 as the user scrolls it into view.
+   Uses getBoundingClientRect on every scroll tick (passive listener). */
 (function () {
   const cards = document.querySelectorAll('.scroll-3d-card');
   if (!cards.length) return;
@@ -157,6 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!outer) return;
       const rect = outer.getBoundingClientRect();
       const vh = window.innerHeight;
+      /* progress: 0 = card at bottom of viewport, 1 = card fully revealed */
       const progress = Math.max(0, Math.min(1, 1 - (rect.top - vh * 0.25) / (vh * 0.65)));
       const angle = 22 * (1 - progress);
       const scale = 0.94 + 0.06 * progress;
@@ -168,7 +208,11 @@ document.addEventListener('DOMContentLoaded', () => {
   update();
 })();
 
-/* --- Hover Slideshow --- */
+/* ── Hover Slideshow ───────────────────────────────────────────
+   .hover-slider has a list column (.hs-item) and an image column.
+   Hovering or clicking a list item reveals its paired .hs-img
+   via clip-path: inset(0 100% 0 0) → inset(0 0% 0 0) transition
+   defined in CSS. */
 (function () {
   document.querySelectorAll('.hover-slider').forEach(slider => {
     const items = slider.querySelectorAll('.hs-item');
