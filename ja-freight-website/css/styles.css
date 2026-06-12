@@ -441,7 +441,8 @@ section.block + section.block:not(.alt):not(.alt-gold):not(.dark){border-top:1px
   position:relative;border-radius:20px;overflow:hidden;
   box-shadow:0 32px 80px rgba(0,0,0,.45);
 }
-.hero-img-wrap img.hero-photo{
+.hero-img-wrap img.hero-photo,
+.hero-img-wrap video.hero-photo{
   width:100%;height:460px;object-fit:cover;object-position:center;
   display:block;transition:transform 8s ease;
 }
@@ -772,23 +773,23 @@ section.block + section.block:not(.alt):not(.alt-gold):not(.dark){border-top:1px
 }
 
 /* --- Scroll-3D Section --- */
-.scroll-3d-section{padding:0 0 88px;overflow:hidden}
-.s3d-head{text-align:center;padding:88px 0 48px}
+.scroll-3d-section{padding:0 0 56px;overflow:hidden}
+.s3d-head{text-align:center;padding:56px 0 32px}
 .s3d-head .eyebrow{color:var(--navy)}
-.s3d-head h2{font-size:clamp(1.8rem,3.5vw,2.8rem)}
-.s3d-head p{color:var(--muted);margin-top:12px;max-width:54ch;margin-left:auto;margin-right:auto}
+.s3d-head h2{font-size:clamp(1.6rem,3vw,2.4rem)}
+.s3d-head p{color:var(--muted);margin-top:10px;max-width:54ch;margin-left:auto;margin-right:auto}
 .scroll-3d-outer{
   perspective:1400px;
-  padding:0 24px;max-width:var(--maxw);margin:0 auto;
+  padding:0 48px;max-width:900px;margin:0 auto;
 }
 .scroll-3d-card{
   transform:rotateX(22deg) scale(0.94);
   transform-origin:top center;will-change:transform;
-  border-radius:20px;overflow:hidden;
-  box-shadow:0 40px 100px rgba(0,0,0,.18);
+  border-radius:16px;overflow:hidden;
+  box-shadow:0 24px 60px rgba(0,0,0,.15);
   background:var(--navy-deep);
 }
-.scroll-3d-card img{width:100%;display:block}
+.scroll-3d-card img{width:100%;display:block;max-height:420px;object-fit:cover;object-position:top}
 
 /* --- Hover Slideshow --- */
 .hover-slider-section{padding:0 0 88px}
