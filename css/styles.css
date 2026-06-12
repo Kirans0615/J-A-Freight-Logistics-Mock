@@ -184,7 +184,7 @@ nav.main a.active{color:var(--gold);background:rgba(255,255,255,.06)}
 .hero-actions{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
 .hero-badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:34px}
 .hero-mbe{display:flex;align-items:center;gap:12px;margin-top:18px}
-.hero-mbe img{height:42px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.85}
+.hero-mbe img{height:42px;width:auto;object-fit:contain}
 .hero-mbe span{font-size:.74rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6)}
 .badge{
   font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
