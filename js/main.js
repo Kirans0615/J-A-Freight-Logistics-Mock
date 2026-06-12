@@ -210,9 +210,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* ── Hover Slideshow ───────────────────────────────────────────
    .hover-slider has a list column (.hs-item) and an image column.
-   Hovering or clicking a list item reveals its paired .hs-img
-   via clip-path: inset(0 100% 0 0) → inset(0 0% 0 0) transition
-   defined in CSS. */
+   All videos use autoplay so the browser starts them regardless of
+   clip-path visibility. The clip-path transition (CSS) reveals
+   whichever video is active. currentTime is reset on reveal so
+   each hover starts the clip from the beginning. */
 (function () {
   document.querySelectorAll('.hover-slider').forEach(slider => {
     const items = slider.querySelectorAll('.hs-item');
@@ -220,16 +221,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const activate = idx => {
       items.forEach(i => i.classList.remove('active'));
-      imgs.forEach(el => {
-        el.classList.remove('active');
-        /* Pause video when it slides out */
-        if (el.tagName === 'VIDEO') el.pause();
-      });
+      imgs.forEach(el => el.classList.remove('active'));
       if (items[idx]) items[idx].classList.add('active');
       if (imgs[idx]) {
         imgs[idx].classList.add('active');
-        /* Play video when it slides in */
-        if (imgs[idx].tagName === 'VIDEO') imgs[idx].play().catch(() => {});
+        /* Restart the clip from the top each time it's revealed */
+        if (imgs[idx].tagName === 'VIDEO') {
+          imgs[idx].currentTime = 0;
+          imgs[idx].play().catch(() => {});
+        }
       }
     };
 
