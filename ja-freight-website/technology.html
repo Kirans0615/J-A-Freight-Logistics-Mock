@@ -73,12 +73,46 @@
         </div>
       </div>
       <div class="reveal">
-        <div class="video-thumb">
-          <img src="assets/videoVideo.png" alt="MercuryGate TMS platform demo" loading="lazy">
+        <div class="hero-vid-wrap" data-vid-trigger aria-label="Watch platform overview">
+          <!-- Swap poster src for a real video element when video file is ready -->
+          <img class="poster" src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=920&q=80" alt="Advanced logistics warehouse automation">
           <div class="play-btn" aria-label="Watch platform overview">
             <svg viewBox="0 0 72 72" fill="none"><circle cx="36" cy="36" r="36" fill="rgba(255,194,13,.92)"/><path d="M28 22l24 14-24 14V22z" fill="#0B2138"/></svg>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Image Accordion -->
+<section class="block">
+  <div class="wrap">
+    <div class="sec-head center reveal" style="margin-bottom:40px">
+      <span class="eyebrow">Platform Intelligence</span>
+      <h2>Revolutionizing logistics with <span class="gold-text">cutting-edge technology</span></h2>
+      <p class="lead">Every tool in our stack is designed to give you — and our team — a speed and visibility advantage other brokers can't match.</p>
+    </div>
+    <div class="img-accordion" role="list">
+      <div class="ia-panel active" role="listitem">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Real-Time GPS Tracking dashboard" loading="lazy">
+        <div class="ia-label"><div class="ia-num">01</div><div class="ia-title">Real-Time GPS Tracking</div></div>
+      </div>
+      <div class="ia-panel" role="listitem">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="AI Route Optimization data visualization" loading="lazy">
+        <div class="ia-label"><div class="ia-num">02</div><div class="ia-title">AI Route Optimization</div></div>
+      </div>
+      <div class="ia-panel" role="listitem">
+        <img src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?auto=format&fit=crop&w=800&q=80" alt="Automated Warehousing robotics" loading="lazy">
+        <div class="ia-label"><div class="ia-num">03</div><div class="ia-title">Automated Warehousing</div></div>
+      </div>
+      <div class="ia-panel" role="listitem">
+        <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d6?auto=format&fit=crop&w=800&q=80" alt="Live Load Updates mobile dashboard" loading="lazy">
+        <div class="ia-label"><div class="ia-num">04</div><div class="ia-title">Live Load Updates</div></div>
+      </div>
+      <div class="ia-panel" role="listitem">
+        <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=800&q=80" alt="TMS Integration software interface" loading="lazy">
+        <div class="ia-label"><div class="ia-num">05</div><div class="ia-title">TMS Integration</div></div>
       </div>
     </div>
   </div>
@@ -125,10 +159,24 @@
   </div>
 </section>
 
+<!-- Container Scroll 3D -->
+<section class="scroll-3d-section">
+  <div class="s3d-head wrap">
+    <span class="eyebrow">Our Platform</span>
+    <h2>Our platform does the heavy lifting</h2>
+    <p class="lead">The MercuryGate TMS dashboard gives you live visibility into every load, every invoice, and every carrier — all in one place.</p>
+  </div>
+  <div class="scroll-3d-outer">
+    <div class="scroll-3d-card">
+      <img src="assets/laptopChanged.png" alt="MercuryGate TMS dashboard — live freight visibility" loading="lazy">
+    </div>
+  </div>
+</section>
+
 <section class="block alt">
   <div class="wrap">
     <div class="split flip">
-      <div class="reveal tech-photo">
+      <div class="reveal tech-photo" style="display:none">
         <img src="assets/laptopChanged.png" alt="J&A Freight Systems — MercuryGate TMS in action" loading="lazy">
       </div>
       <div class="reveal">
@@ -226,5 +274,15 @@
 </footer>
 
 <script src="js/main.js"></script>
+
+<!-- Video modal — add <source src="assets/tech-overview.mp4" type="video/mp4"> when video file is ready -->
+<div class="vid-modal" role="dialog" aria-modal="true" aria-label="Platform overview video">
+  <div class="vid-modal-inner">
+    <button class="vid-modal-close" aria-label="Close video">&times;</button>
+    <video controls playsinline poster="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=920&q=80">
+      Your browser does not support the video element.
+    </video>
+  </div>
+</div>
 </body>
 </html>

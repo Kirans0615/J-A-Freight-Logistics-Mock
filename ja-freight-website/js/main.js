@@ -99,6 +99,98 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ============================================================
+   Interactive Components — v4
+   ============================================================ */
+
+/* --- Video Modal --- */
+(function () {
+  const modal = document.querySelector('.vid-modal');
+  if (!modal) return;
+  const video = modal.querySelector('video');
+
+  document.querySelectorAll('[data-vid-trigger]').forEach(el => {
+    el.addEventListener('click', () => {
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      if (video && video.src) video.play().catch(() => {});
+    });
+  });
+
+  const closeModal = () => {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    if (video) { video.pause(); video.currentTime = 0; }
+  };
+
+  const closeBtn = modal.querySelector('.vid-modal-close');
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+})();
+
+/* --- Image Accordion --- */
+(function () {
+  document.querySelectorAll('.img-accordion').forEach(acc => {
+    const panels = acc.querySelectorAll('.ia-panel');
+    panels.forEach(panel => {
+      panel.addEventListener('mouseenter', () => {
+        panels.forEach(p => p.classList.remove('active'));
+        panel.classList.add('active');
+      });
+    });
+    acc.addEventListener('mouseleave', () => {
+      panels.forEach(p => p.classList.remove('active'));
+      if (panels[0]) panels[0].classList.add('active');
+    });
+    if (panels[0]) panels[0].classList.add('active');
+  });
+})();
+
+/* --- Scroll 3D Tilt --- */
+(function () {
+  const cards = document.querySelectorAll('.scroll-3d-card');
+  if (!cards.length) return;
+
+  const update = () => {
+    cards.forEach(card => {
+      const outer = card.closest('.scroll-3d-outer');
+      if (!outer) return;
+      const rect = outer.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const progress = Math.max(0, Math.min(1, 1 - (rect.top - vh * 0.25) / (vh * 0.65)));
+      const angle = 22 * (1 - progress);
+      const scale = 0.94 + 0.06 * progress;
+      card.style.transform = `rotateX(${angle}deg) scale(${scale})`;
+    });
+  };
+
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+
+/* --- Hover Slideshow --- */
+(function () {
+  document.querySelectorAll('.hover-slider').forEach(slider => {
+    const items = slider.querySelectorAll('.hs-item');
+    const imgs = slider.querySelectorAll('.hs-img');
+
+    const activate = idx => {
+      items.forEach(i => i.classList.remove('active'));
+      imgs.forEach(i => i.classList.remove('active'));
+      if (items[idx]) items[idx].classList.add('active');
+      if (imgs[idx]) imgs[idx].classList.add('active');
+    };
+
+    items.forEach((item, i) => {
+      item.addEventListener('mouseenter', () => activate(i));
+      item.addEventListener('click', () => activate(i));
+    });
+
+    activate(0);
+  });
+})();
+
+/* ============================================================
    Chicago Service Reach Map (MapLibre GL JS)
    ============================================================ */
 (function () {
