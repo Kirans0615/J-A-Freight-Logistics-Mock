@@ -733,7 +733,7 @@ section.block + section.block:not(.alt):not(.alt-gold):not(.dark){border-top:1px
   width:38px;height:38px;border-radius:50%;
   background:rgba(255,255,255,.15);border:0;cursor:pointer;
   display:grid;place-items:center;color:#fff;font-size:1.3rem;
-  z-index:2;transition:.15s;line-height:1;font-family:sans-serif;
+  z-index:2;transition:.15s;line-height:1;font-family:'Barlow',system-ui,sans-serif;
 }
 .vid-modal-close:hover{background:var(--gold);color:var(--navy-deep)}
 
