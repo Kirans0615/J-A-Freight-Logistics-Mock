@@ -220,9 +220,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const activate = idx => {
       items.forEach(i => i.classList.remove('active'));
-      imgs.forEach(i => i.classList.remove('active'));
+      imgs.forEach(el => {
+        el.classList.remove('active');
+        /* Pause video when it slides out */
+        if (el.tagName === 'VIDEO') el.pause();
+      });
       if (items[idx]) items[idx].classList.add('active');
-      if (imgs[idx]) imgs[idx].classList.add('active');
+      if (imgs[idx]) {
+        imgs[idx].classList.add('active');
+        /* Play video when it slides in */
+        if (imgs[idx].tagName === 'VIDEO') imgs[idx].play().catch(() => {});
+      }
     };
 
     items.forEach((item, i) => {
