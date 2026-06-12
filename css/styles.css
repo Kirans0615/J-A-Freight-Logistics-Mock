@@ -851,10 +851,6 @@ section.block + section.block:not(.alt):not(.alt-gold):not(.dark){border-top:1px
   transition:opacity .3s,transform .3s;
 }
 .ia-panel.active .ia-label{opacity:1;transform:none}
-.ia-num{
-  font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:4px;font-weight:600;
-}
 .ia-title{
   font-family:'Barlow Condensed',sans-serif;font-weight:700;
   font-size:1.2rem;text-transform:uppercase;letter-spacing:.04em;
