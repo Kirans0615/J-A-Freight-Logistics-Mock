@@ -474,8 +474,11 @@ section.block + section.block:not(.alt):not(.alt-gold):not(.dark){border-top:1px
 .hero-img-wrap img.hero-photo,
 .hero-img-wrap video.hero-photo{
   width:100%;height:460px;object-fit:cover;object-position:center;
-  display:block;transition:transform 8s ease;
+  display:block;transition:opacity .4s ease, transform 8s ease;
 }
+/* Hidden until playing — JS adds .playing once the video actually starts */
+.hero-img-wrap video.hero-photo{ opacity:0 }
+.hero-img-wrap video.hero-photo.playing{ opacity:1 }
 .hero-img-wrap::after{
   content:"";position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(180deg,transparent 55%,rgba(11,33,56,.55));

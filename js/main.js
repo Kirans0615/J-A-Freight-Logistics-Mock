@@ -242,6 +242,14 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 })();
 
+/* ── Hero video fade-in ────────────────────────────────────────
+   Videos in .hero-img-wrap start at opacity:0 (CSS) to prevent the
+   first decoded frame appearing as a static image before playback.
+   The .playing class fades them in once the browser actually plays. */
+document.querySelectorAll('.hero-img-wrap video').forEach(video => {
+  video.addEventListener('playing', () => video.classList.add('playing'), { once: true });
+});
+
 /* ============================================================
    Chicago Service Reach Map (MapLibre GL JS)
    ============================================================ */
