@@ -13,8 +13,8 @@
 # this is a multi-page static site — each page is its own .html file.
 
 [build]
-  # Folder to publish (relative to repo root)
-  publish = "ja-freight-website"
+  # Folder to publish — site files are at the repo root
+  publish = "."
   # No build command needed for a static site
   # command = ""
 

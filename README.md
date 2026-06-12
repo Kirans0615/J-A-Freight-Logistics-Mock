@@ -38,30 +38,29 @@ python3 -m http.server 8080
 ## Folder Organization
 
 ```
-ja-freight-repo/
+ja-freight-repo/              ← Repo root (this is what gets deployed)
+├── index.html                ← Home page
+├── about.html                ← About Us
+├── shippers.html             ← For Shippers
+├── carriers.html             ← For Carriers
+├── technology.html           ← Technology platform
+├── careers.html              ← Join J&A (job listings + application form)
+├── positions.html            ← Open positions detail
+├── contact.html              ← Contact Us
+├── css/
+│   └── styles.css            ← All styles (single stylesheet)
+├── js/
+│   └── main.js               ← All JavaScript (single script file)
+├── assets/                   ← Images, SVGs, and videos
+│   ├── *.png / *.jpg         ← Logos, headshots, illustrations
+│   ├── *.svg                 ← Vector assets (e.g. LogoFooterYellow.svg)
+│   └── *.mp4                 ← Background / hero videos
 ├── .github/
 │   └── workflows/
-│       └── deploy.yml          ← GitHub Actions auto-deploy to GitHub Pages
-├── ja-freight-website/         ← All site files (this is what gets deployed)
-│   ├── index.html              ← Home page
-│   ├── about.html              ← About Us
-│   ├── shippers.html           ← For Shippers
-│   ├── carriers.html           ← For Carriers
-│   ├── technology.html         ← Technology platform
-│   ├── careers.html            ← Join J&A (job listings + application form)
-│   ├── positions.html          ← Open positions detail
-│   ├── contact.html            ← Contact Us
-│   ├── css/
-│   │   └── styles.css          ← All styles (single stylesheet)
-│   ├── js/
-│   │   └── main.js             ← All JavaScript (single script file)
-│   └── assets/                 ← Images, SVGs, and videos
-│       ├── *.png / *.jpg       ← Logos, headshots, illustrations
-│       ├── *.svg               ← Vector assets (e.g. LogoFooterYellow.svg)
-│       └── *.mp4               ← Background / hero videos
+│       └── deploy.yml        ← GitHub Actions auto-deploy to GitHub Pages
 ├── .gitignore
-├── netlify.toml                ← Netlify deployment config
-└── README.md                   ← This file
+├── netlify.toml              ← Netlify deployment config
+└── README.md                 ← This file
 ```
 
 ---

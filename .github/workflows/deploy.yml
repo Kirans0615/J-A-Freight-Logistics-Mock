@@ -40,11 +40,11 @@ jobs:
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
-      # Upload the static site folder as the Pages artifact (no build needed)
+      # Upload the repo root as the Pages artifact — site files live at root
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ja-freight-website
+          path: .
 
       - name: Deploy to GitHub Pages
         id: deployment
