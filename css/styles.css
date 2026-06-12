@@ -183,6 +183,9 @@ nav.main a.active{color:var(--gold);background:rgba(255,255,255,.06)}
 .hero p.lead{color:rgba(255,255,255,.82)}
 .hero-actions{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
 .hero-badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:34px}
+.hero-mbe{display:flex;align-items:center;gap:12px;margin-top:18px}
+.hero-mbe img{height:42px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.85}
+.hero-mbe span{font-size:.74rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6)}
 .badge{
   font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
   border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:7px 14px;
@@ -401,6 +404,10 @@ footer.site{background:var(--navy-deep);color:rgba(255,255,255,.78);padding:70px
 }
 .foot-social a:hover{background:var(--gold);color:var(--navy-deep)}
 .foot-social svg{width:15px;height:15px}
+.foot-mbe{margin-top:20px;display:flex;align-items:center;gap:10px}
+.foot-mbe img{height:52px;width:auto;object-fit:contain;
+  filter:brightness(0) invert(1);opacity:.75;transition:opacity .2s}
+.foot-mbe img:hover{opacity:1}
 .legal{border-top:1px solid rgba(255,255,255,.1);padding:22px 0;font-size:.84rem;
   display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
 .news-form{display:flex;gap:8px;margin-top:6px}
