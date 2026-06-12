@@ -9,6 +9,8 @@
      3. Chicago Service Reach Map (MapLibre GL JS, loaded on demand)
    ============================================================ */
 
+const REDUCE_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ── Mobile nav ────────────────────────────────────────────
@@ -47,7 +49,12 @@ document.addEventListener('DOMContentLoaded', () => {
     entries.forEach(e => {
       if (!e.isIntersecting) return;
       const el = e.target, target = parseFloat(el.dataset.count), dec = (el.dataset.count.split('.')[1] || '').length;
-      const dur = 1400, t0 = performance.now();
+      if (REDUCE_MOTION) {
+        el.textContent = target.toFixed(dec) + (el.dataset.suffix || '');
+        cio.unobserve(el);
+        return;
+      }
+      const dur = 1200, t0 = performance.now();
       const tick = now => {
         const p = Math.min((now - t0) / dur, 1), eased = 1 - Math.pow(1 - p, 3);
         el.textContent = (target * eased).toFixed(dec) + (el.dataset.suffix || '');
@@ -103,11 +110,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ── Stagger delays for grid children ──────────────────────
      Containers with class="stagger" animate their .reveal
-     children in sequence (80ms apart) for a cascade effect. */
+     children in sequence for a cascade effect. The gap defaults
+     to 80ms; override per-container with data-stagger="60". */
   document.querySelectorAll('.stagger').forEach(container => {
+    const step = parseInt(container.dataset.stagger || '80', 10);
     container.querySelectorAll('.reveal').forEach((el, i) => {
-      el.style.transitionDelay = (i * 80) + 'ms';
+      el.style.transitionDelay = (i * step) + 'ms';
     });
+  });
+
+  /* ── Team grid stagger (about.html) ────────────────────────
+     Members scale/fade in 80ms apart; the second .team row
+     starts 200ms after the first row's cascade. */
+  document.querySelectorAll('.team').forEach((team, ti) => {
+    team.querySelectorAll('.member.reveal').forEach((m, i) => {
+      m.style.transitionDelay = (ti * 200 + i * 80) + 'ms';
+    });
+  });
+
+  /* ── Position cards cascade (positions.html) ───────────────
+     Cards drop in 80ms apart, cycling every 6 so cards deep in
+     the list never wait more than ~0.5s once visible. */
+  document.querySelectorAll('.pos.reveal').forEach((p, i) => {
+    p.style.transitionDelay = ((i % 6) * 80) + 'ms';
   });
 
   /* ── Position filters (positions.html) ─────────────────────
@@ -249,6 +274,142 @@ document.addEventListener('DOMContentLoaded', () => {
 document.querySelectorAll('.hero-img-wrap video').forEach(video => {
   video.addEventListener('playing', () => video.classList.add('playing'), { once: true });
 });
+
+/* ============================================================
+   3. Motion System (v5)
+   Hero entrance sequence, word reveals, accordion entrance,
+   sticky-nav scroll state, page-to-page fade transitions.
+   Everything here no-ops under prefers-reduced-motion.
+   ============================================================ */
+
+/* Wrap every word of an element in <span class="w"> while
+   preserving nested elements (e.g. <span class="gold-text">). */
+function splitWords(el) {
+  const wrap = node => {
+    [...node.childNodes].forEach(child => {
+      if (child.nodeType === 3) {
+        const frag = document.createDocumentFragment();
+        child.textContent.split(/(\s+)/).forEach(part => {
+          if (!part) return;
+          if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+          const s = document.createElement('span');
+          s.className = 'w';
+          s.textContent = part;
+          frag.appendChild(s);
+        });
+        node.replaceChild(frag, child);
+      } else if (child.nodeType === 1) {
+        wrap(child);
+      }
+    });
+  };
+  wrap(el);
+  return el.querySelectorAll('.w');
+}
+
+/* ── Hero entrance sequence ────────────────────────────────────
+   On page load: headline reveals word by word (80ms apart),
+   then lead → CTAs (scale 95→100%) → badges → MBE row.
+   Total sequence completes in under 2s. */
+(function () {
+  if (REDUCE_MOTION) return;
+  const hero = document.querySelector('.hero');
+  if (!hero) return;
+  const col = hero.querySelector('.hero-grid > div:first-child') || hero.querySelector(':scope > .wrap');
+  if (!col) return;
+
+  const h1 = col.querySelector('h1');
+  let wordCount = 0;
+  if (h1) {
+    h1.classList.add('wsplit');
+    const words = splitWords(h1);
+    words.forEach((w, i) => { w.style.transitionDelay = (i * 80) + 'ms'; });
+    wordCount = words.length;
+  }
+
+  const base = Math.min(wordCount * 80, 700);
+  const steps = [
+    [col.querySelector('.eyebrow'), 0, false],
+    [col.querySelector('p.lead'), base + 150, false],
+    [col.querySelector('.hero-actions'), base + 350, true],
+    [col.querySelector('.hero-badges'), base + 550, false],
+    [col.querySelector('.hero-mbe'), base + 700, false],
+  ];
+  steps.forEach(([el, delay, scale]) => {
+    if (!el) return;
+    el.classList.add('hseq');
+    if (scale) el.classList.add('hseq-scale');
+    el.style.transitionDelay = delay + 'ms';
+  });
+
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    if (h1) h1.classList.add('in');
+    steps.forEach(([el]) => { if (el) el.classList.add('in'); });
+  }));
+})();
+
+/* ── Scroll-triggered word reveal ──────────────────────────────
+   Headings marked class="word-reveal" (e.g. technology.html
+   "The Stack" h2) reveal word by word when scrolled into view. */
+(function () {
+  if (REDUCE_MOTION) return;
+  document.querySelectorAll('.word-reveal').forEach(el => {
+    el.classList.add('wsplit');
+    splitWords(el).forEach((w, i) => { w.style.transitionDelay = (i * 80) + 'ms'; });
+    const o = new IntersectionObserver(entries => entries.forEach(e => {
+      if (e.isIntersecting) { el.classList.add('in'); o.unobserve(el); }
+    }), { threshold: .4 });
+    o.observe(el);
+  });
+})();
+
+/* ── Image accordion entrance ──────────────────────────────────
+   Panels scale 0.85 → 1.0, 100ms apart, on first scroll into
+   view. .acc-done then strips the stagger delays so the
+   existing hover-expand stays instant. */
+(function () {
+  document.querySelectorAll('.img-accordion').forEach(acc => {
+    const o = new IntersectionObserver(entries => entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      acc.classList.add('acc-in');
+      setTimeout(() => acc.classList.add('acc-done'), 1100);
+      o.unobserve(acc);
+    }), { threshold: .25 });
+    o.observe(acc);
+  });
+})();
+
+/* ── Sticky nav scroll state ───────────────────────────────────
+   After 80px of scroll the header deepens to solid navy with a
+   drop shadow (300ms transition in CSS). */
+(function () {
+  const header = document.querySelector('header.site');
+  if (!header) return;
+  const update = () => header.classList.toggle('scrolled', window.scrollY > 80);
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+
+/* ── Page-to-page fade transition ──────────────────────────────
+   Internal .html links fade the page out for 200ms before
+   navigating; CSS animates the next page in. Modifier-key
+   clicks, anchors, and external links pass through untouched. */
+(function () {
+  if (REDUCE_MOTION) return;
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a');
+    if (!a) return;
+    const href = a.getAttribute('href');
+    if (!href || href.includes('#') || a.target === '_blank') return;
+    if (/^(https?:|mailto:|tel:)/i.test(href)) return;
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+    e.preventDefault();
+    document.body.classList.add('page-leaving');
+    setTimeout(() => { location.href = href; }, 200);
+  });
+  /* bfcache restore (back button) must never show a faded page */
+  window.addEventListener('pageshow', () => document.body.classList.remove('page-leaving'));
+})();
 
 /* ============================================================
    Chicago Service Reach Map (MapLibre GL JS)
