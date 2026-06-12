@@ -1041,32 +1041,34 @@ header.site.scrolled{background:var(--navy-deep);box-shadow:0 10px 28px rgba(11,
    ============================================================ */
 .map-quote-grid{display:grid;grid-template-columns:11fr 9fr;gap:28px;align-items:stretch}
 .map-quote-grid .ja-map-wrap{display:flex;flex-direction:column}
-.map-quote-grid #ja-map{flex:1;height:auto;min-height:520px}
+.map-quote-grid #ja-map{flex:1;height:auto;min-height:460px}
 @media(max-width:980px){
   .map-quote-grid{grid-template-columns:1fr}
   .map-quote-grid #ja-map{min-height:420px}
 }
 
-.quote-card{position:relative;overflow:hidden;padding:30px 32px}
+.quote-card{position:relative;overflow:hidden;padding:22px 24px}
+.quote-card h3{font-size:1.35rem}
+.quote-card label{margin-bottom:5px}
 .quote-card::before{
   content:"";position:absolute;top:0;left:0;right:0;height:3px;
   background:var(--gold);animation:quote-pulse 3s ease-in-out infinite;
 }
 @keyframes quote-pulse{0%,100%{opacity:1}50%{opacity:.7}}
 .quote-card h3{color:var(--navy-ink)}
-.quote-sub{color:var(--muted);font-size:.95rem;margin:4px 0 20px}
-.quote-card .form-grid{gap:14px}
-.quote-card label{font-size:.78rem}
+.quote-sub{color:var(--muted);font-size:.9rem;margin:4px 0 14px}
+.quote-card .form-grid{gap:10px 12px}
+.quote-card label{font-size:.74rem}
 .quote-card input,.quote-card select,.quote-card textarea{
-  padding:12px 14px;
+  padding:9px 12px;font-size:.95rem;
   transition:border-color .15s ease,box-shadow .15s ease,background .15s ease;
 }
 .quote-card input:focus,.quote-card select:focus,.quote-card textarea:focus{
   border-color:var(--gold);background:#fff;
   box-shadow:0 0 0 4px rgba(255,194,13,.16);
 }
-.quote-card textarea{min-height:84px}
-.quote-card input[type="date"]{appearance:none;-webkit-appearance:none;min-height:46px}
+.quote-card textarea{min-height:64px}
+.quote-card input[type="date"]{appearance:none;-webkit-appearance:none;min-height:40px}
 .sel-wrap{position:relative}
 .sel-wrap select{appearance:none;-webkit-appearance:none;padding-right:40px;cursor:pointer}
 .sel-wrap .sel-chev{
