@@ -154,12 +154,64 @@
       <h2>Chicago-rooted. Coast-to-coast connected.</h2>
       <p class="lead" style="color:rgba(255,255,255,.78)">Our network reaches 32+ states from our Chicago headquarters — every lane you need, every carrier vetted before they touch your freight.</p>
     </div>
-    <div class="ja-map-wrap reveal">
-      <div id="ja-map"></div>
-      <div class="map-legend">
-        <span><b style="background:var(--gold);border:2px solid #fff;box-shadow:0 0 0 3px rgba(255,194,13,.35)"></b> Chicago HQ</span>
-        <span><b style="background:rgba(255,194,13,.7);border:2px solid rgba(255,255,255,.5)"></b> Service Hub</span>
-        <span class="leg-route"><b></b> Key Lane</span>
+    <div class="map-quote-grid">
+      <div class="ja-map-wrap reveal slide-l">
+        <div id="ja-map"></div>
+        <div class="map-legend">
+          <span><b style="background:var(--gold);border:2px solid #fff;box-shadow:0 0 0 3px rgba(255,194,13,.35)"></b> Chicago HQ</span>
+          <span><b style="background:rgba(255,194,13,.7);border:2px solid rgba(255,255,255,.5)"></b> Service Hub</span>
+          <span class="leg-route"><b></b> Key Lane</span>
+        </div>
+      </div>
+      <div class="reveal slide-r">
+        <div class="form-card quote-card" id="quote-card">
+          <h3>Get a Freight Quote</h3>
+          <p class="quote-sub">Fill out the details below and our team will respond within 2 business hours.</p>
+          <!-- Netlify Forms: quote requests land in Netlify dashboard → Forms → homepage-quote-request.
+               To receive email alerts: Forms → homepage-quote-request → Form notifications → Add notification → Email. -->
+          <form name="homepage-quote-request" data-netlify="true" id="quote-form">
+            <input type="hidden" name="form-name" value="homepage-quote-request">
+            <div class="form-grid">
+              <div><label for="q-origin">Origin City or Zip *</label><input id="q-origin" name="origin" placeholder="Chicago, IL or 60601" required></div>
+              <div><label for="q-dest">Destination City or Zip *</label><input id="q-dest" name="destination" placeholder="Dallas, TX or 75201" required></div>
+              <div><label for="q-type">Freight Type *</label>
+                <div class="sel-wrap">
+                  <select id="q-type" name="freight-type" required>
+                    <option value="">— Select —</option>
+                    <option>Full Truckload</option>
+                    <option>Less-Than-Truckload</option>
+                    <option>Refrigerated Freight</option>
+                    <option>Drayage</option>
+                    <option>Hazmat</option>
+                    <option>Managed Transportation</option>
+                  </select>
+                  <svg class="sel-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </div>
+              </div>
+              <div><label for="q-weight">Estimated Weight (lbs)</label><input id="q-weight" name="weight" type="number" min="1" placeholder="12000"></div>
+              <div><label for="q-pickup">Pickup Date *</label><input id="q-pickup" name="pickup-date" type="date" required></div>
+              <div><label for="q-deadline">Delivery Deadline</label><input id="q-deadline" name="delivery-deadline" type="date"></div>
+              <div class="full"><label for="q-notes">Special Requirements or Notes</label><textarea id="q-notes" name="notes" rows="3" placeholder="Hazmat documentation, temperature requirements, liftgate needed, etc."></textarea></div>
+              <div><label for="q-name">Full Name *</label><input id="q-name" name="full-name" placeholder="Dave Willson" required></div>
+              <div><label for="q-company">Company Name</label><input id="q-company" name="company" placeholder="Acme Distribution"></div>
+              <div><label for="q-email">Email Address *</label><input id="q-email" name="email" type="email" placeholder="davewillson@gmail.com" required></div>
+              <div><label for="q-phone">Phone Number *</label><input id="q-phone" name="phone" type="tel" placeholder="(555) 123-4567" required></div>
+            </div>
+            <div class="q-priv" style="margin-top:14px;display:flex;gap:10px;align-items:flex-start">
+              <input type="checkbox" id="q-privacy" name="privacy" required style="width:auto;margin-top:3px">
+              <label for="q-privacy" style="text-transform:none;letter-spacing:0;font-weight:400;font-size:.9rem;color:var(--muted)">I agree to the privacy policy and consent to being contacted about my shipment.</label>
+            </div>
+            <div class="q-cta" style="margin-top:18px">
+              <button class="btn btn-gold quote-submit" type="submit">Request My Quote <span class="arrow">&rarr;</span></button>
+            </div>
+          </form>
+          <div class="quote-success" hidden>
+            <svg class="qs-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+            <h3>Quote Request Received</h3>
+            <p>Our team will reach out to you within 2 business hours with your freight estimate. Check your email for confirmation.</p>
+            <button type="button" class="qs-reset">Submit another request</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>

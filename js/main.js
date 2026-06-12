@@ -412,6 +412,152 @@ function splitWords(el) {
 })();
 
 /* ============================================================
+   4. Homepage Get a Quote form
+   ============================================================ */
+(function () {
+  const card = document.getElementById('quote-card');
+  if (!card) return;
+  const form = document.getElementById('quote-form');
+  const success = card.querySelector('.quote-success');
+  const col = card.closest('.reveal');
+
+  /* Submit → success state (demo: no data sent locally; on Netlify
+     the data-netlify attribute captures real submissions). */
+  form.addEventListener('submit', ev => {
+    ev.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+    if (REDUCE_MOTION) {
+      form.style.display = 'none';
+      success.hidden = false;
+      success.classList.add('show');
+      return;
+    }
+    form.classList.add('q-out');
+    setTimeout(() => {
+      form.style.display = 'none';
+      success.hidden = false;
+      success.classList.add('show');
+    }, 300);
+  });
+
+  /* "Submit another request" → reset and replay the field cascade */
+  card.querySelector('.qs-reset').addEventListener('click', () => {
+    form.reset();
+    success.classList.remove('show');
+    success.hidden = true;
+    form.classList.remove('q-out');
+    form.style.display = '';
+    if (!REDUCE_MOTION && col) {
+      col.classList.remove('in');
+      void col.offsetWidth; /* force reflow so the cascade replays */
+      col.classList.add('in');
+    }
+  });
+
+  /* Map awareness: when origin + destination are filled, draw the
+     lane on the map (known cities) or pulse the Chicago HQ ping. */
+  const CITY_LOOKUP = {
+    'chicago': [-87.6298, 41.8781], 'milwaukee': [-87.9065, 43.0389],
+    'indianapolis': [-86.1581, 39.7684], 'st louis': [-90.1994, 38.6270],
+    'st. louis': [-90.1994, 38.6270], 'detroit': [-83.0458, 42.3314],
+    'columbus': [-82.9988, 39.9612], 'minneapolis': [-93.2650, 44.9778],
+    'kansas city': [-94.5786, 39.0997], 'memphis': [-90.0490, 35.1495],
+    'nashville': [-86.7816, 36.1627], 'cleveland': [-81.6944, 41.4993],
+    'new york': [-74.0060, 40.7128], 'los angeles': [-118.2437, 34.0522],
+    'dallas': [-96.7970, 32.7767], 'houston': [-95.3698, 29.7604],
+    'atlanta': [-84.3880, 33.7490], 'denver': [-104.9903, 39.7392],
+    'seattle': [-122.3321, 47.6062], 'phoenix': [-112.0740, 33.4484],
+    'miami': [-80.1918, 25.7617], 'boston': [-71.0589, 42.3601],
+    'philadelphia': [-75.1652, 39.9526], 'charlotte': [-80.8431, 35.2271],
+    'pittsburgh': [-79.9959, 40.4406], 'baltimore': [-76.6122, 39.2904],
+    'washington': [-77.0369, 38.9072], 'tampa': [-82.4572, 27.9506],
+    'orlando': [-81.3792, 28.5383], 'jacksonville': [-81.6557, 30.3322],
+    'cincinnati': [-84.5120, 39.1031], 'louisville': [-85.7585, 38.2527],
+    'new orleans': [-90.0715, 29.9511], 'oklahoma city': [-97.5164, 35.4676],
+    'omaha': [-95.9345, 41.2565], 'des moines': [-93.6250, 41.5868],
+    'salt lake city': [-111.8910, 40.7608], 'las vegas': [-115.1398, 36.1699],
+    'portland': [-122.6765, 45.5231], 'san francisco': [-122.4194, 37.7749],
+    'san diego': [-117.1611, 32.7157], 'sacramento': [-121.4944, 38.5816],
+    'austin': [-97.7431, 30.2672], 'san antonio': [-98.4936, 29.4241],
+    'el paso': [-106.4850, 31.7619], 'albuquerque': [-106.6504, 35.0844],
+    'buffalo': [-78.8784, 42.8864], 'richmond': [-77.4360, 37.5407],
+    'raleigh': [-78.6382, 35.7796], 'birmingham': [-86.8025, 33.5207],
+    'little rock': [-92.2896, 34.7465], 'boise': [-116.2023, 43.6150],
+    'fargo': [-96.7898, 46.8772], 'tucson': [-110.9747, 32.2226],
+  };
+
+  function geocode(text) {
+    const t = text.toLowerCase().trim();
+    if (t.length < 3) return null;
+    for (const key in CITY_LOOKUP) {
+      if (t.startsWith(key) || t.includes(key)) return CITY_LOOKUP[key];
+    }
+    return null;
+  }
+
+  let pingMarker = null;
+  let routeAnim = null;
+
+  function clearMapResponse(map) {
+    if (pingMarker) { pingMarker.remove(); pingMarker = null; }
+    if (routeAnim) { cancelAnimationFrame(routeAnim); routeAnim = null; }
+    if (map.getLayer('quote-route')) map.removeLayer('quote-route');
+    if (map.getSource('quote-route')) map.removeSource('quote-route');
+  }
+
+  function updateMapResponse() {
+    const map = window.__jaMap;
+    if (!map || !window.__jaMapReady) return;
+    const o = document.getElementById('q-origin').value;
+    const d = document.getElementById('q-dest').value;
+    clearMapResponse(map);
+    if (o.trim().length < 3 || d.trim().length < 3) return;
+
+    const oc = geocode(o), dc = geocode(d);
+    if (oc && dc) {
+      /* Animated lane: route line draws itself origin → destination */
+      const data = {
+        type: 'Feature', properties: {},
+        geometry: { type: 'LineString', coordinates: [oc, oc] }
+      };
+      map.addSource('quote-route', { type: 'geojson', data });
+      map.addLayer({
+        id: 'quote-route', type: 'line', source: 'quote-route',
+        layout: { 'line-join': 'round', 'line-cap': 'round' },
+        paint: { 'line-color': '#FFC20D', 'line-width': 3, 'line-opacity': 0.9 }
+      });
+      const start = performance.now();
+      const draw = now => {
+        const t = REDUCE_MOTION ? 1 : Math.min((now - start) / 1000, 1);
+        const e = 1 - Math.pow(1 - t, 3);
+        data.geometry.coordinates = [oc, [oc[0] + (dc[0] - oc[0]) * e, oc[1] + (dc[1] - oc[1]) * e]];
+        map.getSource('quote-route').setData(data);
+        if (t < 1) routeAnim = requestAnimationFrame(draw);
+      };
+      routeAnim = requestAnimationFrame(draw);
+      const el = document.createElement('div');
+      el.className = 'ja-ping';
+      pingMarker = new maplibregl.Marker({ element: el, anchor: 'center' }).setLngLat(dc).addTo(map);
+      map.fitBounds([oc, dc], { padding: 80, duration: REDUCE_MOTION ? 0 : 900, maxZoom: 6 });
+    } else {
+      /* Unknown lane: pulse the Chicago HQ so map + form feel connected */
+      const el = document.createElement('div');
+      el.className = 'ja-ping';
+      pingMarker = new maplibregl.Marker({ element: el, anchor: 'center' })
+        .setLngLat([-87.6298, 41.8781]).addTo(map);
+    }
+  }
+
+  let debounce;
+  ['q-origin', 'q-dest'].forEach(id => {
+    document.getElementById(id).addEventListener('input', () => {
+      clearTimeout(debounce);
+      debounce = setTimeout(updateMapResponse, 450);
+    });
+  });
+})();
+
+/* ============================================================
    Chicago Service Reach Map (MapLibre GL JS)
    ============================================================ */
 (function () {
@@ -454,7 +600,9 @@ function initJAMap() {
     { name: 'Cleveland, OH',    coords: [-81.6944, 41.4993] },
   ];
 
+  window.__jaMap = map;
   map.on('load', function () {
+    window.__jaMapReady = true;
     /* Route lines */
     serviceCities.forEach(function (city, i) {
       map.addSource('route-' + i, {
