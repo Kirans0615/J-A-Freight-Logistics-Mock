@@ -1113,6 +1113,55 @@ header.site.scrolled{background:var(--navy-deep);box-shadow:0 10px 28px rgba(11,
 }
 @keyframes ja-ping{0%{transform:scale(.55);opacity:1}100%{transform:scale(2.2);opacity:0}}
 
+/* ============================================================
+   Mobile polish — small-screen breathing room (≤480px only)
+   Does not affect tablet or desktop layouts.
+   ============================================================ */
+@media(max-width:480px){
+  /* More side breathing room — text was reaching screen edges */
+  .wrap{ padding:0 28px }
+
+  /* Tighter vertical section rhythm on small screens */
+  section.block{ padding:56px 0 }
+  section.block.tight{ padding:36px 0 }
+  .stats{ padding:48px 0 }
+  .cta-band{ padding:48px 0 }
+
+  /* Hero */
+  .hero .wrap{ padding-top:56px;padding-bottom:56px }
+  .hero.sub .wrap{ padding-top:44px;padding-bottom:44px }
+  .hero-actions{ gap:10px }
+  .hero-badges{ gap:8px;margin-top:22px }
+
+  /* Cards: reduce internal side padding so text has room inside wrap */
+  .card{ padding:22px 20px }
+
+  /* Form card */
+  .form-card{ padding:22px 20px }
+
+  /* FAQ */
+  .faq-q{ padding:16px 18px;font-size:.97rem }
+  .faq-a{ padding:0 18px }
+  .faq-item.open .faq-a{ padding-bottom:18px }
+
+  /* CTA inner panel */
+  .cta-inner{ padding:30px 22px }
+
+  /* Steps */
+  .step{ padding:28px 0 }
+
+  /* Footer */
+  footer.site{ padding:48px 0 0 }
+  .foot-grid{ gap:30px;padding-bottom:36px }
+  .news-form{ flex-direction:column }
+  .news-form button{ width:100% }
+
+  /* Typography: looser line-height for readability */
+  body{ line-height:1.7 }
+  .lead{ font-size:1.05rem }
+  p{ font-size:1rem }
+}
+
 /* Reduced motion: reveal everything instantly */
 @media(prefers-reduced-motion:reduce){
   body{animation:none}
