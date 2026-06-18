@@ -580,8 +580,8 @@ function initJAMap() {
   const map = new maplibregl.Map({
     container: 'ja-map',
     style: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
-    center: [-89.8, 41.9],
-    zoom: 5.8,
+    center: [-96, 38.5],
+    zoom: 4.0,
     attributionControl: false,
     pitchWithRotate: false,
     dragRotate: false,
@@ -598,6 +598,9 @@ function initJAMap() {
     { name: 'Memphis, TN',      coords: [-90.0490, 35.1495] },
     { name: 'Nashville, TN',    coords: [-86.7816, 36.1627] },
     { name: 'Cleveland, OH',    coords: [-81.6944, 41.4993] },
+    { name: 'New York, NY',     coords: [-74.0060, 40.7128] },
+    { name: 'Los Angeles, CA',  coords: [-118.2437, 34.0522] },
+    { name: 'Houston, TX',      coords: [-95.3698, 29.7604] },
   ];
 
   window.__jaMap = map;
