@@ -392,8 +392,6 @@ textarea{min-height:130px;resize:vertical}
   position:absolute;inset:0;
   width:100%;height:100%;
   object-fit:contain;opacity:1;
-  mix-blend-mode:screen;
-  filter:contrast(1.1);
   z-index:1;
   pointer-events:none}
 .cta-btn-area .btn{position:relative;z-index:2;white-space:nowrap}
