@@ -376,7 +376,7 @@ textarea{min-height:130px;resize:vertical}
 }
 .cta-inner h2{color:var(--navy-deep)}
 .cta-inner p{color:rgba(11,33,56,.78);font-weight:500;max-width:54ch}
-.cta-star{position:absolute;right:40px;top:16px;width:200px;height:200px;opacity:.38;pointer-events:none;z-index:0}
+.cta-star{position:absolute;right:40px;top:16px;width:210px;height:210px;opacity:.6;pointer-events:none;z-index:0}
 .cta-inner > div,.cta-inner > a{position:relative;z-index:1}
 @media(max-width:820px){.cta-inner{grid-template-columns:1fr;padding:40px 30px}}
 
