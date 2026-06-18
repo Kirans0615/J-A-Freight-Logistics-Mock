@@ -394,7 +394,7 @@ textarea{min-height:130px;resize:vertical}
   object-fit:contain;opacity:1;
   z-index:1;
   pointer-events:none}
-.cta-btn-area .btn{position:relative;z-index:2;white-space:nowrap;padding:13px 48px}
+.cta-btn-area .btn{position:relative;z-index:2;white-space:nowrap;padding:13px 72px}
 @media(max-width:820px){
   .cta-inner{flex-direction:column;align-items:flex-start;gap:28px;padding:40px 30px}
   .cta-inner > a.btn{align-self:flex-start}
