@@ -597,10 +597,6 @@ section.block + section.block:not(.alt):not(.alt-gold):not(.dark){border-top:1px
   content:"";position:absolute;inset:0;pointer-events:none;
   background:radial-gradient(ellipse 75% 65% at 60% 50%,rgba(255,194,13,.13) 0%,transparent 65%);
 }
-.about-plane-wrap::after{
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background:url("data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 24h48M24 0v48' stroke='rgba(255,255,255,.035)' stroke-width='1'/%3E%3C/svg%3E");
-}
 .about-plane-img{
   width:100%;max-width:400px;
   position:relative;z-index:1;
