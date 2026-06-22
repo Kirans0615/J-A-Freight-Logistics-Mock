@@ -594,16 +594,92 @@ section.block + section.block:not(.alt):not(.alt-gold):not(.dark){border-top:1px
   border:2px solid rgba(255,194,13,.55);border-radius:var(--radius);z-index:-1;
 }
 
-/* Plane inside the about-photo frame */
-.about-plane-wrap{
-  height:480px;
-  background:#fff;
-  display:flex;align-items:center;justify-content:center;
-  position:relative;overflow:hidden;padding:28px;
+/* ── About page — animated J&A truck scene ───────────────────── */
+@keyframes truck-roll {
+  0%   { transform: translateX(-8px); }
+  50%  { transform: translateX(8px); }
+  100% { transform: translateX(-8px); }
 }
-.about-plane-img{
-  width:100%;max-width:420px;
-  position:relative;z-index:1;
+@keyframes truck-float {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-6px); }
+  100% { transform: translateY(0px); }
+}
+@keyframes road-dash {
+  0%   { background-position: 0 0; }
+  100% { background-position: -120px 0; }
+}
+@keyframes dust-drift {
+  0%   { opacity: 0; transform: translateX(0) scaleX(0); }
+  30%  { opacity: .45; }
+  100% { opacity: 0; transform: translateX(-80px) scaleX(2.5); }
+}
+
+.about-truck-scene {
+  position: relative;
+  width: 100%;
+  padding-bottom: 6px;
+  overflow: visible;
+}
+
+/* The truck itself */
+.about-truck-img {
+  width: 100%;
+  max-width: 520px;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  z-index: 3;
+  animation: truck-float 3.8s ease-in-out infinite;
+  filter: drop-shadow(0 18px 32px rgba(11,33,56,.28));
+}
+
+/* Road strip under the truck */
+.about-truck-road {
+  height: 14px;
+  background: linear-gradient(180deg, rgba(20,54,92,.12) 0%, rgba(20,54,92,.06) 100%);
+  border-radius: 4px;
+  margin: -4px 12px 0;
+  position: relative;
+  z-index: 2;
+}
+
+/* Animated dashes on the road */
+.about-truck-dashes {
+  height: 4px;
+  margin: 0 12px;
+  border-radius: 2px;
+  position: relative;
+  z-index: 2;
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--gold) 0px,
+    var(--gold) 30px,
+    transparent 30px,
+    transparent 60px
+  );
+  background-size: 60px 4px;
+  animation: road-dash 1.2s linear infinite;
+}
+
+/* Motion dust behind the truck */
+.about-truck-dust {
+  position: absolute;
+  right: 50%;
+  bottom: 20px;
+  width: 80px;
+  height: 22px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(255,194,13,.3) 0%, transparent 70%);
+  z-index: 1;
+  animation: dust-drift 1.8s ease-out infinite;
+  transform-origin: right center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-truck-img { animation: none; }
+  .about-truck-dashes { animation: none; }
+  .about-truck-dust { animation: none; }
 }
 
 /* Real team headshots */

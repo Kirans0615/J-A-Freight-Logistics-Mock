@@ -30,7 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
      Highlights the current page's link in the nav bar. */
   const page = location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('nav.main a').forEach(a => {
-    if (a.getAttribute('href') === page) a.classList.add('active');
+    if (a.getAttribute('href') === page) {
+      a.classList.add('active');
+      a.setAttribute('aria-current', 'page');
+    }
   });
 
   /* ── Scroll reveal ─────────────────────────────────────────
