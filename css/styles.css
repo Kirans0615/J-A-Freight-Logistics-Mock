@@ -497,7 +497,7 @@ section.block + section.block:not(.alt):not(.alt-gold):not(.dark){border-top:1px
 .hero-img-wrap{
   position:relative;border-radius:20px;overflow:hidden;
   box-shadow:0 32px 80px rgba(0,0,0,.45);
-  background:var(--navy-deep);
+  background:var(--navy);
 }
 .hero-img-wrap img.hero-photo,
 .hero-img-wrap video.hero-photo{
@@ -509,11 +509,11 @@ section.block + section.block:not(.alt):not(.alt-gold):not(.dark){border-top:1px
 .hero-img-wrap video.hero-photo.playing{ opacity:1 }
 .hero-img-wrap::after{
   content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(180deg,transparent 55%,rgba(11,33,56,.55));
+  background:linear-gradient(180deg,transparent 55%,rgba(20,54,92,.55));
 }
 .hero-img-badge{
   position:absolute;bottom:18px;right:18px;z-index:2;
-  background:rgba(11,33,56,.85);backdrop-filter:blur(8px);
+  background:rgba(20,54,92,.85);backdrop-filter:blur(8px);
   border:1px solid rgba(255,194,13,.4);border-radius:14px;padding:10px 14px;
 }
 .hero-img-badge img{height:44px;width:auto;display:block;filter:drop-shadow(0 2px 6px rgba(0,0,0,.3))}
@@ -701,7 +701,7 @@ section.block + section.block:not(.alt):not(.alt-gold):not(.dark){border-top:1px
 /* Join / careers culture photo band */
 .join-band{
   position:relative;overflow:hidden;min-height:400px;display:flex;align-items:center;
-  background:var(--navy-deep);
+  background:var(--navy);
 }
 .join-band .jb-bg{
   position:absolute;left:0;right:0;bottom:0;top:-15%;width:100%;height:115%;
@@ -878,7 +878,7 @@ section.block + section.block:not(.alt):not(.alt-gold):not(.dark){border-top:1px
 }
 
 /* --- About hero background image/video --- */
-.hero.hero-has-vid{background:var(--navy-deep)}
+.hero.hero-has-vid{background:var(--navy)}
 .hero-bg-vid{position:absolute;inset:0;z-index:0;overflow:hidden}
 .hero-bg-vid img,.hero-bg-vid video{
   position:absolute;inset:0;width:100%;height:100%;
