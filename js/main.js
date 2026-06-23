@@ -278,6 +278,14 @@ document.querySelectorAll('.hero-img-wrap video').forEach(video => {
   video.addEventListener('playing', () => video.classList.add('playing'), { once: true });
 });
 
+/* ── Background hero video slow playback ───────────────────────
+   hero-bg-vid videos play at 60% speed for a slow cinematic drift. */
+document.querySelectorAll('.hero-bg-vid video').forEach(video => {
+  const setRate = () => { video.playbackRate = 0.6; };
+  setRate();
+  video.addEventListener('play', setRate);
+});
+
 /* ============================================================
    3. Motion System (v5)
    Hero entrance sequence, word reveals, accordion entrance,
