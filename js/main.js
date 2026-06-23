@@ -278,10 +278,12 @@ document.querySelectorAll('.hero-img-wrap video').forEach(video => {
   video.addEventListener('playing', () => video.classList.add('playing'), { once: true });
 });
 
-/* ── Background hero video slow playback ───────────────────────
-   hero-bg-vid videos play at 60% speed for a slow cinematic drift. */
+/* ── Background hero video playback rate ───────────────────────
+   Defaults to 0.6x for a slow cinematic drift; set data-playback-rate="1"
+   on the <video> element to play at normal speed. */
 document.querySelectorAll('.hero-bg-vid video').forEach(video => {
-  const setRate = () => { video.playbackRate = 0.6; };
+  const rate = parseFloat(video.dataset.playbackRate ?? 0.6);
+  const setRate = () => { video.playbackRate = rate; };
   setRate();
   video.addEventListener('play', setRate);
 });
