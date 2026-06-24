@@ -1253,6 +1253,72 @@ header.site.scrolled{background:var(--navy-deep);box-shadow:0 10px 28px rgba(11,
   p{ font-size:1rem }
 }
 
+/* ── Portal phone bleed section ─────────────────────────────── */
+.portal-phone-section{
+  background:var(--navy-deep);
+  padding:96px 0 0;
+  overflow:hidden;
+  position:relative;
+}
+.portal-phone-section::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 50% 80% at 15% 60%,rgba(255,194,13,.05) 0%,transparent 65%);
+}
+.portal-phone-wrap{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:64px;
+  align-items:flex-end;
+  position:relative;z-index:1;
+}
+/* Phone image column — bottom-anchored, no bottom padding so it bleeds into footer */
+.portal-phone-img-col{
+  display:flex;align-items:flex-end;
+}
+.portal-phone-img-col img{
+  display:block;width:100%;max-width:520px;height:auto;
+  object-fit:contain;object-position:bottom center;
+  filter:drop-shadow(-24px 0 60px rgba(0,0,0,.45));
+  transition:filter .4s ease,transform .4s var(--spring);
+}
+.portal-phone-img-col:hover img{
+  filter:drop-shadow(-28px 0 70px rgba(0,0,0,.55));
+  transform:translateY(-6px);
+}
+/* Text column — padded bottom so text doesn't crowd the phone edge */
+.portal-phone-copy{
+  padding-bottom:88px;
+  color:#fff;
+}
+.portal-phone-copy .eyebrow{color:var(--gold)}
+.portal-phone-copy h2{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:800;font-style:italic;text-transform:uppercase;
+  font-size:clamp(2.2rem,4vw,3.6rem);
+  line-height:.95;letter-spacing:-.01em;
+  color:#fff;margin:18px 0 22px;
+}
+.portal-phone-copy h2 span{color:var(--gold)}
+.portal-phone-copy .lead{
+  color:rgba(255,255,255,.78);font-size:1.05rem;line-height:1.65;max-width:440px;
+  margin-bottom:32px;
+}
+/* Gold rule above headline */
+.portal-phone-rule{
+  display:block;width:0;height:3px;
+  background:linear-gradient(90deg,var(--gold),rgba(255,194,13,.3));
+  margin-bottom:20px;
+  transition:width .8s var(--spring) .25s;
+}
+.portal-phone-copy.reveal.in .portal-phone-rule{width:64px}
+
+@media(max-width:900px){
+  .portal-phone-wrap{grid-template-columns:1fr;gap:32px;align-items:unset}
+  .portal-phone-img-col{justify-content:center}
+  .portal-phone-img-col img{max-width:300px}
+  .portal-phone-copy{padding-bottom:48px}
+}
+
 /* Reduced motion: reveal everything instantly */
 @media(prefers-reduced-motion:reduce){
   body{animation:none}
