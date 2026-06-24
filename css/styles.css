@@ -1396,7 +1396,7 @@ header.site.scrolled{background:var(--navy-deep);box-shadow:0 10px 28px rgba(11,
   box-shadow:0 52px 100px rgba(0,0,0,.6),0 0 0 1px rgba(255,194,13,.18);
 }
 .carrier-mvb-img-wrap img{
-  width:100%;max-width:360px;height:auto;
+  width:100%;height:auto;
   display:block;filter:drop-shadow(0 16px 40px rgba(0,0,0,.45));
   transition:transform 5s ease,filter .4s ease;
 }
