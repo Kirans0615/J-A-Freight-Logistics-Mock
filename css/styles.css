@@ -1375,25 +1375,7 @@ header.site.scrolled{background:var(--navy-deep);box-shadow:0 10px 28px rgba(11,
   display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;
   position:relative;z-index:1;
 }
-/* Eyebrow with animated gold bar */
-.carrier-mvb .eyebrow{
-  display:inline-flex;align-items:center;gap:12px;
-  color:var(--gold);letter-spacing:.12em;font-size:.78rem;
-}
-.carrier-mvb .eyebrow::before{
-  content:"";display:block;width:0;height:2px;background:var(--gold);
-  transition:width .8s var(--spring) .3s;
-}
-.carrier-mvb-copy.reveal.in .eyebrow::before{width:36px}
-
-/* Display headline */
-.carrier-mvb-headline{
-  font-family:'Barlow Condensed',sans-serif;
-  font-weight:900;font-style:italic;text-transform:uppercase;
-  font-size:clamp(3rem,6.5vw,5.6rem);
-  line-height:.9;letter-spacing:-.01em;
-  color:var(--navy-deep);margin:22px 0 26px;
-}
+/* Headline gold span */
 .carrier-mvb-headline .gold{color:var(--gold)}
 
 .carrier-mvb-copy .lead{
@@ -1406,7 +1388,7 @@ header.site.scrolled{background:var(--navy-deep);box-shadow:0 10px 28px rgba(11,
 
 /* Image column — no box, full-width image */
 .carrier-mvb-grid{
-  grid-template-columns:1fr 1.25fr;
+  grid-template-columns:1.25fr 1fr;
 }
 .carrier-mvb-img-col{
   display:flex;align-items:center;justify-content:center;
@@ -1423,7 +1405,8 @@ header.site.scrolled{background:var(--navy-deep);box-shadow:0 10px 28px rgba(11,
 
 @media(max-width:920px){
   .carrier-mvb-grid{grid-template-columns:1fr;gap:40px}
-  .carrier-mvb-headline{font-size:clamp(2.6rem,9vw,3.8rem)}
+  .carrier-mvb-img-col{order:0}
+  .carrier-mvb-copy{order:1}
   .carrier-mvb-img-col img{max-width:560px;margin:0 auto}
 }
 @media(max-width:480px){
