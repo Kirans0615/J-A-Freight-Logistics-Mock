@@ -1331,19 +1331,17 @@ header.site.scrolled{background:var(--navy-deep);box-shadow:0 10px 28px rgba(11,
 
 /* ── WE MOVE BETTER, TOGETHER — Carrier impact section ─────── */
 .carrier-mvb{
-  background:linear-gradient(135deg,var(--navy-deep) 0%,#0F2E4C 55%,#142840 100%);
+  background:#fff;
   position:relative;overflow:hidden;
 }
 .carrier-mvb::before{
   content:"";position:absolute;inset:0;pointer-events:none;
-  background:
-    radial-gradient(ellipse 55% 70% at 75% 50%,rgba(255,194,13,.07) 0%,transparent 65%),
-    radial-gradient(ellipse 30% 40% at 10% 80%,rgba(20,54,92,.8) 0%,transparent 60%);
+  background:radial-gradient(ellipse 55% 70% at 75% 50%,rgba(255,194,13,.06) 0%,transparent 65%);
 }
 /* Subtle animated scan line */
 .carrier-mvb::after{
   content:"";position:absolute;top:0;left:-100%;width:60%;height:100%;
-  background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.025) 50%,transparent 100%);
+  background:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.018) 50%,transparent 100%);
   animation:mvb-scan 6s ease-in-out infinite;pointer-events:none;
 }
 @keyframes mvb-scan{0%,100%{left:-60%}50%{left:120%}}
@@ -1370,12 +1368,12 @@ header.site.scrolled{background:var(--navy-deep);box-shadow:0 10px 28px rgba(11,
   font-weight:900;font-style:italic;text-transform:uppercase;
   font-size:clamp(3rem,6.5vw,5.6rem);
   line-height:.9;letter-spacing:-.01em;
-  color:#fff;margin:22px 0 26px;
+  color:var(--navy-deep);margin:22px 0 26px;
 }
 .carrier-mvb-headline .gold{color:var(--gold)}
 
 .carrier-mvb-copy .lead{
-  color:rgba(255,255,255,.8);font-size:1.08rem;
+  color:var(--muted);font-size:1.08rem;
   line-height:1.65;max-width:460px;
 }
 .carrier-mvb-actions{
@@ -1385,15 +1383,15 @@ header.site.scrolled{background:var(--navy-deep);box-shadow:0 10px 28px rgba(11,
 /* Image container */
 .carrier-mvb-img-wrap{
   position:relative;border-radius:20px;
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.09);
-  box-shadow:0 40px 90px rgba(0,0,0,.55);
+  background:#f5f7fa;
+  border:1px solid rgba(0,0,0,.07);
+  box-shadow:0 24px 60px rgba(0,0,0,.1);
   padding:32px;display:flex;align-items:center;justify-content:center;
   transition:transform .4s var(--spring),box-shadow .4s ease;
 }
 .carrier-mvb-img-wrap:hover{
   transform:translateY(-6px);
-  box-shadow:0 52px 100px rgba(0,0,0,.6),0 0 0 1px rgba(255,194,13,.18);
+  box-shadow:0 36px 80px rgba(0,0,0,.14),0 0 0 1px rgba(255,194,13,.35);
 }
 .carrier-mvb-img-wrap img{
   width:100%;height:auto;
