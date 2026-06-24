@@ -244,11 +244,33 @@ section.dark .lead,.dark p{color:rgba(255,255,255,.82)}
 .split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
 .split.flip > :first-child{order:2}
 @media(max-width:920px){.split{grid-template-columns:1fr;gap:36px}.split.flip > :first-child{order:0}}
-.split ul.checks{margin-top:22px;display:grid;gap:13px}
-.checks li{display:flex;gap:12px;align-items:flex-start;font-weight:500}
+.split ul.checks{margin-top:22px;display:grid;gap:0}
+.checks li{
+  display:grid;
+  grid-template-columns:22px 1fr;
+  gap:0 12px;
+  align-items:start;
+  font-weight:500;
+  line-height:1.55;
+  padding:11px 0;
+  border-bottom:1px solid var(--line);
+}
+.checks li:first-child{border-top:1px solid var(--line)}
 .checks li::before{
-  content:"";flex:0 0 20px;height:20px;margin-top:3px;background:var(--gold);
+  content:"";width:16px;height:16px;margin-top:4px;
+  background:var(--gold);flex-shrink:0;
   clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%);
+}
+.checks li strong{color:var(--navy-ink)}
+/* Dark-bg checks: keep borders readable */
+section.dark .checks li,
+.on-dark .checks li{border-color:rgba(255,255,255,.12)}
+section.dark .checks li:first-child,
+.on-dark .checks li:first-child{border-top-color:rgba(255,255,255,.12)}
+section.dark .checks li strong,
+.on-dark .checks li strong{color:#fff}
+@media(max-width:640px){
+  .checks li{padding:10px 0;font-size:.95rem}
 }
 .visual{
   border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);
@@ -305,7 +327,10 @@ section.dark .lead,.dark p{color:rgba(255,255,255,.82)}
 .form-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:38px;box-shadow:var(--shadow)}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .form-grid .full{grid-column:1/-1}
-@media(max-width:640px){.form-grid{grid-template-columns:1fr}}
+@media(max-width:640px){
+  .form-grid{grid-template-columns:1fr}
+  .form-card{padding:24px 20px}
+}
 label{font-weight:600;font-size:.86rem;letter-spacing:.04em;text-transform:uppercase;color:var(--navy-ink);display:block;margin-bottom:7px}
 input,select,textarea{
   width:100%;padding:13px 15px;border:1.5px solid var(--line);border-radius:9px;
