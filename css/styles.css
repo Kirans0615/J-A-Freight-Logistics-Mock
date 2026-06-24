@@ -1268,6 +1268,15 @@ header.site.scrolled{background:var(--navy-deep);box-shadow:0 10px 28px rgba(11,
   .portal-phone-copy h2{ font-size:clamp(1.8rem,7vw,2.8rem) }
 }
 
+/* ── Carrier portal: image flush to section bottom ──────────── */
+#portal.block{ padding-bottom:0;overflow:hidden }
+#portal .split{ align-items:end }
+#portal .split > div:first-child{ padding-bottom:88px }
+@media(max-width:920px){
+  #portal.block{ padding-bottom:48px }
+  #portal .split > div:first-child{ padding-bottom:0 }
+}
+
 /* ── Portal phone bleed section ─────────────────────────────── */
 .portal-phone-section{
   background:var(--navy-deep);
