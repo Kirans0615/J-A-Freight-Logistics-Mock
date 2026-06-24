@@ -1262,3 +1262,114 @@ header.site.scrolled{background:var(--navy-deep);box-shadow:0 10px 28px rgba(11,
     opacity:1!important;transform:none!important;animation:none!important;
   }
 }
+
+/* ── WE MOVE BETTER, TOGETHER — Carrier impact section ─────── */
+.carrier-mvb{
+  background:linear-gradient(135deg,var(--navy-deep) 0%,#0F2E4C 55%,#142840 100%);
+  position:relative;overflow:hidden;
+}
+.carrier-mvb::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 55% 70% at 75% 50%,rgba(255,194,13,.07) 0%,transparent 65%),
+    radial-gradient(ellipse 30% 40% at 10% 80%,rgba(20,54,92,.8) 0%,transparent 60%);
+}
+/* Subtle animated scan line */
+.carrier-mvb::after{
+  content:"";position:absolute;top:0;left:-100%;width:60%;height:100%;
+  background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.025) 50%,transparent 100%);
+  animation:mvb-scan 6s ease-in-out infinite;pointer-events:none;
+}
+@keyframes mvb-scan{0%,100%{left:-60%}50%{left:120%}}
+@media(prefers-reduced-motion:reduce){.carrier-mvb::after{animation:none}}
+
+.carrier-mvb-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;
+  position:relative;z-index:1;
+}
+/* Eyebrow with animated gold bar */
+.carrier-mvb .eyebrow{
+  display:inline-flex;align-items:center;gap:12px;
+  color:var(--gold);letter-spacing:.12em;font-size:.78rem;
+}
+.carrier-mvb .eyebrow::before{
+  content:"";display:block;width:0;height:2px;background:var(--gold);
+  transition:width .8s var(--spring) .3s;
+}
+.carrier-mvb-copy.reveal.in .eyebrow::before{width:36px}
+
+/* Display headline */
+.carrier-mvb-headline{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:900;font-style:italic;text-transform:uppercase;
+  font-size:clamp(3rem,6.5vw,5.6rem);
+  line-height:.9;letter-spacing:-.01em;
+  color:#fff;margin:22px 0 26px;
+}
+.carrier-mvb-headline .gold{color:var(--gold)}
+
+.carrier-mvb-copy .lead{
+  color:rgba(255,255,255,.8);font-size:1.08rem;
+  line-height:1.65;max-width:460px;
+}
+.carrier-mvb-actions{
+  display:flex;gap:16px;flex-wrap:wrap;margin-top:36px;
+}
+
+/* Image container */
+.carrier-mvb-img-wrap{
+  position:relative;border-radius:20px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.09);
+  box-shadow:0 40px 90px rgba(0,0,0,.55);
+  padding:32px;display:flex;align-items:center;justify-content:center;
+  transition:transform .4s var(--spring),box-shadow .4s ease;
+}
+.carrier-mvb-img-wrap:hover{
+  transform:translateY(-6px);
+  box-shadow:0 52px 100px rgba(0,0,0,.6),0 0 0 1px rgba(255,194,13,.18);
+}
+.carrier-mvb-img-wrap img{
+  width:100%;max-width:360px;height:auto;
+  display:block;filter:drop-shadow(0 16px 40px rgba(0,0,0,.45));
+  transition:transform 5s ease,filter .4s ease;
+}
+.carrier-mvb-img-wrap:hover img{transform:scale(1.04);filter:drop-shadow(0 24px 50px rgba(0,0,0,.55))}
+
+/* Gold corner accents */
+.carrier-mvb-img-wrap::before,
+.carrier-mvb-img-wrap::after{
+  content:"";position:absolute;width:28px;height:28px;pointer-events:none;
+}
+.carrier-mvb-img-wrap::before{
+  top:14px;left:14px;
+  border-top:2px solid var(--gold);border-left:2px solid var(--gold);
+}
+.carrier-mvb-img-wrap::after{
+  bottom:14px;right:14px;
+  border-bottom:2px solid var(--gold);border-right:2px solid var(--gold);
+}
+/* Floating badge */
+.carrier-mvb-badge{
+  position:absolute;bottom:-18px;right:-18px;
+  background:var(--gold);color:var(--navy-deep);
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:800;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:10px 16px;border-radius:10px;
+  box-shadow:0 8px 24px rgba(255,194,13,.4);
+  display:flex;flex-direction:column;align-items:center;gap:2px;
+  animation:badge-float 3s ease-in-out infinite;
+}
+.carrier-mvb-badge strong{font-size:1.5rem;line-height:1;letter-spacing:-.01em}
+@keyframes badge-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@media(prefers-reduced-motion:reduce){.carrier-mvb-badge{animation:none}}
+
+@media(max-width:920px){
+  .carrier-mvb-grid{grid-template-columns:1fr;gap:48px}
+  .carrier-mvb-headline{font-size:clamp(2.6rem,9vw,3.8rem)}
+  .carrier-mvb-img-wrap{padding:24px}
+}
+@media(max-width:480px){
+  .carrier-mvb-actions{flex-direction:column}
+  .carrier-mvb-actions .btn{text-align:center}
+}
