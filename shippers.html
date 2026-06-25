@@ -218,14 +218,15 @@
         <div class="form-card">
           <h3 style="margin-bottom:6px">Quick lane check</h3>
           <p style="color:var(--muted);font-size:.95rem;margin-bottom:22px">Drop in one lane — we'll respond with a real quote and the market context behind it.</p>
-          <form data-demo>
+          <form name="shipper-quote-request" data-netlify="true" data-demo>
+            <input type="hidden" name="form-name" value="shipper-quote-request">
             <div class="form-grid">
-              <div><label for="s-origin">Origin</label><input id="s-origin" placeholder="Chicago, IL" required></div>
-              <div><label for="s-dest">Destination</label><input id="s-dest" placeholder="Dallas, TX" required></div>
+              <div><label for="s-origin">Origin</label><input id="s-origin" name="origin" placeholder="Chicago, IL" required></div>
+              <div><label for="s-dest">Destination</label><input id="s-dest" name="destination" placeholder="Dallas, TX" required></div>
               <div><label for="s-mode">Mode</label>
-                <select id="s-mode"><option>Full Truckload</option><option>LTL</option><option>Refrigerated</option><option>Drayage</option><option>Intermodal</option></select>
+                <select id="s-mode" name="mode"><option>Full Truckload</option><option>LTL</option><option>Refrigerated</option><option>Drayage</option><option>Intermodal</option></select>
               </div>
-              <div><label for="s-email">Work Email</label><input id="s-email" type="email" placeholder="you@company.com" required></div>
+              <div><label for="s-email">Work Email</label><input id="s-email" name="email" type="email" placeholder="you@company.com" required></div>
             </div>
             <div style="margin-top:18px"><button class="btn btn-gold" type="submit">Check This Lane <span class="arrow">&rarr;</span></button></div>
             <div class="form-success">Lane received. A logistics expert will reply with pricing within one business day.</div>

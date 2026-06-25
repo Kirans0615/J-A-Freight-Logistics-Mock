@@ -80,15 +80,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ── Forms — local preview confirmation ────────────────────
-     Forms with data-demo="true" show a success message on submit
-     without sending any data (for local development preview).
-     On Netlify, data-netlify="true" takes over and the real
-     submission is sent to the Netlify Forms backend. */
+  /* ── Forms — submit + confirmation ─────────────────────────
+     Forms with data-demo show a success message after submit.
+     If the form also carries data-netlify="true", the submission
+     is posted to Netlify Forms in the background so the inbox
+     distribution lists at shipja.com receive it. */
   document.querySelectorAll('form[data-demo]').forEach(form => {
     form.addEventListener('submit', ev => {
       ev.preventDefault();
       if (!form.checkValidity()) { form.reportValidity(); return; }
+      if (form.hasAttribute('data-netlify')) {
+        fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(new FormData(form)).toString()
+        });
+      }
       const ok = form.querySelector('.form-success');
       if (ok) { ok.classList.add('show'); ok.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
       form.querySelectorAll('input,select,textarea').forEach(f => f.value = '');
@@ -434,11 +441,15 @@ function splitWords(el) {
   const success = card.querySelector('.quote-success');
   const col = card.closest('.reveal');
 
-  /* Submit → success state (demo: no data sent locally; on Netlify
-     the data-netlify attribute captures real submissions). */
+  /* Submit: post to Netlify Forms, then animate to success state. */
   form.addEventListener('submit', ev => {
     ev.preventDefault();
     if (!form.checkValidity()) { form.reportValidity(); return; }
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(form)).toString()
+    });
     if (REDUCE_MOTION) {
       form.style.display = 'none';
       success.hidden = false;
