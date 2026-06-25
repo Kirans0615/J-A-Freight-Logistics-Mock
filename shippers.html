@@ -218,7 +218,7 @@
         <div class="form-card">
           <h3 style="margin-bottom:6px">Quick lane check</h3>
           <p style="color:var(--muted);font-size:.95rem;margin-bottom:22px">Drop in one lane — we'll respond with a real quote and the market context behind it.</p>
-          <form name="shipper-quote-request" data-netlify="true" data-demo>
+          <form name="shipper-quote-request" method="POST" data-netlify="true" data-demo>
             <input type="hidden" name="form-name" value="shipper-quote-request">
             <div class="form-grid">
               <div><label for="s-origin">Origin</label><input id="s-origin" name="origin" placeholder="Chicago, IL" required></div>
@@ -347,7 +347,7 @@
         <h4>Newsletter</h4>
         <p style="font-size:.93rem;margin-bottom:12px">Subscribe to get latest updates from our own J&amp;A Freight Systems.</p>
         <!-- Netlify Forms: newsletter signups — Netlify dashboard → Forms → newsletter-signup -->
-        <form class="news-form" name="newsletter-signup" data-netlify="true" data-demo>
+        <form class="news-form" name="newsletter-signup" method="POST" data-netlify="true" data-demo>
           <input type="hidden" name="form-name" value="newsletter-signup">
           <input type="email" name="email" placeholder="Your email address" required aria-label="Newsletter email">
           <button class="btn btn-gold" type="submit" aria-label="Subscribe" style="padding:13px 16px">&rarr;</button>

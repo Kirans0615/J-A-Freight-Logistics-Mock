@@ -90,11 +90,11 @@ document.addEventListener('DOMContentLoaded', () => {
       ev.preventDefault();
       if (!form.checkValidity()) { form.reportValidity(); return; }
       if (form.hasAttribute('data-netlify')) {
-        fetch('/', {
+        fetch(window.location.pathname, {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: new URLSearchParams(new FormData(form)).toString()
-        });
+        }).catch(() => {});
       }
       const ok = form.querySelector('.form-success');
       if (ok) { ok.classList.add('show'); ok.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
@@ -445,11 +445,11 @@ function splitWords(el) {
   form.addEventListener('submit', ev => {
     ev.preventDefault();
     if (!form.checkValidity()) { form.reportValidity(); return; }
-    fetch('/', {
+    fetch(window.location.pathname, {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams(new FormData(form)).toString()
-    });
+    }).catch(() => {});
     if (REDUCE_MOTION) {
       form.style.display = 'none';
       success.hidden = false;

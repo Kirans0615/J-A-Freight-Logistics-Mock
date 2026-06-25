@@ -171,7 +171,7 @@
           <h3 style="margin-bottom:22px">Application for Employment</h3>
           <!-- Netlify Forms: applications land in Netlify dashboard → Forms → job-application.
                To receive email alerts: Forms → job-application → Form notifications → Add notification → Email. -->
-          <form name="job-application" data-netlify="true" data-demo>
+          <form name="job-application" method="POST" data-netlify="true" data-demo>
             <input type="hidden" name="form-name" value="job-application">
             <div class="form-grid">
               <div><label for="a-first">Full Name *</label><input id="a-first" name="full-name" placeholder="Your full name" required></div>
@@ -252,7 +252,7 @@
         <h4>Newsletter</h4>
         <p style="font-size:.93rem;margin-bottom:12px">Subscribe to get latest updates from our own J&amp;A Freight Systems.</p>
         <!-- Netlify Forms: newsletter signups — Netlify dashboard → Forms → newsletter-signup -->
-        <form class="news-form" name="newsletter-signup" data-netlify="true" data-demo>
+        <form class="news-form" name="newsletter-signup" method="POST" data-netlify="true" data-demo>
           <input type="hidden" name="form-name" value="newsletter-signup">
           <input type="email" name="email" placeholder="Your email address" required aria-label="Newsletter email">
           <button class="btn btn-gold" type="submit" aria-label="Subscribe" style="padding:13px 16px">&rarr;</button>

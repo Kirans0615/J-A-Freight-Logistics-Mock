@@ -199,7 +199,7 @@
         <div class="form-card">
           <h3 style="margin-bottom:6px">Carrier setup request</h3>
           <p style="color:var(--muted);font-size:.95rem;margin-bottom:22px">Our carrier relations team will send your full packet today.</p>
-          <form name="carrier-setup-request" data-netlify="true" data-demo>
+          <form name="carrier-setup-request" method="POST" data-netlify="true" data-demo>
             <input type="hidden" name="form-name" value="carrier-setup-request">
             <div class="form-grid">
               <div><label for="c-company">Company Name</label><input id="c-company" name="company" required></div>
@@ -297,7 +297,7 @@
         <h4>Newsletter</h4>
         <p style="font-size:.93rem;margin-bottom:12px">Subscribe to get latest updates from our own J&amp;A Freight Systems.</p>
         <!-- Netlify Forms: newsletter signups — Netlify dashboard → Forms → newsletter-signup -->
-        <form class="news-form" name="newsletter-signup" data-netlify="true" data-demo>
+        <form class="news-form" name="newsletter-signup" method="POST" data-netlify="true" data-demo>
           <input type="hidden" name="form-name" value="newsletter-signup">
           <input type="email" name="email" placeholder="Your email address" required aria-label="Newsletter email">
           <button class="btn btn-gold" type="submit" aria-label="Subscribe" style="padding:13px 16px">&rarr;</button>
