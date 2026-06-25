@@ -708,12 +708,11 @@ section.block + section.block:not(.alt):not(.alt-gold):not(.dark){border-top:1px
 }
 
 /* Real team headshots
-   Wrapper carries the gold bar and margin — img is untouched by border so
-   aspect-ratio:1 produces a true square and object-fit fills it perfectly */
+   Wrapper holds the gold bar; border-radius on the img itself avoids
+   overflow:hidden which would create a GPU compositing layer and blur on Safari */
 .member-photo-wrap{
   border-bottom:4px solid var(--gold);
   border-radius:var(--radius);
-  overflow:hidden;
   margin-bottom:16px;
 }
 .member-photo{
@@ -722,6 +721,7 @@ section.block + section.block:not(.alt):not(.alt-gold):not(.dark){border-top:1px
   aspect-ratio:1;
   object-fit:cover;
   object-position:top center;
+  border-radius:var(--radius) var(--radius) 0 0;
 }
 
 /* Careers hero bg */
