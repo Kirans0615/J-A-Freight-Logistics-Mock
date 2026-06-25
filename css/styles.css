@@ -368,10 +368,20 @@ textarea{min-height:130px;resize:vertical}
 
 /* ---------- Team ---------- */
 .team{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
-.team.team-5{grid-template-columns:repeat(5,1fr)}
-@media(max-width:1080px){.team.team-5{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:980px){.team{grid-template-columns:repeat(2,1fr)}.team.team-5{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:520px){.team,.team.team-5{grid-template-columns:1fr}}
+/* 5-member team: 3+2 centered layout so photos stay large enough to look sharp */
+.team.team-5{grid-template-columns:repeat(6,1fr)}
+.team.team-5 .member{grid-column:span 2}
+.team.team-5 .member:nth-child(4){grid-column:2/span 2}
+.team.team-5 .member:nth-child(5){grid-column:4/span 2}
+@media(max-width:980px){
+  .team{grid-template-columns:repeat(2,1fr)}
+  .team.team-5{grid-template-columns:repeat(2,1fr)}
+  .team.team-5 .member,.team.team-5 .member:nth-child(4),.team.team-5 .member:nth-child(5){grid-column:span 1}
+}
+@media(max-width:520px){
+  .team,.team.team-5{grid-template-columns:1fr}
+  .team.team-5 .member,.team.team-5 .member:nth-child(4),.team.team-5 .member:nth-child(5){grid-column:span 1}
+}
 .member{text-align:center}
 .member .avatar{
   aspect-ratio:1;border-radius:var(--radius);margin-bottom:16px;
