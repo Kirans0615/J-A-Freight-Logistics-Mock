@@ -199,16 +199,17 @@
         <div class="form-card">
           <h3 style="margin-bottom:6px">Carrier setup request</h3>
           <p style="color:var(--muted);font-size:.95rem;margin-bottom:22px">Our carrier relations team will send your full packet today.</p>
-          <form data-demo>
+          <form name="carrier-setup-request" data-netlify="true" data-demo>
+            <input type="hidden" name="form-name" value="carrier-setup-request">
             <div class="form-grid">
-              <div><label for="c-company">Company Name</label><input id="c-company" required></div>
-              <div><label for="c-mc">MC Number</label><input id="c-mc" placeholder="MC-000000" required></div>
+              <div><label for="c-company">Company Name</label><input id="c-company" name="company" required></div>
+              <div><label for="c-mc">MC Number</label><input id="c-mc" name="mc-number" placeholder="MC-000000" required></div>
               <div><label for="c-equip">Equipment Type</label>
-                <select id="c-equip"><option>Dry Van</option><option>Reefer</option><option>Flatbed</option><option>Power Only</option><option>Drayage / Container</option></select>
+                <select id="c-equip" name="equipment-type"><option>Dry Van</option><option>Reefer</option><option>Flatbed</option><option>Power Only</option><option>Drayage / Container</option></select>
               </div>
-              <div><label for="c-trucks"># of Trucks</label><input id="c-trucks" type="number" min="1" placeholder="5"></div>
-              <div><label for="c-email">Email</label><input id="c-email" type="email" required></div>
-              <div><label for="c-phone">Phone</label><input id="c-phone" type="tel" placeholder="(555) 123-4567" required></div>
+              <div><label for="c-trucks"># of Trucks</label><input id="c-trucks" name="truck-count" type="number" min="1" placeholder="5"></div>
+              <div><label for="c-email">Email</label><input id="c-email" name="email" type="email" required></div>
+              <div><label for="c-phone">Phone</label><input id="c-phone" name="phone" type="tel" placeholder="(555) 123-4567" required></div>
             </div>
             <div style="margin-top:18px"><button class="btn btn-gold" type="submit">Request Setup Packet <span class="arrow">&rarr;</span></button></div>
             <div class="form-success">Got it. Watch your inbox for the J&A carrier packet within one business day.</div>
