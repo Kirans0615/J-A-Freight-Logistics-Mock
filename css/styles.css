@@ -707,13 +707,21 @@ section.block + section.block:not(.alt):not(.alt-gold):not(.dark){border-top:1px
   .about-truck-dust { animation: none; }
 }
 
-/* Real team headshots — styled directly on the img, no wrapper, no overflow:hidden */
-.member-photo{
-  display:block;width:100%;aspect-ratio:1;
-  object-fit:cover;object-position:top center;
-  border-radius:var(--radius);
+/* Real team headshots
+   Wrapper carries the gold bar and margin — img is untouched by border so
+   aspect-ratio:1 produces a true square and object-fit fills it perfectly */
+.member-photo-wrap{
   border-bottom:4px solid var(--gold);
+  border-radius:var(--radius);
+  overflow:hidden;
   margin-bottom:16px;
+}
+.member-photo{
+  display:block;
+  width:100%;
+  aspect-ratio:1;
+  object-fit:cover;
+  object-position:top center;
 }
 
 /* Careers hero bg */
