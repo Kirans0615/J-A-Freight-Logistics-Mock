@@ -1245,6 +1245,38 @@ header.site.scrolled{background:var(--navy-deep);box-shadow:0 10px 28px rgba(11,
 }
 @keyframes ja-ping{0%{transform:scale(.55);opacity:1}100%{transform:scale(2.2);opacity:0}}
 
+/* ---------- 404 page ---------- */
+.error-hero-grid{
+  display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;
+}
+.error-code{
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;line-height:.82;
+  font-size:clamp(4.5rem,14vw,8.5rem);color:rgba(255,194,13,.22);
+  margin:-8px 0 6px;letter-spacing:-.02em;
+}
+.error-visual{
+  display:grid;place-items:center;position:relative;
+}
+.error-visual::before{
+  content:"";position:absolute;width:min(100%,320px);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,194,13,.18) 0%,transparent 70%);
+}
+.error-visual img{
+  position:relative;z-index:1;width:min(100%,380px);filter:drop-shadow(0 20px 40px rgba(0,0,0,.35));
+}
+a.link-card{display:block;color:inherit}
+a.link-card .link-card-arrow{
+  display:inline-flex;align-items:center;gap:6px;margin-top:16px;
+  font-family:'Barlow Condensed',sans-serif;font-weight:600;
+  text-transform:uppercase;letter-spacing:.06em;font-size:.92rem;color:var(--navy);
+  transition:color .15s ease,gap .15s ease;
+}
+a.link-card:hover .link-card-arrow{color:var(--gold-dark);gap:10px}
+@media(max-width:920px){
+  .error-hero-grid{grid-template-columns:1fr;gap:32px}
+  .error-visual img{width:min(100%,280px)}
+}
+
 /* ============================================================
    Mobile polish — small-screen breathing room (≤480px only)
    Does not affect tablet or desktop layouts.

@@ -8,3 +8,10 @@
 #
 # Add specific redirects below if you ever rename a page URL, e.g.:
 #   /old-page   /new-page   301
+
+# Legacy WordPress path — TMS login screen (unchangeable) still requests this URL
+/news/wp-content/uploads/logo-for-TMS-login-screen.png  /assets/logo-for-TMS-login-screen.png  200
+
+# TMS login shortcut
+/tms   https://jandafreight.mercurygate.net/MercuryGate/login/mgLogin.jsp?inline=true  301
+/tms/  https://jandafreight.mercurygate.net/MercuryGate/login/mgLogin.jsp?inline=true  301
