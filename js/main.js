@@ -67,7 +67,12 @@ document.addEventListener('DOMContentLoaded', () => {
       cio.unobserve(el);
     });
   }, { threshold: .5 });
-  document.querySelectorAll('[data-count]').forEach(el => cio.observe(el));
+  document.querySelectorAll('[data-count]').forEach(el => {
+    /* The final value is in the static HTML so crawlers can read it;
+       reset to 0 here so the count-up animation still plays. */
+    if (!REDUCE_MOTION) el.textContent = '0';
+    cio.observe(el);
+  });
 
   /* ── FAQ accordion ─────────────────────────────────────────
      Clicking a .faq-q button opens its parent .faq-item

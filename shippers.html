@@ -3,22 +3,80 @@
   PURPOSE: Services and value proposition targeting freight shippers.
            Includes service cards grid and hover-slideshow section.
   TO EDIT: Service cards are in the <section class="services"> block.
-           Hover slideshow items are in the <div class="hover-slider"> block.
-           CTA text is in the <div class="cta-band"> block.
+           Each service card links to its own page under services/.
+           CTA text is in the <section class="block alt-gold" id="faq">
+  <div class="wrap">
+    <div class="sec-head center reveal seq">
+      <span class="eyebrow">Shipper FAQ</span>
+      <h2>Questions shippers ask us most</h2>
+      <p class="lead">Straight answers on modes, quotes, carrier vetting, and visibility.</p>
+    </div>
+    <div class="faq-cols">
+      <div class="faq">
+        <div class="faq-item reveal">
+          <button class="faq-q">Which freight modes does J&amp;A Freight broker?</button>
+          <div class="faq-a"><p>We arrange <a href="services/full-truckload.html">full truckload</a> (dry van, flatbed, and specialized), <a href="services/ltl.html">LTL</a>, <a href="services/refrigerated-freight.html">refrigerated</a>, <a href="services/drayage.html">drayage and intermodal</a>, <a href="services/hazmat.html">hazmat</a>, <a href="services/warehouse.html">warehouse</a>, and fully <a href="services/managed-transportation.html">managed transportation</a> programs. Each service line has its own page with details and FAQs.</p></div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q">How fast can I get a freight quote?</button>
+          <div class="faq-a"><p>Spot quotes turn around the same business day; contract lane pricing typically comes back within 24 hours. Use the Request a Quote form or call (773) 205-7720.</p></div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q">How do you vet the carriers that haul my freight?</button>
+          <div class="faq-a"><p>Every carrier in our network is checked for active operating authority, FMCSA safety performance, and current cargo and liability insurance before they touch a load, and we re-verify on an ongoing basis. We book direct and never re-broker your freight.</p></div>
+        </div>
+      </div>
+      <div class="faq">
+        <div class="faq-item reveal">
+          <button class="faq-q">Will I be able to track my shipments?</button>
+          <div class="faq-a"><p>Yes. Every load is tracked through our Transportation Management System with GPS and ELD-fed location updates, automated milestone notifications, and a shipper portal for live status, documents, and spend analytics.</p></div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q">Does J&amp;A Freight support supplier diversity programs?</button>
+          <div class="faq-a"><p>Yes. J&amp;A Freight Systems is a certified Minority Business Enterprise (MBE) through the National Minority Supplier Development Council (NMSDC). Learn more on our <a href="mbe-certified-freight-broker.html">MBE certification page</a>.</p></div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q">Where do you ship from and to?</button>
+          <div class="faq-a"><p>We are headquartered in Chicago and move freight across 32+ states, with full truckload coverage in all 48 contiguous states and select cross-border lanes. See our <a href="coverage.html">coverage page</a> for key hubs and lanes.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band"> block.
   FORMS: Newsletter signup in footer — see Netlify Forms comment near the form.
   ============================================================ -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HWSCHEEXHV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HWSCHEEXHV');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Shippers | J&A Freight Systems</title>
-<meta name="description" content="Move freight with confidence, visibility, and control. FTL, LTL, refrigerated, drayage, intermodal, and managed transportation from a 40-year 3PL.">
+<title>Freight Broker & 3PL Services for Mid-Market Shippers | J&A Freight</title>
+<meta name="description" content="Freight broker and 3PL services for mid-market shippers: FTL, LTL, refrigerated, drayage, hazmat, warehouse, and managed transportation from a 40-year, MBE-certified Chicago 3PL.">
+<link rel="canonical" href="https://jandafreight.com/shippers">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="J&amp;A Freight Systems">
+<meta property="og:url" content="https://jandafreight.com/shippers">
+<meta property="og:title" content="Freight Broker &amp; 3PL Services for Mid-Market Shippers | J&amp;A Freight">
+<meta property="og:description" content="Freight broker and 3PL services for mid-market shippers: FTL, LTL, refrigerated, drayage, hazmat, warehouse, and managed transportation from a 40-year, MBE-certified Chicago 3PL.">
+<meta property="og:image" content="https://jandafreight.com/assets/about-freight-motion.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/logo-40years.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Which freight modes does J&A Freight broker?", "acceptedAnswer": {"@type": "Answer", "text": "We arrange full truckload (dry van, flatbed, and specialized), LTL, refrigerated, drayage and intermodal, hazmat, warehouse, and fully managed transportation programs. Each service line has its own page with details and FAQs."}}, {"@type": "Question", "name": "How fast can I get a freight quote?", "acceptedAnswer": {"@type": "Answer", "text": "Spot quotes turn around the same business day; contract lane pricing typically comes back within 24 hours. Use the Request a Quote form or call (773) 205-7720."}}, {"@type": "Question", "name": "How do you vet the carriers that haul my freight?", "acceptedAnswer": {"@type": "Answer", "text": "Every carrier in our network is checked for active operating authority, FMCSA safety performance, and current cargo and liability insurance before they touch a load, and we re-verify on an ongoing basis. We book direct and never re-broker your freight."}}, {"@type": "Question", "name": "Will I be able to track my shipments?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Every load is tracked through our Transportation Management System with GPS and ELD-fed location updates, automated milestone notifications, and a shipper portal for live status, documents, and spend analytics."}}, {"@type": "Question", "name": "Does J&A Freight support supplier diversity programs?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. J&A Freight Systems is a certified Minority Business Enterprise (MBE) through the National Minority Supplier Development Council (NMSDC). Learn more on our MBE certification page."}}, {"@type": "Question", "name": "Where do you ship from and to?", "acceptedAnswer": {"@type": "Answer", "text": "We are headquartered in Chicago and move freight across 32+ states, with full truckload coverage in all 48 contiguous states and select cross-border lanes. See our coverage page for key hubs and lanes."}}]}</script>
 </head>
 <body>
 
@@ -78,6 +136,7 @@
       <div>
         <span class="eyebrow">Shippers</span>
         <h1>Move freight with <span class="gold-text">confidence, visibility, and control</span></h1>
+        <h2 class="hero-kicker">FTL, LTL, Refrigerated &amp; Managed Transportation for Mid-Market Shippers</h2>
         <p class="lead">Whether you're shipping a single pallet or a full truckload, we offer tailored logistics solutions that scale with your business, ensuring reliable, on-time deliveries every time.</p>
         <div class="hero-actions">
           <a href="contact.html#quote" class="btn btn-gold">Learn More <span class="arrow">&rarr;</span></a>
@@ -98,103 +157,51 @@
     <div class="sec-head center reveal">
       <span class="eyebrow">Services</span>
       <h2>Tailored freight solutions</h2>
-      <p class="lead">Comprehensive, reliable, and cost-effective logistics solutions tailored to meet your business needs, ensuring smooth and timely deliveries.</p>
+      <p class="lead">Seven service lines under one roof: full truckload, LTL, refrigerated, drayage, hazmat, warehouse, and managed transportation. Select a service to see how we move it, who it fits, and answers to common questions.</p>
     </div>
     <div class="grid-3 stagger accent-cards">
       <div class="card reveal">
   <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 7h12v9H1zM13 10h4l3 3v3h-7z"/><circle cx="6" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></div>
   <h3>Full Truckload</h3>
   <p>Move your freight with efficiency. Ideal for large-volume shipments requiring speed and security. With our extensive carrier network, we ensure dependable, on-time delivery.</p>
+  <a class="card-link" href="services/full-truckload.html">Full Truckload details <span class="arrow">&rarr;</span></a>
 </div>
       <div class="card reveal">
   <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg></div>
   <h3>Less-Than-Truckload</h3>
   <p>Optimize smaller shipments with our efficient LTL services. Share space without sacrificing visibility or service quality. We tailor routes to save time and reduce costs.</p>
+  <a class="card-link" href="services/ltl.html">Less-Than-Truckload details <span class="arrow">&rarr;</span></a>
 </div>
       <div class="card reveal">
   <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/><path d="m20 16-4-4 4-4"/><path d="m4 8 4 4-4 4"/><path d="m16 4-4 4-4-4"/><path d="m8 20 4-4 4 4"/></svg></div>
   <h3>Refrigerated Freight</h3>
   <p>Specialized transport for temperature-sensitive items — perishables or pharmaceuticals — with precision and care. Advanced refrigerated trucks maintain consistent climate control throughout.</p>
+  <a class="card-link" href="services/refrigerated-freight.html">Refrigerated Freight details <span class="arrow">&rarr;</span></a>
 </div>
       <div class="card reveal">
   <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.5"/><path d="M12 7.5V21M4 13H2c0 5 4.5 8 10 8s10-3 10-8h-2M12 21c-4 0-7-3-7-8"/></svg></div>
   <h3>Drayage</h3>
   <p>From port to warehouse, we handle your containerized freight with efficiency. Our drayage solutions bridge ocean freight and final delivery with timely moves and customs coordination.</p>
+  <a class="card-link" href="services/drayage.html">Drayage details <span class="arrow">&rarr;</span></a>
 </div>
       <div class="card reveal">
   <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
   <h3>Hazmat</h3>
   <p>Certified and trained to move hazardous materials safely and legally. Our team follows strict regulatory protocols every step of the way. Trust us for your most sensitive, high-risk freight.</p>
+  <a class="card-link" href="services/hazmat.html">Hazmat details <span class="arrow">&rarr;</span></a>
 </div>
       <div class="card reveal">
   <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
   <h3>Warehouse</h3>
   <p>Secure storage accommodating short-term and long-term needs. Comprehensive inventory management, order fulfillment, and distribution to enhance your supply chain efficiency.</p>
+  <a class="card-link" href="services/warehouse.html">Warehouse details <span class="arrow">&rarr;</span></a>
 </div>
       <div class="card reveal">
   <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-5 3 3 5-7"/></svg></div>
   <h3>Managed Transportation</h3>
   <p>Let us handle logistics while you focus on your business. Full visibility, analytics, and control — without the day-to-day hassle. Your supply chain, smarter.</p>
+  <a class="card-link" href="services/managed-transportation.html">Managed Transportation details <span class="arrow">&rarr;</span></a>
 </div>
-    </div>
-  </div>
-</section>
-
-<!-- Hover Slideshow -->
-<section class="hover-slider-section">
-  <div class="wrap">
-    <div class="hs-head reveal">
-      <span class="eyebrow">Our Freight Solutions</span>
-      <h2>The right mode for every load</h2>
-      <p class="lead">Six specialized service lines — hover to explore each one.</p>
-    </div>
-    <div class="hover-slider">
-      <div class="hs-list">
-        <div class="hs-item active">
-          <h3>Full Truckload</h3>
-          <p>Dry van, flatbed &amp; specialized — all 48 states</p>
-        </div>
-        <div class="hs-item">
-          <h3>Less-Than-Truckload</h3>
-          <p>Consolidated freight without sacrificing visibility</p>
-        </div>
-        <div class="hs-item">
-          <h3>Refrigerated Freight</h3>
-          <p>Temperature-controlled for food, pharma &amp; more</p>
-        </div>
-        <div class="hs-item">
-          <h3>Drayage</h3>
-          <p>Port-to-warehouse container moves, end-to-end</p>
-        </div>
-        <div class="hs-item">
-          <h3>Hazmat Transport</h3>
-          <p>Certified, compliant hazardous materials handling</p>
-        </div>
-        <div class="hs-item">
-          <h3>Managed Transportation</h3>
-          <p>Full 3PL oversight — we become your freight dept.</p>
-        </div>
-      </div>
-      <div class="hs-images">
-        <video class="hs-img active" autoplay loop muted playsinline>
-          <source src="assets/trucks.mp4" type="video/mp4">
-        </video>
-        <video class="hs-img" autoplay loop muted playsinline>
-          <source src="assets/truckfreight.mp4" type="video/mp4">
-        </video>
-        <video class="hs-img" autoplay loop muted playsinline>
-          <source src="assets/fridgefreight.mp4" type="video/mp4">
-        </video>
-        <video class="hs-img" autoplay loop muted playsinline>
-          <source src="assets/drayage.mp4" type="video/mp4">
-        </video>
-        <video class="hs-img" autoplay loop muted playsinline>
-          <source src="assets/hazmat.mp4" type="video/mp4">
-        </video>
-        <video class="hs-img" autoplay loop muted playsinline>
-          <source src="assets/managedtransport.mp4" type="video/mp4">
-        </video>
-      </div>
     </div>
   </div>
 </section>
@@ -318,11 +325,8 @@
         </a>
         <p class="foot-about">Providing reliable and efficient logistics solutions to streamline your transportation needs. Trust us for on-time delivery, secure shipments, and seamless service.</p>
         <div class="foot-social">
-          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
-          <a href="#" aria-label="Twitter / X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
-          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
-          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20.06 12 20.06 12 20.06s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58zM9.75 15.02V8.98l5.75 3.02-5.75 3.02z"/></svg></a>
+          <a href="https://www.facebook.com/jandafreight/" target="_blank" rel="noopener" aria-label="J&amp;A Freight Systems on Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+          <a href="https://www.linkedin.com/company/j%26a-freight-systems-inc." target="_blank" rel="noopener" aria-label="J&amp;A Freight Systems on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
         </div>
       </div>
       <div>
@@ -332,6 +336,8 @@
           <li><a href="carriers.html">Carriers</a></li>
           <li><a href="technology.html">Technology</a></li>
           <li><a href="about.html">About</a></li>
+          <li><a href="mbe-certified-freight-broker.html">MBE Certification</a></li>
+          <li><a href="coverage.html">Coverage</a></li>
         </ul>
       </div>
       <div>
