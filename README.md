@@ -8,7 +8,7 @@ Corporate marketing website for J&A Freight Systems, a Chicago-based freight log
 
 | Detail | Value |
 |--------|-------|
-| Type | Static multi-page website (8 pages) |
+| Type | Static multi-page website (core pages + 7 service-line pages, MBE page, coverage page) |
 | Stack | HTML5, CSS3, Vanilla JavaScript |
 | Fonts | Barlow Condensed (headings) + Barlow (body) via Google Fonts |
 | Map | MapLibre GL JS 4.7.1 (service-reach map on the Home page) |
@@ -47,6 +47,14 @@ ja-freight-repo/              ← Repo root (this is what gets deployed)
 ├── careers.html              ← Join J&A (job listings + application form)
 ├── positions.html            ← Open positions detail
 ├── contact.html              ← Contact Us
+├── mbe-certified-freight-broker.html ← MBE / supplier-diversity page (SEO audit, Oct 2026)
+├── coverage.html             ← Service coverage: hubs, regions, lanes (SEO audit)
+├── services/                 ← One page per service line (SEO audit). Paths inside use ../
+│   ├── full-truckload.html, ltl.html, refrigerated-freight.html, drayage.html,
+│   └── hazmat.html, warehouse.html, managed-transportation.html
+├── sitemap.xml               ← Lists every indexable page — add new pages here
+├── robots.txt                ← Points crawlers at sitemap.xml
+├── _redirects                ← Netlify redirects (legacy WordPress URLs → new pages)
 ├── css/
 │   └── styles.css            ← All styles (single stylesheet)
 ├── js/
@@ -71,7 +79,7 @@ ja-freight-repo/              ← Repo root (this is what gets deployed)
 Open the relevant `.html` file in any text editor. Content lives directly in the HTML — look for headings (`<h1>`, `<h2>`), paragraphs (`<p>`), and list items (`<li>`).
 
 ### Change the navigation or footer
-Navigation and footer are **duplicated** across all 8 pages (no server-side includes). To update a nav link or footer text, edit each `.html` file. Search for the text you want to change across all files at once:
+Navigation and footer are **duplicated** across every page (no server-side includes). To update a nav link or footer text, edit each `.html` file. Pages inside `services/` reference shared files with a `../` prefix. Search for the text you want to change across all files at once:
 
 ```bash
 grep -rn "text to find" ja-freight-website/
@@ -119,10 +127,18 @@ Netlify also collects form submissions (see **Form Submissions** below).
 ## How To Add A New Page
 
 1. Copy an existing page (e.g. `about.html`) and rename it (e.g. `new-page.html`)
-2. Update the `<title>` tag and the `<h1>` heading
+2. Update the `<title>` tag, `<meta name="description">`, the `<link rel="canonical">` / `og:` tags, and the `<h1>` heading
 3. Edit the content sections
-4. Add a link to the new page in the `<nav>` block of **all 8 existing pages** (search for `<nav` to find them quickly)
-5. The new page automatically inherits all styles from `css/styles.css` and scripts from `js/main.js`
+4. Add a link to the new page in the `<nav>` or footer block of the existing pages (search for `<nav` to find them quickly)
+5. Add the page's URL to `sitemap.xml`
+6. The new page automatically inherits all styles from `css/styles.css` and scripts from `js/main.js`
+
+## SEO Notes (added Oct 2026 from the consultant's site audit)
+
+- Every page has a `<link rel="canonical">`, Open Graph tags, and a keyword `<h2 class="hero-kicker">` under the hero `<h1>`.
+- Stat counters (`data-count`) keep their final value in the static HTML so crawlers can read it; `js/main.js` resets them to 0 before animating.
+- `_redirects` 301s the legacy WordPress URLs and returns 410 for the compromised `/page-220/` URL.
+- The footer social icons link to the company Facebook and LinkedIn pages only. Add other networks when accounts exist.
 
 ---
 

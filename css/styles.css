@@ -1492,3 +1492,41 @@ a.link-card:hover .link-card-arrow{color:var(--gold-dark);gap:10px}
   .carrier-mvb-actions{flex-direction:column}
   .carrier-mvb-actions .btn{text-align:center;white-space:normal}
 }
+
+/* ---------- SEO audit additions (Oct 2026) ---------- */
+/* Keyword subtitle under each hero H1 (plain text, above the fold) */
+.hero .hero-kicker{
+  font-family:'Barlow',sans-serif;font-size:1.02rem;font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;line-height:1.45;
+  color:var(--gold);margin:16px 0 18px;max-width:62ch;
+}
+@media(max-width:640px){.hero .hero-kicker{font-size:.9rem}}
+/* "Details" link at the bottom of service cards */
+.card-link{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-weight:600;font-size:.95rem;color:var(--navy)}
+.card-link:hover{color:var(--gold-dark)}
+.card-link .arrow{transition:transform .15s ease}
+.card-link:hover .arrow{transform:translateX(4px)}
+a.hero-mbe{text-decoration:none}
+a.hero-mbe:hover span{color:var(--gold)}
+/* Service-line pages */
+.svc-figure{display:flex;align-items:center;justify-content:center}
+.svc-figure img{max-width:100%;max-height:440px;height:auto;filter:drop-shadow(0 20px 48px rgba(0,0,0,.18))}
+.svc-body p{color:var(--muted);margin-top:14px;font-size:1.02rem}
+.svc-body p:first-of-type{margin-top:0}
+.svc-related .card h3{font-size:1.15rem;margin-top:0}
+.svc-related .card p{font-size:.92rem}
+.svc-list{columns:2;column-gap:40px;margin-top:18px}
+.svc-list li{break-inside:avoid;padding:8px 0 8px 26px;position:relative;color:var(--navy-ink);font-weight:500}
+.svc-list li::before{content:"";position:absolute;left:0;top:14px;width:12px;height:12px;background:var(--gold);
+  clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%)}
+@media(max-width:640px){.svc-list{columns:1}}
+/* Coverage page hub table */
+.hub-table{width:100%;border-collapse:collapse;margin-top:20px;font-size:.98rem}
+.hub-table th,.hub-table td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+.hub-table th{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.06em;color:var(--navy);font-size:.95rem}
+.hub-table td:first-child{font-weight:600;color:var(--navy-ink)}
+@media(max-width:640px){.hub-table{font-size:.9rem}.hub-table th,.hub-table td{padding:10px 8px}}
+/* MBE page plain-text statement */
+.mbe-statement{background:#fff;border-left:5px solid var(--gold);border-radius:0 var(--radius) var(--radius) 0;
+  padding:26px 30px;box-shadow:var(--shadow);font-size:1.1rem;color:var(--navy-ink);font-weight:500;line-height:1.6}
+.mbe-statement strong{color:var(--navy)}

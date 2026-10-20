@@ -15,3 +15,28 @@
 # TMS login shortcut
 /tms   https://jandafreight.mercurygate.net/MercuryGate/login/mgLogin.jsp?inline=true  301
 /tms/  https://jandafreight.mercurygate.net/MercuryGate/login/mgLogin.jsp?inline=true  301
+
+# ---------------------------------------------------------------
+# Legacy WordPress URLs (pre-2026 site). 301 each to its modern
+# equivalent so old rankings, backlinks, and bookmarks carry over.
+# Netlify matches with or without the trailing slash.
+# ---------------------------------------------------------------
+/home                          /                                         301
+/home/                         /                                         301
+/services                      /shippers                                 301
+/services/                     /shippers                                 301
+/services/over-the-road        /services/full-truckload                  301
+/services/over-the-road/       /services/full-truckload                  301
+/managed-transportation        /services/managed-transportation          301
+/managed-transportation/       /services/managed-transportation          301
+/about-ja                      /about                                    301
+/about-ja/                     /about                                    301
+/about-ja/faq                  /about                                    301
+/about-ja/faq/                 /about                                    301
+/join-ja                       /careers                                  301
+/join-ja/                      /careers                                  301
+
+# Compromised legacy page (injected spam). Return 410 Gone so search
+# engines drop it from the index rather than following a redirect.
+/page-220                      /404.html                                 410
+/page-220/                     /404.html                                 410
