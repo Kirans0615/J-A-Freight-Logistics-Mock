@@ -2,8 +2,8 @@
   PAGE: Open Positions (positions.html)
   PURPOSE: Detailed listing of current job openings with role descriptions.
            Links back to the application form on careers.html.
-  TO EDIT: Each job card is a <div class="position-card"> or similar block.
-           Update role titles, departments, and descriptions as needed.
+  TO EDIT: Each posting is an <article class="job"> block. The same block is
+           duplicated in careers.html (section id="openings"); update both.
   FORMS: Newsletter signup in footer — see Netlify Forms comment near the form.
   ============================================================ -->
 <!DOCTYPE html>
@@ -21,13 +21,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Open Positions | J&A Freight Systems</title>
-<meta name="description" content="We currently have 17 open positions across operations, sales, compliance, analytics, and technology at J&A Freight Systems in Chicago.">
+<meta name="description" content="Current openings at J&A Freight Systems in Chicago, including Strategic Key Account Manager. Structured onboarding, mentorship, and a 40-year company behind you.">
 <link rel="canonical" href="https://jandafreight.com/positions">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="J&amp;A Freight Systems">
 <meta property="og:url" content="https://jandafreight.com/positions">
 <meta property="og:title" content="Open Positions | J&amp;A Freight Systems">
-<meta property="og:description" content="We currently have 17 open positions across operations, sales, compliance, analytics, and technology at J&amp;A Freight Systems in Chicago.">
+<meta property="og:description" content="Current openings at J&amp;A Freight Systems in Chicago, including Strategic Key Account Manager. Structured onboarding, mentorship, and a 40-year company behind you.">
 <meta property="og:image" content="https://jandafreight.com/assets/careers-hero-office.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/logo-40years.png" type="image/png">
@@ -86,173 +86,76 @@
 </svg>
   <div class="wrap">
     <span class="eyebrow">Careers</span>
-    <h1>We currently have <span class="gold-text" id="pos-count">17</span> open positions</h1>
-    <p class="lead">Join our growing team. Every role comes with paid logistics education, veteran mentorship, and a 40-year company behind you.</p>
+    <h1>Open positions at <span class="gold-text">J&amp;A Freight Systems</span></h1>
+    <p class="lead">We're hiring for the role below, with more openings on the way. Every role comes with structured onboarding, a mentor from day one, and a 40-year company behind you.</p>
   </div>
 </section>
 
 <section class="block alt">
   <div class="wrap">
-    <div class="pos-filters reveal" role="tablist" aria-label="Filter positions by department">
-      <button class="chip active" data-filter="all">All Departments</button>
-      <button class="chip" data-filter="ops">Operations</button>
-      <button class="chip" data-filter="sales">Sales & Marketing</button>
-      <button class="chip" data-filter="compliance">Compliance</button>
-      <button class="chip" data-filter="analytics">Pricing & Analytics</button>
-      <button class="chip" data-filter="tech">Technology</button>
+<article class="job reveal" id="strategic-key-account-manager">
+  <div class="job-head">
+    <div>
+      <span class="job-kicker">Supplier Onboarding &amp; Growth</span>
+      <h3>Strategic Key Account Manager</h3>
+      <div class="meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>Full-Time</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Chicago, IL</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 9L12 4 2 9l10 5 10-5z"/><path d="M6 11.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5"/></svg>4+ years logistics or brokerage experience</span></div>
     </div>
-    
-<article class="pos reveal" data-dept="ops">
-  <div>
-    <h3>Logistics Coordinator</h3>
-    <div class="meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>Full-Time</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Chicago, IL (Hybrid)</span></div>
-    <p class="desc">Own a book of daily loads end-to-end: tender, track, troubleshoot, and deliver. The classic launchpad role — most of our leadership started here.</p>
+    <a class="btn btn-gold" href="careers.html?role=Strategic%20Key%20Account%20Manager#apply" data-apply-role="Strategic Key Account Manager">Apply for this role <span class="arrow">&rarr;</span></a>
   </div>
-  <a class="btn btn-ghost-navy" href="careers.html#apply">Apply <span class="arrow">&rarr;</span></a>
-</article>
-
-<article class="pos reveal" data-dept="ops">
-  <div>
-    <h3>Senior Logistics Coordinator</h3>
-    <div class="meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>Full-Time</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Chicago, IL (Hybrid)</span></div>
-    <p class="desc">Run high-volume accounts and mentor new coordinators while managing escalations across modes.</p>
-  </div>
-  <a class="btn btn-ghost-navy" href="careers.html#apply">Apply <span class="arrow">&rarr;</span></a>
-</article>
-
-<article class="pos reveal" data-dept="ops">
-  <div>
-    <h3>Night Dispatch Specialist</h3>
-    <div class="meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>Full-Time</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Remote (US)</span></div>
-    <p class="desc">Keep freight moving overnight — track-and-trace, carrier check calls, and exception management for active loads.</p>
-  </div>
-  <a class="btn btn-ghost-navy" href="careers.html#apply">Apply <span class="arrow">&rarr;</span></a>
-</article>
-
-<article class="pos reveal" data-dept="ops">
-  <div>
-    <h3>Track & Trace Associate</h3>
-    <div class="meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>Full-Time</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Chicago, IL</span></div>
-    <p class="desc">Monitor in-transit shipments in our Best In Class Transportation Management Software and trigger proactive alerts before issues reach the customer.</p>
-  </div>
-  <a class="btn btn-ghost-navy" href="careers.html#apply">Apply <span class="arrow">&rarr;</span></a>
-</article>
-
-<article class="pos reveal" data-dept="sales">
-  <div>
-    <h3>Freight Sales Executive</h3>
-    <div class="meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>Full-Time · Commission</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Chicago, IL (Hybrid)</span></div>
-    <p class="desc">Hunt and close mid-market shipper accounts. Uncapped commission, warm brand recognition, and 40 years of references behind you.</p>
-  </div>
-  <a class="btn btn-ghost-navy" href="careers.html#apply">Apply <span class="arrow">&rarr;</span></a>
-</article>
-
-<article class="pos reveal" data-dept="sales">
-  <div>
-    <h3>Account Manager, Enterprise</h3>
-    <div class="meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>Full-Time</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Chicago, IL</span></div>
-    <p class="desc">Grow and retain decade-long client relationships through QBRs, lane expansion, and white-glove service.</p>
-  </div>
-  <a class="btn btn-ghost-navy" href="careers.html#apply">Apply <span class="arrow">&rarr;</span></a>
-</article>
-
-<article class="pos reveal" data-dept="sales">
-  <div>
-    <h3>Inside Sales Representative</h3>
-    <div class="meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>Full-Time · Commission</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Chicago, IL</span></div>
-    <p class="desc">Qualify inbound leads and book first lanes. Clear promotion track to Freight Sales Executive within 12–18 months.</p>
-  </div>
-  <a class="btn btn-ghost-navy" href="careers.html#apply">Apply <span class="arrow">&rarr;</span></a>
-</article>
-
-<article class="pos reveal" data-dept="sales">
-  <div>
-    <h3>Carrier Sales Representative</h3>
-    <div class="meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>Full-Time · Commission</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Chicago, IL (Hybrid)</span></div>
-    <p class="desc">Build carrier relationships and cover freight at market-smart rates. Negotiators thrive here.</p>
-  </div>
-  <a class="btn btn-ghost-navy" href="careers.html#apply">Apply <span class="arrow">&rarr;</span></a>
-</article>
-
-<article class="pos reveal" data-dept="ops">
-  <div>
-    <h3>Warehouse Operations Manager</h3>
-    <div class="meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>Full-Time</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Chicago, IL (On-site)</span></div>
-    <p class="desc">Oversee cross-dock and consolidation operations, staffing, and safety for our Chicago facility.</p>
-  </div>
-  <a class="btn btn-ghost-navy" href="careers.html#apply">Apply <span class="arrow">&rarr;</span></a>
-</article>
-
-<article class="pos reveal" data-dept="compliance">
-  <div>
-    <h3>Customs Compliance Specialist</h3>
-    <div class="meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>Full-Time</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Chicago, IL (Hybrid)</span></div>
-    <p class="desc">Manage cross-border documentation, HTS classification support, and broker coordination for US–Canada–Mexico lanes.</p>
-  </div>
-  <a class="btn btn-ghost-navy" href="careers.html#apply">Apply <span class="arrow">&rarr;</span></a>
-</article>
-
-<article class="pos reveal" data-dept="compliance">
-  <div>
-    <h3>Carrier Compliance Analyst</h3>
-    <div class="meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>Full-Time</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Remote (US)</span></div>
-    <p class="desc">Run our multi-point carrier vetting program: FMCSA scores, authority, insurance monitoring, and network audits.</p>
-  </div>
-  <a class="btn btn-ghost-navy" href="careers.html#apply">Apply <span class="arrow">&rarr;</span></a>
-</article>
-
-<article class="pos reveal" data-dept="analytics">
-  <div>
-    <h3>Freight Pricing Analyst</h3>
-    <div class="meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>Full-Time</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Chicago, IL (Hybrid)</span></div>
-    <p class="desc">Build lane pricing models from market data and win-rate analytics. Excel/SQL fluency required; Python a plus.</p>
-  </div>
-  <a class="btn btn-ghost-navy" href="careers.html#apply">Apply <span class="arrow">&rarr;</span></a>
-</article>
-
-<article class="pos reveal" data-dept="analytics">
-  <div>
-    <h3>Senior Pricing Analyst, RFP</h3>
-    <div class="meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>Full-Time</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Chicago, IL (Hybrid)</span></div>
-    <p class="desc">Lead annual RFP season — bid strategy, routing guide design, and margin modeling on enterprise accounts.</p>
-  </div>
-  <a class="btn btn-ghost-navy" href="careers.html#apply">Apply <span class="arrow">&rarr;</span></a>
-</article>
-
-<article class="pos reveal" data-dept="analytics">
-  <div>
-    <h3>Business Intelligence Analyst</h3>
-    <div class="meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>Full-Time</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Remote (US)</span></div>
-    <p class="desc">Turn TMS data into carrier scorecards, client dashboards, and quarterly business review decks.</p>
-  </div>
-  <a class="btn btn-ghost-navy" href="careers.html#apply">Apply <span class="arrow">&rarr;</span></a>
-</article>
-
-<article class="pos reveal" data-dept="tech">
-  <div>
-    <h3>TMS Administrator</h3>
-    <div class="meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>Full-Time</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Chicago, IL (Hybrid)</span></div>
-    <p class="desc">Configure and optimize our Best In Class Transportation Management Software: workflows, rating engines, user management, and integration health.</p>
-  </div>
-  <a class="btn btn-ghost-navy" href="careers.html#apply">Apply <span class="arrow">&rarr;</span></a>
-</article>
-
-<article class="pos reveal" data-dept="tech">
-  <div>
-    <h3>Integrations Engineer, EDI/API</h3>
-    <div class="meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>Full-Time</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Remote (US)</span></div>
-    <p class="desc">Build and maintain EDI 204/214/210 and REST integrations between client ERPs and our TMS.</p>
-  </div>
-  <a class="btn btn-ghost-navy" href="careers.html#apply">Apply <span class="arrow">&rarr;</span></a>
-</article>
-
-<article class="pos reveal" data-dept="sales">
-  <div>
-    <h3>Marketing & Content Specialist</h3>
-    <div class="meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>Full-Time</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Chicago, IL (Hybrid)</span></div>
-    <p class="desc">Own the J&A brand: market briefs, case studies, web content, and our 40th-anniversary campaign.</p>
-  </div>
-  <a class="btn btn-ghost-navy" href="careers.html#apply">Apply <span class="arrow">&rarr;</span></a>
+  <p class="job-summary">J&amp;A Freight Systems is seeking a Strategic Key Account Manager to support and grow the transportation program of a large Fortune 500 customer.</p>
+  <p>This team-based role will lead the onboarding of new suppliers into J&amp;A's logistics network. The Key Account Manager will coordinate onboarding requirements, establish operating procedures, resolve implementation issues, and ensure suppliers are prepared to begin shipping successfully.</p>
+  <p>The ideal candidate has four or more years of logistics or freight brokerage experience, excellent organizational skills, and the ability to build strong relationships across customer, supplier, and internal teams.</p>
+  <details class="job-details" open>
+    <summary><span class="when-closed">View full description</span><span class="when-open">Hide full description</span></summary>
+    <div class="job-grid">
+      <div>
+        <h4>Key Responsibilities</h4>
+        <ul class="checks">
+          <li>Lead new suppliers through onboarding, including documentation, system setup, training, operating procedures, and launch preparation.</li>
+          <li>Serve as the primary supplier contact during implementation and communicate program requirements clearly.</li>
+          <li>Establish onboarding timelines, track milestones, and resolve issues that could delay implementation.</li>
+          <li>Coordinate with the customer and J&amp;A's operations, carrier sales, accounting, and technology teams.</li>
+          <li>Support the internal handoff of newly onboarded suppliers to the ongoing account team.</li>
+          <li>Track supplier participation, shipment activity, service performance, and opportunities for program growth.</li>
+          <li>Provide regular updates on onboarding progress, risks, results, and next steps.</li>
+          <li>Recommend improvements that make supplier onboarding more efficient and scalable.</li>
+          <li>Participate in customer meetings, performance reviews, and account-planning discussions.</li>
+        </ul>
+        <h4>Qualifications and Skills</h4>
+        <ul class="checks">
+          <li>Four or more years of experience in freight brokerage, transportation, logistics, supplier onboarding, or account implementation.</li>
+          <li>Working knowledge of LTL transportation and supply chain operations is important.</li>
+          <li>Strong communication, relationship-building, organization, and problem-solving skills.</li>
+          <li>Ability to manage and adapt to ever-changing priorities to meet required deadlines.</li>
+        </ul>
+      </div>
+      <aside class="job-side">
+        <h4>Measures of Success</h4>
+        <ul>
+          <li>Suppliers onboarded accurately and on schedule</li>
+          <li>Percentage of onboarded suppliers that begin shipping</li>
+          <li>Supplier participation and shipment growth</li>
+          <li>Customer and supplier satisfaction</li>
+          <li>Complete and accurate onboarding and CRM records</li>
+          <li>Effective collaboration and proactive issue resolution</li>
+        </ul>
+        <h4>Why Join J&amp;A Freight Systems?</h4>
+        <ul>
+          <li>Competitive salary and performance-based incentives</li>
+          <li>Play an important role in expanding a strategic transportation program</li>
+          <li>Join a collaborative, fast-growing freight brokerage</li>
+          <li>Professional development and advancement opportunities</li>
+          <li>Comprehensive health, dental, and vision benefits</li>
+          <li>401(k) with company match</li>
+          <li>Chicago headquarters</li>
+        </ul>
+      </aside>
+    </div>
+    <div class="job-foot">
+      <a class="btn btn-gold" href="careers.html?role=Strategic%20Key%20Account%20Manager#apply" data-apply-role="Strategic Key Account Manager">Apply for this role <span class="arrow">&rarr;</span></a>
+      <span class="note">Applications reviewed within 3 business days.</span>
+    </div>
+  </details>
 </article>
   </div>
 </section>

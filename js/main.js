@@ -159,6 +159,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* ── Job postings → application form ──────────────────────
+     "Apply for this role" buttons carry data-apply-role; the role
+     name is copied into the Position of Interest field. positions.html
+     links to careers.html?role=…#apply, so the field is also filled
+     from the query string. */
+  const roleField = document.getElementById('a-position');
+  if (roleField) {
+    const q = new URLSearchParams(window.location.search).get('role');
+    if (q && !roleField.value) roleField.value = q;
+    document.querySelectorAll('[data-apply-role]').forEach(a =>
+      a.addEventListener('click', () => { roleField.value = a.dataset.applyRole; }));
+  }
+
   /* ── Position cards cascade (positions.html) ───────────────
      Cards drop in 80ms apart, cycling every 6 so cards deep in
      the list never wait more than ~0.5s once visible. */

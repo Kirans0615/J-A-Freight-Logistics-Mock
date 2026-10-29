@@ -3,7 +3,9 @@
   PURPOSE: Hiring page with open positions overview and employment application form.
   TO EDIT: Hiring process steps are in the <ul> inside the two-column layout.
            Application form fields are in <form name="job-application">.
-           To add or remove job roles, edit the positions.html page.
+           Job postings live in two places: the "Open Positions" section below
+           (<section id="openings">) and positions.html. Each posting is an
+           <article class="job"> block; copy the same block into both pages.
   FORMS:
     - Job Application form (name="job-application") — collected in Netlify → Forms → job-application
     - Newsletter signup in footer — collected in Netlify → Forms → newsletter-signup
@@ -94,7 +96,7 @@
         <h1>Unlock endless opportunities <span class="gold-text">&amp; shape your career</span></h1>
         <p class="lead">At J&A Freight Systems, join our growing team of professionals dedicated to delivering seamless supply chains across the globe.</p>
         <div class="hero-actions">
-          <a href="#apply" class="btn btn-gold">Join Now <span class="arrow">&rarr;</span></a>
+          <a href="#openings" class="btn btn-gold">See Open Positions <span class="arrow">&rarr;</span></a>
           <a href="shippers.html" class="btn btn-ghost">Our Services &rarr;</a>
         </div>
       </div>
@@ -148,6 +150,80 @@
   </div>
 </section>
 
+<section class="block alt" id="openings">
+  <div class="wrap">
+    <div class="sec-head center reveal" style="text-align:center">
+      <span class="eyebrow">Open Positions</span>
+      <h2>Roles we're hiring for right now</h2>
+      <p class="lead" style="margin:0 auto">Every role at J&amp;A comes with structured onboarding, a mentor from day one, and a 40-year company behind you. More openings are on the way.</p>
+    </div>
+<article class="job reveal" id="strategic-key-account-manager">
+  <div class="job-head">
+    <div>
+      <span class="job-kicker">Supplier Onboarding &amp; Growth</span>
+      <h3>Strategic Key Account Manager</h3>
+      <div class="meta"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>Full-Time</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Chicago, IL</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 9L12 4 2 9l10 5 10-5z"/><path d="M6 11.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5"/></svg>4+ years logistics or brokerage experience</span></div>
+    </div>
+    <a class="btn btn-gold" href="#apply" data-apply-role="Strategic Key Account Manager">Apply for this role <span class="arrow">&rarr;</span></a>
+  </div>
+  <p class="job-summary">J&amp;A Freight Systems is seeking a Strategic Key Account Manager to support and grow the transportation program of a large Fortune 500 customer.</p>
+  <p>This team-based role will lead the onboarding of new suppliers into J&amp;A's logistics network. The Key Account Manager will coordinate onboarding requirements, establish operating procedures, resolve implementation issues, and ensure suppliers are prepared to begin shipping successfully.</p>
+  <p>The ideal candidate has four or more years of logistics or freight brokerage experience, excellent organizational skills, and the ability to build strong relationships across customer, supplier, and internal teams.</p>
+  <details class="job-details">
+    <summary><span class="when-closed">View full description</span><span class="when-open">Hide full description</span></summary>
+    <div class="job-grid">
+      <div>
+        <h4>Key Responsibilities</h4>
+        <ul class="checks">
+          <li>Lead new suppliers through onboarding, including documentation, system setup, training, operating procedures, and launch preparation.</li>
+          <li>Serve as the primary supplier contact during implementation and communicate program requirements clearly.</li>
+          <li>Establish onboarding timelines, track milestones, and resolve issues that could delay implementation.</li>
+          <li>Coordinate with the customer and J&amp;A's operations, carrier sales, accounting, and technology teams.</li>
+          <li>Support the internal handoff of newly onboarded suppliers to the ongoing account team.</li>
+          <li>Track supplier participation, shipment activity, service performance, and opportunities for program growth.</li>
+          <li>Provide regular updates on onboarding progress, risks, results, and next steps.</li>
+          <li>Recommend improvements that make supplier onboarding more efficient and scalable.</li>
+          <li>Participate in customer meetings, performance reviews, and account-planning discussions.</li>
+        </ul>
+        <h4>Qualifications and Skills</h4>
+        <ul class="checks">
+          <li>Four or more years of experience in freight brokerage, transportation, logistics, supplier onboarding, or account implementation.</li>
+          <li>Working knowledge of LTL transportation and supply chain operations is important.</li>
+          <li>Strong communication, relationship-building, organization, and problem-solving skills.</li>
+          <li>Ability to manage and adapt to ever-changing priorities to meet required deadlines.</li>
+        </ul>
+      </div>
+      <aside class="job-side">
+        <h4>Measures of Success</h4>
+        <ul>
+          <li>Suppliers onboarded accurately and on schedule</li>
+          <li>Percentage of onboarded suppliers that begin shipping</li>
+          <li>Supplier participation and shipment growth</li>
+          <li>Customer and supplier satisfaction</li>
+          <li>Complete and accurate onboarding and CRM records</li>
+          <li>Effective collaboration and proactive issue resolution</li>
+        </ul>
+        <h4>Why Join J&amp;A Freight Systems?</h4>
+        <ul>
+          <li>Competitive salary and performance-based incentives</li>
+          <li>Play an important role in expanding a strategic transportation program</li>
+          <li>Join a collaborative, fast-growing freight brokerage</li>
+          <li>Professional development and advancement opportunities</li>
+          <li>Comprehensive health, dental, and vision benefits</li>
+          <li>401(k) with company match</li>
+          <li>Chicago headquarters</li>
+        </ul>
+      </aside>
+    </div>
+    <div class="job-foot">
+      <a class="btn btn-gold" href="#apply" data-apply-role="Strategic Key Account Manager">Apply for this role <span class="arrow">&rarr;</span></a>
+      <span class="note">Applications reviewed within 3 business days.</span>
+    </div>
+  </details>
+</article>
+  </div>
+</section>
+
 <div class="join-band">
   <img class="jb-bg" src="assets/careers-band-bg.png" alt="" aria-hidden="true" loading="lazy">
   <div class="wrap">
@@ -156,7 +232,7 @@
         <span class="eyebrow">Life at J&A</span>
         <h2>Build a Career. Not Just a R&eacute;sum&eacute;.</h2>
         <p class="lead" style="color:rgba(255,255,255,.82)">Whether you're new to logistics or looking to advance your career, J&amp;A invests in your development through structured onboarding, hands-on mentorship, and continuous learning tailored to your professional goals.</p>
-        <a href="#apply" class="btn btn-gold" style="margin-top:26px">See Open Positions <span class="arrow">&rarr;</span></a>
+        <a href="#openings" class="btn btn-gold" style="margin-top:26px">See Open Positions <span class="arrow">&rarr;</span></a>
       </div>
       <div class="reveal">
         <div class="pb-stats-row">
@@ -200,7 +276,7 @@
               <div><label for="a-emptype">Employment Type *</label>
                 <select id="a-emptype" name="employment-type" required><option value="">— Select —</option><option>Full-time</option><option>Part-time</option><option>Contract</option></select>
               </div>
-              <div><label for="a-position">Position of Interest</label><input id="a-position" name="position" placeholder="e.g. Logistics Coordinator"></div>
+              <div><label for="a-position">Position of Interest</label><input id="a-position" name="position" placeholder="e.g. Strategic Key Account Manager"></div>
               <div><label for="a-linkedin">LinkedIn Profile</label><input id="a-linkedin" name="linkedin" type="url" placeholder="https://www.linkedin.com/in/yourname"></div>
               <div class="full"><label for="a-resume">R&eacute;sum&eacute; (PDF or Word, up to 8 MB)</label><input id="a-resume" name="resume" type="file" accept=".pdf,.doc,.docx"></div>
               <div class="full"><label for="a-msg">Cover Letter *</label><textarea id="a-msg" name="cover-letter" placeholder="Introduce yourself" required></textarea></div>

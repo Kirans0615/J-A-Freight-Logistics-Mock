@@ -376,6 +376,53 @@ input[type="file"]::file-selector-button{
 .pos p.desc{color:var(--muted);font-size:.95rem;margin-top:10px;max-width:64ch}
 @media(max-width:640px){.pos{grid-template-columns:1fr}}
 
+/* ---------- Job postings (careers.html #openings, positions.html) ---------- */
+.job{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:36px 40px;box-shadow:var(--shadow);margin-bottom:22px;
+}
+.job-head{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap;margin-bottom:18px}
+.job-kicker{display:block;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-dark);font-weight:700;margin-bottom:8px}
+.job h3{font-size:clamp(1.5rem,2.4vw,2rem);margin-bottom:10px}
+.job .meta{display:flex;gap:16px;flex-wrap:wrap;font-size:.86rem;color:var(--muted)}
+.job .meta span{display:inline-flex;align-items:center;gap:6px}
+.job .meta svg{width:15px;height:15px;color:var(--gold)}
+.job-summary{font-size:1.08rem;color:var(--navy-ink);font-weight:500;max-width:72ch}
+.job > p{color:var(--muted);margin-top:12px;max-width:72ch}
+.job > p.job-summary{color:var(--navy-ink);margin-top:0}
+.job-details{margin-top:22px;border-top:1px solid var(--line)}
+.job-details summary{
+  list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;
+  padding:18px 0 0;font-weight:700;color:var(--navy);letter-spacing:.06em;text-transform:uppercase;font-size:.84rem;
+}
+.job-details summary::-webkit-details-marker{display:none}
+.job-details summary::after{
+  content:"";width:9px;height:9px;margin-top:-4px;
+  border-right:2px solid var(--gold);border-bottom:2px solid var(--gold);
+  transform:rotate(45deg);transition:transform .2s;
+}
+.job-details[open] summary::after{transform:rotate(-135deg);margin-top:4px}
+.job-details summary .when-open{display:none}
+.job-details[open] summary .when-open{display:inline}
+.job-details[open] summary .when-closed{display:none}
+.job-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:36px;margin-top:22px}
+.job-grid h4{
+  font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;letter-spacing:.03em;
+  text-transform:uppercase;color:var(--navy-ink);margin:0 0 6px;
+}
+.job-grid h4 + ul{margin-bottom:28px}
+.job-grid .checks li{font-weight:400;color:var(--navy-ink);padding:9px 0 9px 30px;font-size:.97rem}
+.job-grid .checks li::before{top:13px;width:14px;height:14px}
+.job-side{background:var(--navy);border-radius:14px;padding:28px 28px 8px;align-self:start}
+.job-side h4{color:var(--gold)}
+.job-side ul{list-style:none;padding:0;margin:0 0 24px}
+.job-side li{position:relative;padding:7px 0 7px 22px;font-size:.95rem;color:rgba(255,255,255,.86);line-height:1.5}
+.job-side li::before{content:"";position:absolute;left:0;top:14px;width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.job-foot{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-top:8px;padding-top:22px;border-top:1px solid var(--line)}
+.job-foot .note{font-size:.9rem;color:var(--muted)}
+@media(max-width:860px){.job-grid{grid-template-columns:1fr}}
+@media(max-width:640px){.job{padding:26px 20px}.job-head .btn{width:100%;justify-content:center}}
+
 /* ---------- Team ---------- */
 .team{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
 /* 5-member team: 3+2 centered layout so photos stay large enough to look sharp */
