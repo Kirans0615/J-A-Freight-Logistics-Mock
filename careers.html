@@ -116,8 +116,8 @@
     <div class="grid-3 stagger">
       <div class="card reveal">
   <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 9L12 4 2 9l10 5 10-5z"/><path d="M6 11.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5M22 9v5"/></svg></div>
-  <h3>Paid Logistics Education</h3>
-  <p>Ongoing workshops, industry certifications, and one-on-one mentorship with veterans who've seen every freight market since 1986.</p>
+  <h3>Paid Training. Real Career Development.</h3>
+  <p>No logistics experience? No problem. Our structured three-month training program equips new hires with the knowledge, tools, and practical skills to become effective members of our team. Beyond onboarding, our in-house learning management system offers 50 specialized workshops and continuing education opportunities tailored to different career paths.</p>
 </div>
       <div class="card reveal">
   <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-5 3 3 5-7"/></svg></div>
@@ -140,9 +140,9 @@
   <p>Modern office near the city, with hybrid flexibility for established team members.</p>
 </div>
       <div class="card reveal">
-  <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div>
-  <h3>Stability That's Rare</h3>
-  <p>Forty years, zero layoff rounds. We grow steadily and hire deliberately.</p>
+  <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M12 12C12 8 9 5 4 5c0 5 3 8 8 7z"/><path d="M12 15c0-4 3-7 8-7 0 5-3 8-8 7z"/><path d="M5 22h14"/></svg></div>
+  <h3>Invested in Your Growth</h3>
+  <p>Structured onboarding, a mentor from day one, and a clear path from your first seat to your next one. We hire for the long term and train for it.</p>
 </div>
     </div>
   </div>
@@ -154,15 +154,15 @@
     <div class="split">
       <div class="reveal on-dark">
         <span class="eyebrow">Life at J&A</span>
-        <h2>A team that moves together</h2>
-        <p class="lead" style="color:rgba(255,255,255,.82)">Every team member starts with a mentor. Most of our leadership started on the dispatch floor — because we hire great people first and find the seat second.</p>
+        <h2>Build a Career. Not Just a R&eacute;sum&eacute;.</h2>
+        <p class="lead" style="color:rgba(255,255,255,.82)">Whether you're new to logistics or looking to advance your career, J&amp;A invests in your development through structured onboarding, hands-on mentorship, and continuous learning tailored to your professional goals.</p>
         <a href="#apply" class="btn btn-gold" style="margin-top:26px">See Open Positions <span class="arrow">&rarr;</span></a>
       </div>
       <div class="reveal">
         <div class="pb-stats-row">
           <div class="pb-stat"><div class="big">40</div><div class="lbl">Years Strong</div></div>
-          <div class="pb-stat"><div class="big">0</div><div class="lbl">Layoff Rounds</div></div>
-          <div class="pb-stat"><div class="big">17+</div><div class="lbl">Open Seats</div></div>
+          <div class="pb-stat"><div class="big">90</div><div class="lbl">Days of Structured Training</div></div>
+          <div class="pb-stat"><div class="big">50</div><div class="lbl">Learning Workshops</div></div>
         </div>
       </div>
     </div>
@@ -187,7 +187,7 @@
           <h3 style="margin-bottom:22px">Application for Employment</h3>
           <!-- Netlify Forms: applications land in Netlify dashboard → Forms → job-application.
                To receive email alerts: Forms → job-application → Form notifications → Add notification → Email. -->
-          <form name="job-application" method="POST" data-netlify="true" data-demo>
+          <form name="job-application" method="POST" enctype="multipart/form-data" data-netlify="true" data-demo>
             <input type="hidden" name="form-name" value="job-application">
             <div class="form-grid">
               <div><label for="a-first">Full Name *</label><input id="a-first" name="full-name" placeholder="Your full name" required></div>
@@ -200,14 +200,18 @@
               <div><label for="a-emptype">Employment Type *</label>
                 <select id="a-emptype" name="employment-type" required><option value="">— Select —</option><option>Full-time</option><option>Part-time</option><option>Contract</option></select>
               </div>
+              <div><label for="a-position">Position of Interest</label><input id="a-position" name="position" placeholder="e.g. Logistics Coordinator"></div>
+              <div><label for="a-linkedin">LinkedIn Profile</label><input id="a-linkedin" name="linkedin" type="url" placeholder="https://www.linkedin.com/in/yourname"></div>
+              <div class="full"><label for="a-resume">R&eacute;sum&eacute; (PDF or Word, up to 8 MB)</label><input id="a-resume" name="resume" type="file" accept=".pdf,.doc,.docx"></div>
               <div class="full"><label for="a-msg">Cover Letter *</label><textarea id="a-msg" name="cover-letter" placeholder="Introduce yourself" required></textarea></div>
             </div>
             <div style="margin-top:14px;display:flex;gap:10px;align-items:flex-start">
               <input type="checkbox" id="a-privacy" name="privacy" required style="width:auto;margin-top:3px">
-              <label for="a-privacy" style="text-transform:none;letter-spacing:0;font-weight:400;font-size:.9rem;color:var(--muted)">I accept the privacy policy.</label>
+              <label for="a-privacy" style="text-transform:none;letter-spacing:0;font-weight:400;font-size:.9rem;color:var(--muted)">I accept the <a href="privacy-policy.html" target="_blank" rel="noopener">privacy policy</a>.</label>
             </div>
             <div style="margin-top:18px"><button class="btn btn-gold" type="submit">Send Application <span class="arrow">&rarr;</span></button></div>
             <div class="form-success">Application received. Expect a response within 3 business days.</div>
+            <div class="form-error">We couldn't send your application just now. Please try again in a moment or call (773) 205-7720.</div>
           </form>
         </div>
       </div>

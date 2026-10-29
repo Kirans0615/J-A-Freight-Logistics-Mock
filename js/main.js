@@ -94,16 +94,32 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', ev => {
       ev.preventDefault();
       if (!form.checkValidity()) { form.reportValidity(); return; }
-      if (form.hasAttribute('data-netlify')) {
-        fetch(window.location.pathname, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams(new FormData(form)).toString()
-        }).catch(() => {});
-      }
-      const ok = form.querySelector('.form-success');
-      if (ok) { ok.classList.add('show'); ok.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
-      form.querySelectorAll('input,select,textarea').forEach(f => f.value = '');
+      const ok  = form.querySelector('.form-success');
+      const err = form.querySelector('.form-error');
+      const btn = form.querySelector('button[type="submit"]');
+      const finish = (success) => {
+        if (btn) btn.disabled = false;
+        if (success) {
+          if (ok) { ok.classList.add('show'); ok.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+          form.querySelectorAll('input,select,textarea').forEach(f => { if (f.type !== 'hidden') f.value = ''; });
+        } else if (err) {
+          err.classList.add('show'); err.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      };
+      if (err) err.classList.remove('show');
+      if (!form.hasAttribute('data-netlify')) { finish(true); return; }
+      if (btn) btn.disabled = true;
+      /* Multipart forms (file uploads, e.g. the resume on the careers page)
+         must be sent as FormData so Netlify stores the attachment;
+         everything else goes urlencoded. */
+      const multipart = (form.getAttribute('enctype') || '').toLowerCase() === 'multipart/form-data';
+      const req = multipart
+        ? { method: 'POST', body: new FormData(form) }
+        : { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(new FormData(form)).toString() };
+      fetch(window.location.pathname, req)
+        .then(r => finish(r.ok || !err))
+        .catch(() => finish(!err));   /* no error box on the page: keep the old optimistic behaviour */
     });
   });
 
